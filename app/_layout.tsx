@@ -9,7 +9,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NAV_THEME } from '~/lib/constants';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
-import { ThemeToggle } from '~/components/ThemeToggle';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { BottomNavigation } from '~/components/BottomNavigation';
 import { CityDropdownMenu } from '~/components/CityDropdownMenu';
@@ -66,7 +65,6 @@ export default function RootLayout() {
               options={{
                 // Replace title with CityDropdownMenu component
                 headerTitle: () => <CityDropdownMenu />,
-                headerRight: () => <ThemeToggle />,
                 animation: 'slide_from_left',
                 headerBackVisible: false,
               }}
