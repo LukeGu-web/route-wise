@@ -4,12 +4,14 @@ import { DarkTheme, DefaultTheme, Theme, ThemeProvider } from '@react-navigation
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { NAV_THEME } from '~/lib/constants';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { ThemeToggle } from '~/components/ThemeToggle';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
+import { BottomNavigation } from '~/components/BottomNavigation';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -18,6 +20,33 @@ const LIGHT_THEME: Theme = {
 const DARK_THEME: Theme = {
   ...DarkTheme,
   colors: NAV_THEME.dark,
+};
+
+// Custom animation configurations
+const customAnimationOptions = {
+  animation: 'custom',
+  config: {
+    duration: 300,
+    // Custom animation for Trip screen (from left to right)
+    customTransition: ({ current, next, layouts }: any) => {
+      return {
+        cardStyleInterpolator: ({ current, next, layouts }: any) => {
+          return {
+            cardStyle: {
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [-layouts.screen.width, 0],
+                  }),
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
+  },
 };
 
 export {
@@ -51,15 +80,35 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-      <Stack>
-        <Stack.Screen
-          name='index'
-          options={{
-            title: 'Starter Base',
-            headerRight: () => <ThemeToggle />,
-          }}
-        />
-      </Stack>
+      <SafeAreaView className="flex-1 bg-background" edges={['right', 'left', 'bottom']}>
+          <Stack
+            screenOptions={{
+              headerRight: () => <ThemeToggle />,
+              // Default animation for all screens
+              animation: 'slide_from_right',
+              // Customize the animation presentation
+              presentation: 'card',
+            }}
+          >
+            <Stack.Screen
+              name="index"
+              options={{
+                title: 'Trip',
+                // Custom animation for Trip screen
+                animation: 'slide_from_left',
+              }}
+            />
+            <Stack.Screen
+              name="settings"
+              options={{
+                title: 'Settings',
+                // Keep default animation for settings screen
+                animation: 'slide_from_right',
+              }}
+            />
+          </Stack>
+          <BottomNavigation />
+      </SafeAreaView>
       <PortalHost />
     </ThemeProvider>
   );
