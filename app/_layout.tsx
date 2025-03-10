@@ -12,6 +12,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { ThemeToggle } from '~/components/ThemeToggle';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { BottomNavigation } from '~/components/BottomNavigation';
+import { CityDropdownMenu } from '~/components/CityDropdownMenu';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -20,33 +21,6 @@ const LIGHT_THEME: Theme = {
 const DARK_THEME: Theme = {
   ...DarkTheme,
   colors: NAV_THEME.dark,
-};
-
-// Custom animation configurations
-const customAnimationOptions = {
-  animation: 'custom',
-  config: {
-    duration: 300,
-    // Custom animation for Trip screen (from left to right)
-    customTransition: ({ current, next, layouts }: any) => {
-      return {
-        cardStyleInterpolator: ({ current, next, layouts }: any) => {
-          return {
-            cardStyle: {
-              transform: [
-                {
-                  translateX: current.progress.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [-layouts.screen.width, 0],
-                  }),
-                },
-              ],
-            },
-          };
-        },
-      };
-    },
-  },
 };
 
 export {
@@ -83,9 +57,6 @@ export default function RootLayout() {
       <SafeAreaView className="flex-1 bg-background" edges={['right', 'left', 'bottom']}>
           <Stack
             screenOptions={{
-              headerRight: () => <ThemeToggle />,
-              // Default animation for all screens
-              animation: 'slide_from_right',
               // Customize the animation presentation
               presentation: 'card',
             }}
@@ -93,17 +64,19 @@ export default function RootLayout() {
             <Stack.Screen
               name="index"
               options={{
-                title: 'Trip',
-                // Custom animation for Trip screen
+                // Replace title with CityDropdownMenu component
+                headerTitle: () => <CityDropdownMenu />,
+                headerRight: () => <ThemeToggle />,
                 animation: 'slide_from_left',
+                headerBackVisible: false,
               }}
             />
             <Stack.Screen
               name="settings"
               options={{
                 title: 'Settings',
-                // Keep default animation for settings screen
                 animation: 'slide_from_right',
+                headerBackVisible: false,
               }}
             />
           </Stack>
