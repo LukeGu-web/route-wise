@@ -11,7 +11,6 @@ import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { BottomNavigation } from '~/components/BottomNavigation';
-import { CityDropdownMenu } from '~/components/CityDropdownMenu';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -63,10 +62,9 @@ export default function RootLayout() {
             <Stack.Screen
               name="index"
               options={{
-                // Replace title with CityDropdownMenu component
-                headerTitle: () => <CityDropdownMenu />,
+                // Hide header for index screen
+                headerShown: false,
                 animation: 'slide_from_left',
-                headerBackVisible: false,
               }}
             />
             <Stack.Screen

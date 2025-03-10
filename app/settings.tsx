@@ -18,27 +18,25 @@ export default function SettingsScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background" edges={['top']}>
-      <View className="flex-1 p-4">
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle>Settings</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {/* Dark Mode Option */}
-            <View className="flex-row items-center justify-between py-4 border-b border-border">
-              <View className="flex-row items-center">
-                <MoonStar className="text-foreground mr-3" size={22} strokeWidth={1.25} />
-                <Text className="text-base font-medium">Dark Mode</Text>
-              </View>
-              <Switch 
-                checked={isDarkColorScheme}
-                onCheckedChange={handleThemeChange}
-              />
+    <View className="flex-1 bg-background p-4">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>Settings</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {/* Dark Mode Option */}
+          <View className="flex-row items-center justify-between py-4 border-b border-border">
+            <View className="flex-row items-center">
+              <MoonStar className="text-foreground mr-3" size={22} strokeWidth={1.25} />
+              <Text className="text-base font-medium">Dark Mode</Text>
             </View>
-          </CardContent>
-        </Card>
-      </View>
-    </SafeAreaView>
+            <Switch 
+              checked={isDarkColorScheme}
+              onCheckedChange={handleThemeChange}
+            />
+          </View>
+        </CardContent>
+      </Card>
+    </View>
   );
 } 
