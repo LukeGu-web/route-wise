@@ -2427,6 +2427,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/datetimepicker@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "@react-native-community/datetimepicker@npm:8.3.0"
+  dependencies:
+    invariant: "npm:^2.2.4"
+  peerDependencies:
+    expo: ">=50.0.0"
+    react: "*"
+    react-native: "*"
+    react-native-windows: "*"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+    react-native-windows:
+      optional: true
+  checksum: 10c0/33918386270dafd8240dca76619fcc8ad4903485d55564aad19f1cd7fed28ca2bf669aadb686d139f4700dd8571ba861d19f77b3a748a7f9ce8c152476593f97
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.76.7":
   version: 0.76.7
   resolution: "@react-native/assets-registry@npm:0.76.7"
@@ -8888,6 +8907,7 @@ __metadata:
   resolution: "route-wise@workspace:."
   dependencies:
     "@babel/core": "npm:^7.26.0"
+    "@react-native-community/datetimepicker": "npm:^8.3.0"
     "@react-navigation/native": "npm:^7.0.0"
     "@rn-primitives/avatar": "npm:~1.1.0"
     "@rn-primitives/dropdown-menu": "npm:^1.1.0"
