@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { View, ScrollView, Pressable } from 'react-native';
-import { Text } from '~/components/ui/text';
-import { useTripStore } from '~/lib/stores/useTripStore';
+import React from 'react';
+import { FlatList, Pressable } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import { JourneyCard } from '~/components/JourneyCard';
+import { Text } from '~/components/ui/text';
+import { useTripStore } from '~/lib/stores/useTripStore';
 
 export default function TripPage() {
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
@@ -15,53 +15,71 @@ export default function TripPage() {
     router.back();
   };
 
-  const { data: tripResponse, isLoading, error } = useTrip({
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error
+  } = useTrip({
     from_location: origin,
     to_location: destination,
     departure_time: date.toISOString()
   });
 
-  useEffect(() => {
-    if (tripResponse) {
-        setJourneys(tripResponse.journeys);
+  // Save trips to store whenever we get new data
+  React.useEffect(() => {
+
+    if (data?.pages) {
+      const allJourneys = data.pages.flatMap(page => page.journeys);
+      setJourneys( allJourneys );
     }
-  }, [tripResponse, setJourneys]);
+  }, [data, setJourneys]);
+
+  if (isLoading) {
+    return <Text className="p-4">Loading trips...</Text>;
+  }
+
+  if (error) {
+    return <Text className="p-4 text-red-500">Error: {error.message}</Text>;
+  }
+
+  if (!data?.pages[0]?.journeys.length) {
+    return <Text className="p-4">No trips found</Text>;
+  }
 
   return (
     <>
-      <Stack.Screen
-        options={{
-          title: `${origin} to ${destination}`,
-          headerLeft: () => (
-            <Pressable onPress={handleBack} className="mr-2">
-              <ChevronLeft size={24} />
-            </Pressable>
-          ),
-        }}
-      />
-      <ScrollView className="flex-1 p-4">
-
-        {isLoading && (
-          <View className="items-center py-8">
-            <Text className="text-muted-foreground">Loading trip details...</Text>
-          </View>
-        )}
-
-        {error && (
-          <View className="bg-destructive/10 p-4 rounded-lg">
-            <Text className="text-destructive font-medium">Error loading trip details</Text>
-            <Text className="text-destructive/80 text-sm mt-1">{error.message}</Text>
-          </View>
-        )}
-
-        {tripResponse && (
-          <View>
-            {journeys.map((journey, index) => (
-              <JourneyCard key={index} journey={journey} />
-            ))}
-          </View>
-        )}
-      </ScrollView>
-    </>
+    <Stack.Screen
+    options={{
+      title: `${origin} to ${destination}`,
+      headerLeft: () => (
+        <Pressable onPress={handleBack} className="mr-2">
+          <ChevronLeft size={24} />
+        </Pressable>
+      ),
+    }}
+  />
+    <FlatList
+      className="flex-1 p-4"
+      data={journeys}
+      renderItem={({ item }) => <JourneyCard journey={item} />}
+      keyExtractor={(item, index) => `${item.start_time}-${index}`}
+      onEndReached={() => {
+        if (hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      }}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={() => (
+        isFetchingNextPage ? (
+          <Text className="py-4 text-center text-muted-foreground">
+            Loading more trips...
+          </Text>
+        ) : null
+      )}
+    />
+   </>
   );
 } 

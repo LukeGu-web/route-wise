@@ -50,7 +50,7 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Right: Fee */}
           <View className="items-center">
             <Text className="text-sm text-muted-foreground">Fee</Text>
-            <Text className="text-base font-medium">${journey.fee.toFixed(2)}</Text>
+            <Text className="text-base font-medium">${journey.fee?.toFixed(2) ?? 'No data'}</Text>
           </View>
         </View>
       </CardContent>
