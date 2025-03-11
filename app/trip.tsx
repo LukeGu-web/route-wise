@@ -7,7 +7,7 @@ import { Stack, router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 
 export default function TripPage() {
-  const { origin, destination, date, resetForm, setTrips } = useTripStore();
+  const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
 
   const handleBack = () => {
     resetForm();
@@ -22,9 +22,9 @@ export default function TripPage() {
 
   useEffect(() => {
     if (tripResponse) {
-      setTrips(tripResponse);
+        setJourneys(tripResponse.journeys);
     }
-  }, [tripResponse, setTrips]);
+  }, [tripResponse, setJourneys]);
 
   console.log(tripResponse);
 
@@ -41,25 +41,6 @@ export default function TripPage() {
         }}
       />
       <ScrollView className="flex-1 p-4">
-        <View className="bg-card rounded-lg p-4 mb-4">
-          <Text className="text-lg font-semibold mb-4">Search Parameters</Text>
-          <View className="gap-2">
-            <View>
-              <Text className="text-sm text-muted-foreground">From</Text>
-              <Text className="text-base font-medium">{origin || 'Not selected'}</Text>
-            </View>
-            <View>
-              <Text className="text-sm text-muted-foreground">To</Text>
-              <Text className="text-base font-medium">{destination || 'Not selected'}</Text>
-            </View>
-            <View>
-              <Text className="text-sm text-muted-foreground">Departure Time</Text>
-              <Text className="text-base font-medium">
-                {date.toLocaleString() || 'Not selected'}
-              </Text>
-            </View>
-          </View>
-        </View>
 
         {isLoading && (
           <View className="items-center py-8">
@@ -77,9 +58,8 @@ export default function TripPage() {
         {tripResponse && (
           <View>
             <Text className="text-lg font-semibold mb-2">
-              Found {tripResponse.journeys.length} routes
+              Found {journeys.length} routes
             </Text>
-            {/* 这里可以添加更多行程详情的展示 */}
           </View>
         )}
       </ScrollView>
