@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View } from 'react-native';
+import { router } from 'expo-router';
 import { Text } from '~/components/ui/text';
 import { Button } from '~/components/ui/button';
 import { Combobox } from '~/components/ui/combobox';
@@ -7,8 +7,27 @@ import { DatePicker } from '~/components/ui/date-picker';
 import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { useLocationSuggestions } from '~/lib/hooks/useLocations';
 import { useCityStore } from '~/lib/store';
+import { useTripStore } from '../lib/stores/useTripStore';
+
+const locationSuggestions = [
+  "Artarmon",
+  "Central",
+  "Airport Terminal 1",
+  "Airport Terminal 2",
+  "Downtown",
+  "City Hall",
+  "University Campus",
+  "Shopping Mall",
+  "Sports Stadium",
+  "Beach",
+  "Convention Center",
+  "Hospital",
+  "Park",
+  "Museum",
+  "Library",
+  "Zoo"
+];
 
 interface RouteSearchFormProps {
   onSearch: (data: { origin: string; destination: string; date: Date }) => void;
@@ -19,15 +38,8 @@ export function RouteSearchForm({
 }: RouteSearchFormProps) {
   const { isDarkColorScheme } = useColorScheme();
   const { selectedCity } = useCityStore();
+  const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
   
-  // Form state
-  const [origin, setOrigin] = useState('');
-  const [destination, setDestination] = useState('');
-  const [date, setDate] = useState(new Date());
-  
-  // Use React Query to fetch location suggestions
-  const originSuggestionsQuery = useLocationSuggestions(origin, selectedCity);
-  const destinationSuggestionsQuery = useLocationSuggestions(destination, selectedCity);
   
   // Handle origin selection
   const handleSelectOrigin = (item: string) => {
@@ -48,39 +60,13 @@ export function RouteSearchForm({
       destination,
       date: date.toISOString()
     });
-    
+    router.push('/trip');
     // Call the onSearch callback from parent component
-    onSearch({
-      origin,
-      destination,
-      date
-    });
-  };
-
-  // Get origin suggestions list
-  const getOriginSuggestions = () => {
-    if (originSuggestionsQuery.isLoading) {
-      return ['Loading...'];
-    }
-    
-    if (originSuggestionsQuery.isError) {
-      return ['Failed to get suggestions'];
-    }
-    
-    return originSuggestionsQuery.data || [];
-  };
-  
-  // Get destination suggestions list
-  const getDestinationSuggestions = () => {
-    if (destinationSuggestionsQuery.isLoading) {
-      return ['Loading...'];
-    }
-    
-    if (destinationSuggestionsQuery.isError) {
-      return ['Failed to get suggestions'];
-    }
-    
-    return destinationSuggestionsQuery.data || [];
+    // onSearch({
+    //   origin,
+    //   destination,
+    //   date
+    // });
   };
 
   return (
@@ -92,14 +78,8 @@ export function RouteSearchForm({
           onChangeText={setOrigin}
           onSelect={handleSelectOrigin}
           placeholder="Origin"
-          suggestions={getOriginSuggestions()}
+          suggestions={locationSuggestions}
         />
-        {originSuggestionsQuery.isLoading && (
-          <View className="mt-1 flex-row items-center">
-            <ActivityIndicator size="small" className="mr-2" />
-            <Text className="text-xs text-muted-foreground">Loading suggestions...</Text>
-          </View>
-        )}
       </View>
       
       <View>
@@ -109,14 +89,8 @@ export function RouteSearchForm({
           onChangeText={setDestination}
           onSelect={handleSelectDestination}
           placeholder="Destination"
-          suggestions={getDestinationSuggestions()}
+          suggestions={locationSuggestions}
         />
-        {destinationSuggestionsQuery.isLoading && (
-          <View className="mt-1 flex-row items-center">
-            <ActivityIndicator size="small" className="mr-2" />
-            <Text className="text-xs text-muted-foreground">Loading suggestions...</Text>
-          </View>
-        )}
       </View>
       
       <View>
