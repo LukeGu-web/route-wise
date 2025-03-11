@@ -5,6 +5,7 @@ import { useTripStore } from '~/lib/stores/useTripStore';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
+import { JourneyCard } from '~/components/JourneyCard';
 
 export default function TripPage() {
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
@@ -25,8 +26,6 @@ export default function TripPage() {
         setJourneys(tripResponse.journeys);
     }
   }, [tripResponse, setJourneys]);
-
-  console.log(tripResponse);
 
   return (
     <>
@@ -57,9 +56,9 @@ export default function TripPage() {
 
         {tripResponse && (
           <View>
-            <Text className="text-lg font-semibold mb-2">
-              Found {journeys.length} routes
-            </Text>
+            {journeys.map((journey, index) => (
+              <JourneyCard key={index} journey={journey} />
+            ))}
           </View>
         )}
       </ScrollView>
