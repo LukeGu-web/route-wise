@@ -11,6 +11,7 @@ import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { BottomNavigation } from '~/components/BottomNavigation';
+import { QueryProvider } from '~/lib/providers/query-provider';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -50,36 +51,38 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-      <SafeAreaView className="flex-1 bg-background" edges={['right', 'left', 'bottom']}>
-          <Stack
-            screenOptions={{
-              // Customize the animation presentation
-              presentation: 'card',
-            }}
-          >
-            <Stack.Screen
-              name="index"
-              options={{
-                // Hide header for index screen
-                headerShown: false,
-                animation: 'slide_from_left',
+    <QueryProvider>
+      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+        <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
+        <SafeAreaView className="flex-1 bg-background" edges={['right', 'left', 'bottom']}>
+            <Stack
+              screenOptions={{
+                // Customize the animation presentation
+                presentation: 'card',
               }}
-            />
-            <Stack.Screen
-              name="settings"
-              options={{
-                title: 'Settings',
-                animation: 'slide_from_right',
-                headerBackVisible: false,
-              }}
-            />
-          </Stack>
-          <BottomNavigation />
-      </SafeAreaView>
-      <PortalHost />
-    </ThemeProvider>
+            >
+              <Stack.Screen
+                name="index"
+                options={{
+                  // Hide header for index screen
+                  headerShown: false,
+                  animation: 'slide_from_left',
+                }}
+              />
+              <Stack.Screen
+                name="settings"
+                options={{
+                  title: 'Settings',
+                  animation: 'slide_from_right',
+                  headerBackVisible: false,
+                }}
+              />
+            </Stack>
+            <BottomNavigation />
+        </SafeAreaView>
+        <PortalHost />
+      </ThemeProvider>
+    </QueryProvider>
   );
 }
 

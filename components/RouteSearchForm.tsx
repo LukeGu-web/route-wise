@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 import { Text } from '~/components/ui/text';
 import { Button } from '~/components/ui/button';
 import { Combobox } from '~/components/ui/combobox';
@@ -7,36 +7,41 @@ import { DatePicker } from '~/components/ui/date-picker';
 import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
+import { useLocationSuggestions } from '~/lib/hooks/useLocations';
+import { useCityStore } from '~/lib/store';
 
 interface RouteSearchFormProps {
-  onSearch: () => void;
-  locationSuggestions: string[];
+  onSearch: (data: { origin: string; destination: string; date: Date }) => void;
 }
 
 export function RouteSearchForm({
   onSearch,
-  locationSuggestions
 }: RouteSearchFormProps) {
   const { isDarkColorScheme } = useColorScheme();
+  const { selectedCity } = useCityStore();
   
-  // 表单状态
+  // Form state
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [date, setDate] = useState(new Date());
-
-  // 处理选择起点
+  
+  // Use React Query to fetch location suggestions
+  const originSuggestionsQuery = useLocationSuggestions(origin, selectedCity);
+  const destinationSuggestionsQuery = useLocationSuggestions(destination, selectedCity);
+  
+  // Handle origin selection
   const handleSelectOrigin = (item: string) => {
     console.log('Selected origin:', item);
     setOrigin(item);
   };
 
-  // 处理选择终点
+  // Handle destination selection
   const handleSelectDestination = (item: string) => {
     console.log('Selected destination:', item);
     setDestination(item);
   };
 
-  // 处理搜索
+  // Handle search button press
   const handleSearch = () => {
     console.log('Searching for routes:', {
       origin,
@@ -44,8 +49,38 @@ export function RouteSearchForm({
       date: date.toISOString()
     });
     
-    // 调用父组件传入的 onSearch 回调
-    onSearch();
+    // Call the onSearch callback from parent component
+    onSearch({
+      origin,
+      destination,
+      date
+    });
+  };
+
+  // Get origin suggestions list
+  const getOriginSuggestions = () => {
+    if (originSuggestionsQuery.isLoading) {
+      return ['Loading...'];
+    }
+    
+    if (originSuggestionsQuery.isError) {
+      return ['Failed to get suggestions'];
+    }
+    
+    return originSuggestionsQuery.data || [];
+  };
+  
+  // Get destination suggestions list
+  const getDestinationSuggestions = () => {
+    if (destinationSuggestionsQuery.isLoading) {
+      return ['Loading...'];
+    }
+    
+    if (destinationSuggestionsQuery.isError) {
+      return ['Failed to get suggestions'];
+    }
+    
+    return destinationSuggestionsQuery.data || [];
   };
 
   return (
@@ -57,8 +92,14 @@ export function RouteSearchForm({
           onChangeText={setOrigin}
           onSelect={handleSelectOrigin}
           placeholder="Origin"
-          suggestions={locationSuggestions}
+          suggestions={getOriginSuggestions()}
         />
+        {originSuggestionsQuery.isLoading && (
+          <View className="mt-1 flex-row items-center">
+            <ActivityIndicator size="small" className="mr-2" />
+            <Text className="text-xs text-muted-foreground">Loading suggestions...</Text>
+          </View>
+        )}
       </View>
       
       <View>
@@ -68,8 +109,14 @@ export function RouteSearchForm({
           onChangeText={setDestination}
           onSelect={handleSelectDestination}
           placeholder="Destination"
-          suggestions={locationSuggestions}
+          suggestions={getDestinationSuggestions()}
         />
+        {destinationSuggestionsQuery.isLoading && (
+          <View className="mt-1 flex-row items-center">
+            <ActivityIndicator size="small" className="mr-2" />
+            <Text className="text-xs text-muted-foreground">Loading suggestions...</Text>
+          </View>
+        )}
       </View>
       
       <View>
