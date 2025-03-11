@@ -7,7 +7,7 @@ import { DatePicker } from '~/components/ui/date-picker';
 import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { useCityStore } from '~/lib/store';
+import { useCityStore } from '~/lib/stores/useCityStore';
 import { useTripStore } from '../lib/stores/useTripStore';
 
 const locationSuggestions = [

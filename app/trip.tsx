@@ -1,12 +1,18 @@
-import React from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, ScrollView, Pressable } from 'react-native';
 import { Text } from '~/components/ui/text';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { useTrip } from '~/lib/hooks/useTrip';
-import { Stack } from 'expo-router';
+import { Stack, router } from 'expo-router';
+import { ChevronLeft } from 'lucide-react-native';
 
 export default function TripPage() {
-  const { origin, destination, date } = useTripStore();
+  const { origin, destination, date, resetForm, setTrips } = useTripStore();
+
+  const handleBack = () => {
+    resetForm();
+    router.back();
+  };
 
   const { data: tripResponse, isLoading, error } = useTrip({
     from_location: origin,
@@ -14,11 +20,24 @@ export default function TripPage() {
     departure_time: date.toISOString()
   });
 
+  useEffect(() => {
+    if (tripResponse) {
+      setTrips(tripResponse);
+    }
+  }, [tripResponse, setTrips]);
+
+  console.log(tripResponse);
+
   return (
     <>
       <Stack.Screen
         options={{
-          title: 'Trip Details',
+          title: `${origin} to ${destination}`,
+          headerLeft: () => (
+            <Pressable onPress={handleBack} className="mr-2">
+              <ChevronLeft size={24} />
+            </Pressable>
+          ),
         }}
       />
       <ScrollView className="flex-1 p-4">

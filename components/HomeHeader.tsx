@@ -5,7 +5,7 @@ import { Text } from '~/components/ui/text';
 import { Button } from '~/components/ui/button';
 import { ChevronDown } from '~/lib/icons/ChevronDown';
 import { Check } from '~/lib/icons/Check';
-import { CityName, useCityStore } from '~/lib/store';
+import { CityName, useCityStore } from '~/lib/stores/useCityStore';
 import {
   DropdownMenu,
   DropdownMenuContent,

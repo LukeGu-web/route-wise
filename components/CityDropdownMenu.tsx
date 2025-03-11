@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
-import { CityName, useCityStore } from '~/lib/store';
+import { CityName, useCityStore } from '~/lib/stores/useCityStore';
 import { cn } from '~/lib/utils';
 
 export function CityDropdownMenu() {

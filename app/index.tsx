@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card, CardContent } from '~/components/ui/card';
-import { useCityStore } from '~/lib/store';
+import { useCityStore } from '~/lib/stores/useCityStore';
 import { HomeHeader } from '~/components/HomeHeader';
 import { RouteSearchForm } from '~/components/RouteSearchForm';
 import { useRouter } from 'expo-router';
