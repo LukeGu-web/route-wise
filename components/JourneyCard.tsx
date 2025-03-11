@@ -12,9 +12,15 @@ export function JourneyCard({ journey }: JourneyCardProps) {
   const firstLeg = journey.legs[0];
   const lastLeg = journey.legs[journey.legs.length - 1];
   
-  const formatTime = (time: string) => {
+  const formatDateTime = (time: string) => {
     return time.split(" ")[1].slice(0, 5);
   };
+
+  const formatMinutes = (minutes: number) => {
+    if (minutes >= 1440) return Math.floor(minutes / 1440) + 'd'; // Days
+    if (minutes >= 60) return Math.floor(minutes / 60) + 'h'; // Hours
+    return minutes + 'm'; // Minutes
+}
 
   return (
     <Card className="mb-4">
@@ -34,17 +40,17 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Left: Waiting Time */}
           <View className="items-center">
             <Text className="text-sm text-muted-foreground">Wait</Text>
-            <Text className="text-base font-medium">{journey.waiting_time}m</Text>
+            <Text className="text-base font-medium">{formatMinutes(journey.waiting_time)}</Text>
           </View>
 
           {/* Middle: Times and Duration */}
           <View className="items-center flex-1 mx-4">
             <View className="flex-row items-center gap-2">
-              <Text className="text-base">{formatTime(journey.start_time)}</Text>
+              <Text className="text-base">{formatDateTime(journey.start_time)}</Text>
               <Text className="text-sm text-muted-foreground">→</Text>
-              <Text className="text-base">{formatTime(journey.end_time)}</Text>
+              <Text className="text-base">{formatDateTime(journey.end_time)}</Text>
             </View>
-            <Text className="text-sm text-muted-foreground">{journey.duration}mins</Text>
+            <Text className="text-sm text-muted-foreground">{formatMinutes(journey.duration)}</Text>
           </View>
 
           {/* Right: Fee */}

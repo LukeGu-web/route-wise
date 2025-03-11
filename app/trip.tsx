@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Pressable } from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
@@ -38,7 +38,10 @@ export default function TripPage() {
   }, [data, setJourneys]);
 
   if (isLoading) {
-    return <Text className="p-4">Loading trips...</Text>;
+    return (
+    <View className="flex-1 items-center justify-center">
+        <Text className="text-lg font-bold">Loading trips...</Text>
+    </View>)
   }
 
   if (error) {
