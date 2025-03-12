@@ -8,6 +8,7 @@ export interface TripParams {
 
 export interface Stop {
   name: string;
+  platform?: string;
   departure_time: string | null;
   arrival_time: string | null;
   departure_delay: number;
@@ -17,9 +18,10 @@ export interface Stop {
 export interface Leg {
   mode: string;
   line: string;
-  duration: number;
   origin: Stop;
   destination: Stop;
+  departure_time: string;
+  arrival_time: string;
 }
 
 export interface StopSequence {
@@ -28,13 +30,13 @@ export interface StopSequence {
 }
 
 export interface Journey {
-  duration: number;
   start_time: string;
   end_time: string;
+  duration: number;
   waiting_time: number;
+  fee: number | null;
   legs: Leg[];
   stopSequence: StopSequence[];
-  fee: number;
 }
 
 export interface TripResponse {

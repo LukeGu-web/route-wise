@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { Text } from './ui/text';
 import { Journey } from '~/lib/api/trip';
 import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
-import { LineIcon } from './ui/line-icon';
+import { JourneyLegs } from './JourneyLegs';
 
 interface JourneyCardProps {
   journey: Journey;
@@ -26,13 +26,13 @@ export function JourneyCard({ journey }: JourneyCardProps) {
     <Card className="mb-4">
       <CardHeader className="flex-row items-center justify-between">
         <View className="items-center">
-            <Text className="text-sm text-muted-foreground">{firstLeg.origin.name.split(', ')[0]}</Text>
-            <Text className="text-base font-medium">{firstLeg.origin.name.split(', ')[1]}</Text>
-          </View>
-          <View className="items-center">
-            <Text className="text-sm text-muted-foreground">{lastLeg.destination.name.split(', ')[0]}</Text>
-            <Text className="text-base font-medium">{lastLeg.destination.name.split(', ')[1]}</Text>
-          </View>
+          <Text className="text-sm text-muted-foreground">{firstLeg.origin.name.split(', ')[0]}</Text>
+          <Text className="text-base font-medium">{firstLeg.origin.name.split(', ')[1]}</Text>
+        </View>
+        <View className="items-center">
+          <Text className="text-sm text-muted-foreground">{lastLeg.destination.name.split(', ')[0]}</Text>
+          <Text className="text-base font-medium">{lastLeg.destination.name.split(', ')[1]}</Text>
+        </View>
       </CardHeader>
 
       <CardContent>
@@ -56,28 +56,13 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Right: Fee */}
           <View className="items-center">
             <Text className="text-sm text-muted-foreground">Fee</Text>
-            <Text className="text-base font-medium">${journey.fee?.toFixed(2) ?? 'No data'}</Text>
+            <Text className="text-base font-medium">{journey.fee ? "$" + journey.fee.toFixed(2) : 'No data'}</Text>
           </View>
         </View>
       </CardContent>
 
-      <CardFooter className="flex-row justify-between">
-        <Text className="text-sm text-muted-foreground">
-          {journey.legs.length > 1 ? "Transfer" : "Direct"}
-        </Text>
-        <View className="flex-row gap-2">
-          {journey.legs.map((leg, index) => (
-            <View 
-              key={index} 
-              className="flex-row items-center"
-            >
-              <LineIcon mode={leg.mode} line={leg.line} />
-              {index < journey.legs.length - 1 && (
-                <Text className="mx-1 text-muted-foreground">→</Text>
-              )}
-            </View>
-          ))}
-        </View>
+      <CardFooter>
+        <JourneyLegs journey={journey} />
       </CardFooter>
     </Card>
   );
