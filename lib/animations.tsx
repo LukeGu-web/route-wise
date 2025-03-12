@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import Animated, {
   Easing,
@@ -25,7 +25,7 @@ export function AnimatedPage({
 }: AnimatedPageProps) {
   const translateX = useSharedValue(direction === 'left' ? -width : width);
   
-  React.useEffect(() => {
+  useEffect(() => {
     if (isActive) {
       translateX.value = withTiming(0, {
         duration: 300,

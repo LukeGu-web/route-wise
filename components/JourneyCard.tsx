@@ -1,4 +1,3 @@
-import React from 'react';
 import { View } from 'react-native';
 import { Text } from './ui/text';
 import { Journey } from '~/lib/api/trip';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
@@ -29,19 +29,19 @@ export default function TripPage() {
   });
 
   // Save trips to store whenever we get new data
-  React.useEffect(() => {
+  useEffect(() => {
 
     if (data?.pages) {
       const allJourneys = data.pages.flatMap(page => page.journeys);
-      setJourneys( allJourneys );
+      setJourneys(allJourneys);
     }
   }, [data, setJourneys]);
 
   if (isLoading) {
     return (
-    <View className="flex-1 items-center justify-center">
+      <View className="flex-1 items-center justify-center">
         <Text className="text-lg font-bold">Loading trips...</Text>
-    </View>)
+      </View>)
   }
 
   if (error) {
@@ -54,35 +54,35 @@ export default function TripPage() {
 
   return (
     <>
-    <Stack.Screen
-    options={{
-      title: `${origin} to ${destination}`,
-      headerLeft: () => (
-        <Pressable onPress={handleBack} className="mr-2">
-          <ChevronLeft size={24} />
-        </Pressable>
-      ),
-    }}
-  />
-    <FlatList
-      className="flex-1 p-4"
-      data={journeys}
-      renderItem={({ item }) => <JourneyCard journey={item} />}
-      keyExtractor={(item, index) => `${item.start_time}-${index}`}
-      onEndReached={() => {
-        if (hasNextPage && !isFetchingNextPage) {
-          fetchNextPage();
-        }
-      }}
-      onEndReachedThreshold={0.5}
-      ListFooterComponent={() => (
-        isFetchingNextPage ? (
-          <Text className="py-4 text-center text-muted-foreground">
-            Loading more trips...
-          </Text>
-        ) : null
-      )}
-    />
-   </>
+      <Stack.Screen
+        options={{
+          title: `${origin} to ${destination}`,
+          headerLeft: () => (
+            <Pressable onPress={handleBack} className="mr-2">
+              <ChevronLeft size={24} />
+            </Pressable>
+          ),
+        }}
+      />
+      <FlatList
+        className="flex-1 p-4"
+        data={journeys}
+        renderItem={({ item }) => <JourneyCard journey={item} />}
+        keyExtractor={(item, index) => `${item.start_time}-${index}`}
+        onEndReached={() => {
+          if (hasNextPage && !isFetchingNextPage) {
+            fetchNextPage();
+          }
+        }}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={() => (
+          isFetchingNextPage ? (
+            <Text className="py-4 text-center text-muted-foreground">
+              Loading more trips...
+            </Text>
+          ) : null
+        )}
+      />
+    </>
   );
 } 
