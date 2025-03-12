@@ -1,0 +1,1318 @@
+[
+  {
+    "station": "Central",
+    "type": "Train"
+  },
+  {
+    "station": "Town Hall",
+    "type": "Train"
+  },
+  {
+    "station": "Wynyard",
+    "type": "Train"
+  },
+  {
+    "station": "Circular Quay",
+    "type": "Train"
+  },
+  {
+    "station": "St James",
+    "type": "Train"
+  },
+  {
+    "station": "Museum",
+    "type": "Train"
+  },
+  {
+    "station": "Martin Place",
+    "type": "Train"
+  },
+  {
+    "station": "Kings Cross",
+    "type": "Train"
+  },
+  {
+    "station": "Edgecliff",
+    "type": "Train"
+  },
+  {
+    "station": "Bondi Junction",
+    "type": "Train"
+  },
+  {
+    "station": "Redfern",
+    "type": "Train"
+  },
+  {
+    "station": "Macdonaldtown",
+    "type": "Train"
+  },
+  {
+    "station": "Newtown",
+    "type": "Train"
+  },
+  {
+    "station": "Stanmore",
+    "type": "Train"
+  },
+  {
+    "station": "Petersham",
+    "type": "Train"
+  },
+  {
+    "station": "Lewisham",
+    "type": "Train"
+  },
+  {
+    "station": "Summer Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Ashfield",
+    "type": "Train"
+  },
+  {
+    "station": "Croydon",
+    "type": "Train"
+  },
+  {
+    "station": "Burwood",
+    "type": "Train"
+  },
+  {
+    "station": "Strathfield",
+    "type": "Train"
+  },
+  {
+    "station": "Homebush",
+    "type": "Train"
+  },
+  {
+    "station": "Flemington",
+    "type": "Train"
+  },
+  {
+    "station": "Olympic Park",
+    "type": "Train"
+  },
+  {
+    "station": "Lidcombe",
+    "type": "Train"
+  },
+  {
+    "station": "Berala",
+    "type": "Train"
+  },
+  {
+    "station": "Regents Park",
+    "type": "Train"
+  },
+  {
+    "station": "Sefton",
+    "type": "Train"
+  },
+  {
+    "station": "Chester Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Leightonfield",
+    "type": "Train"
+  },
+  {
+    "station": "Villawood",
+    "type": "Train"
+  },
+  {
+    "station": "Carramar",
+    "type": "Train"
+  },
+  {
+    "station": "Cabramatta",
+    "type": "Train"
+  },
+  {
+    "station": "Warwick Farm",
+    "type": "Train"
+  },
+  {
+    "station": "Liverpool",
+    "type": "Train"
+  },
+  {
+    "station": "Casula",
+    "type": "Train"
+  },
+  {
+    "station": "Glenfield",
+    "type": "Train"
+  },
+  {
+    "station": "Macquarie Fields",
+    "type": "Train"
+  },
+  {
+    "station": "Ingleburn",
+    "type": "Train"
+  },
+  {
+    "station": "Minto",
+    "type": "Train"
+  },
+  {
+    "station": "Leumeah",
+    "type": "Train"
+  },
+  {
+    "station": "Campbelltown",
+    "type": "Train"
+  },
+  {
+    "station": "Macarthur",
+    "type": "Train"
+  },
+  {
+    "station": "Merrylands",
+    "type": "Train"
+  },
+  {
+    "station": "Guildford",
+    "type": "Train"
+  },
+  {
+    "station": "Yennora",
+    "type": "Train"
+  },
+  {
+    "station": "Fairfield",
+    "type": "Train"
+  },
+  {
+    "station": "Canley Vale",
+    "type": "Train"
+  },
+  {
+    "station": "Erskineville",
+    "type": "Train"
+  },
+  {
+    "station": "St Peters",
+    "type": "Train"
+  },
+  {
+    "station": "Sydenham",
+    "type": "Train"
+  },
+  {
+    "station": "Tempe",
+    "type": "Train"
+  },
+  {
+    "station": "Arncliffe",
+    "type": "Train"
+  },
+  {
+    "station": "Banksia",
+    "type": "Train"
+  },
+  {
+    "station": "Rockdale",
+    "type": "Train"
+  },
+  {
+    "station": "Kogarah",
+    "type": "Train"
+  },
+  {
+    "station": "Carlton",
+    "type": "Train"
+  },
+  {
+    "station": "Allawah",
+    "type": "Train"
+  },
+  {
+    "station": "Hurstville",
+    "type": "Train"
+  },
+  {
+    "station": "Penshurst",
+    "type": "Train"
+  },
+  {
+    "station": "Mortdale",
+    "type": "Train"
+  },
+  {
+    "station": "Oatley",
+    "type": "Train"
+  },
+  {
+    "station": "Como",
+    "type": "Train"
+  },
+  {
+    "station": "Jannali",
+    "type": "Train"
+  },
+  {
+    "station": "Sutherland",
+    "type": "Train"
+  },
+  {
+    "station": "Loftus",
+    "type": "Train"
+  },
+  {
+    "station": "Engadine",
+    "type": "Train"
+  },
+  {
+    "station": "Heathcote",
+    "type": "Train"
+  },
+  {
+    "station": "Waterfall",
+    "type": "Train"
+  },
+  {
+    "station": "Helensburgh",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Otford",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Kirrawee",
+    "type": "Train"
+  },
+  {
+    "station": "Gymea",
+    "type": "Train"
+  },
+  {
+    "station": "Miranda",
+    "type": "Train"
+  },
+  {
+    "station": "Caringbah",
+    "type": "Train"
+  },
+  {
+    "station": "Woolooware",
+    "type": "Train"
+  },
+  {
+    "station": "Cronulla",
+    "type": "Train"
+  },
+  {
+    "station": "Marrickville",
+    "type": "Train"
+  },
+  {
+    "station": "Dulwich Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Hurlstone Park",
+    "type": "Train"
+  },
+  {
+    "station": "Canterbury",
+    "type": "Train"
+  },
+  {
+    "station": "Campsie",
+    "type": "Train"
+  },
+  {
+    "station": "Belmore",
+    "type": "Train"
+  },
+  {
+    "station": "Lakemba",
+    "type": "Train"
+  },
+  {
+    "station": "Wiley Park",
+    "type": "Train"
+  },
+  {
+    "station": "Punchbowl",
+    "type": "Train"
+  },
+  {
+    "station": "Bankstown",
+    "type": "Train"
+  },
+  {
+    "station": "Yagoona",
+    "type": "Train"
+  },
+  {
+    "station": "Birrong",
+    "type": "Train"
+  },
+  {
+    "station": "Turrella",
+    "type": "Train"
+  },
+  {
+    "station": "Bardwell Park",
+    "type": "Train"
+  },
+  {
+    "station": "Bexley North",
+    "type": "Train"
+  },
+  {
+    "station": "Kingsgrove",
+    "type": "Train"
+  },
+  {
+    "station": "Beverly Hills",
+    "type": "Train"
+  },
+  {
+    "station": "Narwee",
+    "type": "Train"
+  },
+  {
+    "station": "Riverwood",
+    "type": "Train"
+  },
+  {
+    "station": "Padstow",
+    "type": "Train"
+  },
+  {
+    "station": "Revesby",
+    "type": "Train"
+  },
+  {
+    "station": "Panania",
+    "type": "Train"
+  },
+  {
+    "station": "East Hills",
+    "type": "Train"
+  },
+  {
+    "station": "Holsworthy",
+    "type": "Train"
+  },
+  {
+    "station": "Auburn",
+    "type": "Train"
+  },
+  {
+    "station": "Clyde",
+    "type": "Train"
+  },
+  {
+    "station": "Granville",
+    "type": "Train"
+  },
+  {
+    "station": "Harris Park",
+    "type": "Train"
+  },
+  {
+    "station": "Parramatta",
+    "type": "Train"
+  },
+  {
+    "station": "Westmead",
+    "type": "Train"
+  },
+  {
+    "station": "Wentworthville",
+    "type": "Train"
+  },
+  {
+    "station": "Pendle Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Toongabbie",
+    "type": "Train"
+  },
+  {
+    "station": "Seven Hills",
+    "type": "Train"
+  },
+  {
+    "station": "Blacktown",
+    "type": "Train"
+  },
+  {
+    "station": "Doonside",
+    "type": "Train"
+  },
+  {
+    "station": "Rooty Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Mount Druitt",
+    "type": "Train"
+  },
+  {
+    "station": "St Marys",
+    "type": "Train"
+  },
+  {
+    "station": "Werrington",
+    "type": "Train"
+  },
+  {
+    "station": "Kingswood",
+    "type": "Train"
+  },
+  {
+    "station": "Penrith",
+    "type": "Train"
+  },
+  {
+    "station": "Emu Plains",
+    "type": "Train"
+  },
+  {
+    "station": "Marayong",
+    "type": "Train"
+  },
+  {
+    "station": "Quakers Hill",
+    "type": "Train"
+  },
+  {
+    "station": "Schofields",
+    "type": "Train"
+  },
+  {
+    "station": "Riverstone",
+    "type": "Train"
+  },
+  {
+    "station": "Vineyard",
+    "type": "Train"
+  },
+  {
+    "station": "Mulgrave",
+    "type": "Train"
+  },
+  {
+    "station": "Windsor",
+    "type": "Train"
+  },
+  {
+    "station": "Clarendon",
+    "type": "Train"
+  },
+  {
+    "station": "East Richmond",
+    "type": "Train"
+  },
+  {
+    "station": "Richmond",
+    "type": "Train"
+  },
+  {
+    "station": "North Strathfield",
+    "type": "Train"
+  },
+  {
+    "station": "Concord West",
+    "type": "Train"
+  },
+  {
+    "station": "Rhodes",
+    "type": "Train"
+  },
+  {
+    "station": "Meadowbank",
+    "type": "Train"
+  },
+  {
+    "station": "West Ryde",
+    "type": "Train"
+  },
+  {
+    "station": "Denistone",
+    "type": "Train"
+  },
+  {
+    "station": "Eastwood",
+    "type": "Train"
+  },
+  {
+    "station": "Epping",
+    "type": "Train"
+  },
+  {
+    "station": "Cheltenham",
+    "type": "Train"
+  },
+  {
+    "station": "Beecroft",
+    "type": "Train"
+  },
+  {
+    "station": "Pennant Hills",
+    "type": "Train"
+  },
+  {
+    "station": "Thornleigh",
+    "type": "Train"
+  },
+  {
+    "station": "Normanhurst",
+    "type": "Train"
+  },
+  {
+    "station": "Milsons Point",
+    "type": "Train"
+  },
+  {
+    "station": "North Sydney",
+    "type": "Train"
+  },
+  {
+    "station": "Waverton",
+    "type": "Train"
+  },
+  {
+    "station": "Wollstonecraft",
+    "type": "Train"
+  },
+  {
+    "station": "St Leonards",
+    "type": "Train"
+  },
+  {
+    "station": "Artarmon",
+    "type": "Train"
+  },
+  {
+    "station": "Chatswood",
+    "type": "Train"
+  },
+  {
+    "station": "Roseville",
+    "type": "Train"
+  },
+  {
+    "station": "Lindfield",
+    "type": "Train"
+  },
+  {
+    "station": "Killara",
+    "type": "Train"
+  },
+  {
+    "station": "Gordon",
+    "type": "Train"
+  },
+  {
+    "station": "Pymble",
+    "type": "Train"
+  },
+  {
+    "station": "Turramurra",
+    "type": "Train"
+  },
+  {
+    "station": "Warrawee",
+    "type": "Train"
+  },
+  {
+    "station": "Wahroonga",
+    "type": "Train"
+  },
+  {
+    "station": "Waitara",
+    "type": "Train"
+  },
+  {
+    "station": "Hornsby",
+    "type": "Train"
+  },
+  {
+    "station": "Asquith",
+    "type": "Train"
+  },
+  {
+    "station": "Mount Colah",
+    "type": "Train"
+  },
+  {
+    "station": "Mount Kuring-gai",
+    "type": "Train"
+  },
+  {
+    "station": "Berowra",
+    "type": "Train"
+  },
+  {
+    "station": "Cowan",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Menangle Park",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Menangle",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Douglas Park",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Picton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tahmoor",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bargo",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Yerrinbool",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Mittagong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bowral",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Burradoo",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Moss Vale",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Thirlmere",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Couridjah",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Buxton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Balmoral",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hill Top",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Colo Vale",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Exeter",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bundanoon",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Penrose",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wingello",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tallong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Marulan",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Goulburn",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Stanwell Park",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Coalcliff",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Scarborough",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wombarra",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Coledale",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Austinmer",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Thirroul",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bulli",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Woonona",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bellambi",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Corrimal",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Towradgi",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Fairy Meadow",
+    "type": "TrainLink"
+  },
+  {
+    "station": "North Wollongong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wollongong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Coniston",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Unanderra",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Kembla Grange",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Dapto",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Albion Park",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Oak Flats",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Shellharbour Junction",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Minnamurra",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bombo",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Kiama",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Gerringong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Berry",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bomaderry (Nowra)",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lysaghts",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Cringila",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Port Kembla North",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Port Kembla",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lapstone",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Glenbrook",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Blaxland",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Warrimoo",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Valley Heights",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Springwood",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Faulconbridge",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Linden",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Woodford",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hazelbrook",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lawson",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bullaburra",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wentworth Falls",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Leura",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Katoomba",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Medlow Bath",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Blackheath",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Mount Victoria",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bell",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Zig Zag",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lithgow",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Warabrook (University)",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hawkesbury River",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wondabyne",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Woy Woy",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Koolewong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tascott",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Point Clare",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Gosford",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Narara",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Niagara Park",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lisarow",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Ourimbah",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tuggerah",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wyong",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Warnervale",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wyee",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Morisset",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Dora Creek",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Awaba",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Fassifern",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Booragul",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Teralba",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Cockle Creek",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Cardiff",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Kotara",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Adamstown",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Broadmeadow",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hamilton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Newcastle Interchange",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Waratah",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Sandgate",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hexham",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tarro",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Beresfield",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Thornton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Victoria Street",
+    "type": "TrainLink"
+  },
+  {
+    "station": "East Maitland",
+    "type": "TrainLink"
+  },
+  {
+    "station": "High Street",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Maitland",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Telarah",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Mindaribba",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Paterson",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Martins Creek",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Hilldale",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wallarobba",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wirragulla",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Dungog",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Lochinvar",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Greta",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Branxton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Singleton",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Muswellbrook",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Aberdeen",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Scone",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Metford",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Green Square",
+    "type": "Train"
+  },
+  {
+    "station": "Mascot",
+    "type": "Train"
+  },
+  {
+    "station": "Domestic",
+    "type": "Train"
+  },
+  {
+    "station": "International",
+    "type": "Train"
+  },
+  {
+    "station": "Wolli Creek",
+    "type": "Train"
+  },
+  {
+    "station": "Tallawong",
+    "type": "Metro"
+  },
+  {
+    "station": "Rouse Hill",
+    "type": "Metro"
+  },
+  {
+    "station": "Kellyville",
+    "type": "Metro"
+  },
+  {
+    "station": "Bella Vista",
+    "type": "Metro"
+  },
+  {
+    "station": "Norwest",
+    "type": "Metro"
+  },
+  {
+    "station": "Hills Showground",
+    "type": "Metro"
+  },
+  {
+    "station": "Castle Hill",
+    "type": "Metro"
+  },
+  {
+    "station": "Cherrybrook",
+    "type": "Metro"
+  },
+  {
+    "station": "Rydal",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Tarana",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Wallerawang",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Mount Lambie",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Meadow Flat",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Yetholme",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Raglan",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Kelso",
+    "type": "TrainLink"
+  },
+  {
+    "station": "Bathurst Station",
+    "type": "TrainLink"
+  },
+  {
+    "station": "North Ryde",
+    "type": "Train"
+  },
+  {
+    "station": "Macquarie Park",
+    "type": "Train"
+  },
+  {
+    "station": "Macquarie University",
+    "type": "Train"
+  },
+  {
+    "station": "Edmondson Park",
+    "type": "Train"
+  },
+  {
+    "station": "Leppington",
+    "type": "Train"
+  },
+  {
+    "station": "Crows Nest",
+    "type": "Metro"
+  },
+  {
+    "station": "Victoria Cross",
+    "type": "Metro"
+  },
+  {
+    "station": "Barangaroo",
+    "type": "Metro"
+  },
+  {
+    "station": "Gadigal",
+    "type": "Metro"
+  },
+  {
+    "station": "Waterloo",
+    "type": "Metro"
+  }
+]
