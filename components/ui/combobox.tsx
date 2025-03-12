@@ -1,17 +1,26 @@
 import * as React from 'react';
-import { View, TextInput, FlatList, Pressable, Animated, StyleSheet, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, TextInput, FlatList, Pressable,Image, Animated, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Text } from '~/components/ui/text';
-import { Input } from '~/components/ui/input';
 import { cn } from '~/lib/utils';
 import { ChevronDown, ChevronUp, Search, X } from 'lucide-react-native';
 import { useColorScheme } from '~/lib/useColorScheme';
+import { Station } from '~/lib/hooks/useStations';
+
+// Static icon mapping
+const stationTypeIcons = {
+  Bus: require('~/assets/images/icons/bus.png'),
+  Train: require('~/assets/images/icons/train.png'),
+  TrainLink: require('~/assets/images/icons/train.png'),
+  LightRail: require('~/assets/images/icons/lightrail.png'),
+  Ferry: require('~/assets/images/icons/ferry.png'),
+} as const;
 
 interface ComboboxProps {
   value: string;
   onChangeText: (text: string) => void;
   onSelect: (item: string) => void;
   placeholder?: string;
-  suggestions: string[];
+  suggestions: Station[];
   className?: string;
   inputClassName?: string;
 }
@@ -27,10 +36,10 @@ export function Combobox({
 }: ComboboxProps) {
   const { isDarkColorScheme } = useColorScheme();
   const iconColor = isDarkColorScheme ? '#e5e7eb' : '#9ca3af';
-  
+
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchText, setSearchText] = React.useState('');
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<string[]>(suggestions);
+  const [filteredSuggestions, setFilteredSuggestions] = React.useState<Station[]>(suggestions);
   const dropdownHeight = React.useRef(new Animated.Value(0)).current;
   const textInputRef = React.useRef<TextInput>(null);
 
@@ -56,8 +65,8 @@ export function Combobox({
   // 处理搜索
   const onSearching = (text: string) => {
     setSearchText(text);
-    const filtered = suggestions.filter(item => 
-      item.toLowerCase().includes(text.toLowerCase())
+    const filtered = suggestions.filter(item =>
+      item.station.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredSuggestions(filtered);
   };
@@ -127,13 +136,18 @@ export function Combobox({
                 nestedScrollEnabled={true}
                 data={filteredSuggestions}
                 keyboardShouldPersistTaps="handled"
-                keyExtractor={(item) => item}
+                keyExtractor={(item) => `${item.station}-${item.type}`}
                 renderItem={({ item }) => (
                   <Pressable
-                    className="py-2 px-3 active:bg-accent"
-                    onPress={() => handleSelect(item)}
+                    key={`${item.station}-${item.type}`}
+                    onPress={() => handleSelect(item.station)}
+                    className="flex-row items-center px-3 py-2 hover:bg-muted active:bg-muted"
                   >
-                    <Text>{item}</Text>
+                    <Image
+                      source={stationTypeIcons[item.type]}
+                      className="w-6 h-6 mr-2"
+                    />
+                    <Text className="flex-1">{item.station}</Text>
                   </Pressable>
                 )}
               />
@@ -144,10 +158,3 @@ export function Combobox({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  suggestionsContainer: {
-    maxHeight: 200,
-    zIndex: 50,
-  },
-}); 

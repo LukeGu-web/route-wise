@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import { router } from 'expo-router';
+import dayjs from 'dayjs';
 import { Text } from '~/components/ui/text';
 import { Button } from '~/components/ui/button';
 import { Combobox } from '~/components/ui/combobox';
@@ -9,25 +10,7 @@ import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { useCityStore } from '~/lib/stores/useCityStore';
 import { useTripStore } from '../lib/stores/useTripStore';
-
-const locationSuggestions = [
-  "Artarmon",
-  "Central",
-  "Airport Terminal 1",
-  "Airport Terminal 2",
-  "Downtown",
-  "City Hall",
-  "University Campus",
-  "Shopping Mall",
-  "Sports Stadium",
-  "Beach",
-  "Convention Center",
-  "Hospital",
-  "Park",
-  "Museum",
-  "Library",
-  "Zoo"
-];
+import { useStations } from '~/lib/hooks/useStations';
 
 interface RouteSearchFormProps {
   onSearch: (data: { origin: string; destination: string; date: Date }) => void;
@@ -39,7 +22,7 @@ export function RouteSearchForm({
   const { isDarkColorScheme } = useColorScheme();
   const { selectedCity } = useCityStore();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
-  
+  const { getFilteredStations } = useStations();
   
   // Handle origin selection
   const handleSelectOrigin = (item: string) => {
@@ -58,15 +41,9 @@ export function RouteSearchForm({
     console.log('Searching for routes:', {
       origin,
       destination,
-      date: date.toISOString()
+      date: dayjs(date).format('YYYY-MM-DDTHH:mm:ss')
     });
     router.push('/trip');
-    // Call the onSearch callback from parent component
-    // onSearch({
-    //   origin,
-    //   destination,
-    //   date
-    // });
   };
 
   return (
@@ -78,7 +55,7 @@ export function RouteSearchForm({
           onChangeText={setOrigin}
           onSelect={handleSelectOrigin}
           placeholder="Origin"
-          suggestions={locationSuggestions}
+          suggestions={getFilteredStations(origin)}
         />
       </View>
       
@@ -89,7 +66,7 @@ export function RouteSearchForm({
           onChangeText={setDestination}
           onSelect={handleSelectDestination}
           placeholder="Destination"
-          suggestions={locationSuggestions}
+          suggestions={getFilteredStations(destination)}
         />
       </View>
       

@@ -55,7 +55,7 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Right: Fee */}
           <View className="items-center">
             <Text className="text-sm text-muted-foreground">Fee</Text>
-            <Text className="text-base font-medium">${journey.fee?.toFixed(2) ?? 'No data'}</Text>
+            <Text className="text-base font-medium">{journey.fee ? `$${journey.fee .toFixed(2)}` : 'No data'}</Text>
           </View>
         </View>
       </CardContent>
@@ -80,7 +80,7 @@ export function JourneyCard({ journey }: JourneyCardProps) {
                     leg.mode.includes('Train') ? 'text-blue-700' : 'text-green-700'
                   }`}
                 >
-                  {leg.line}
+                  {leg.line === 'Unknown' && leg.mode === 'footpath' ? 'Walk' : leg.line}
                 </Text>
               </View>
               {index < journey.legs.length - 1 && (
