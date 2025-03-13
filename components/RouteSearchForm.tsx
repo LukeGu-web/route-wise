@@ -8,9 +8,7 @@ import { DatePicker } from '~/components/ui/date-picker';
 import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { useCityStore } from '~/lib/stores/useCityStore';
 import { useTripStore } from '../lib/stores/useTripStore';
-import { useStations } from '~/lib/hooks/useStations';
 
 interface RouteSearchFormProps {
   onSearch: (data: { origin: string; destination: string; date: Date }) => void;
@@ -20,9 +18,7 @@ export function RouteSearchForm({
   onSearch,
 }: RouteSearchFormProps) {
   const { isDarkColorScheme } = useColorScheme();
-  const { selectedCity } = useCityStore();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
-  const { getFilteredStations } = useStations();
   
   // Handle origin selection
   const handleSelectOrigin = (item: string) => {
@@ -55,7 +51,6 @@ export function RouteSearchForm({
           onChangeText={setOrigin}
           onSelect={handleSelectOrigin}
           placeholder="Origin"
-          suggestions={getFilteredStations(origin)}
         />
       </View>
       
@@ -66,7 +61,6 @@ export function RouteSearchForm({
           onChangeText={setDestination}
           onSelect={handleSelectDestination}
           placeholder="Destination"
-          suggestions={getFilteredStations(destination)}
         />
       </View>
       

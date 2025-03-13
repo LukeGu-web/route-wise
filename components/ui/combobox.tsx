@@ -4,7 +4,7 @@ import { Text } from '~/components/ui/text';
 import { cn } from '~/lib/utils';
 import { ChevronDown, ChevronUp, Search, X } from 'lucide-react-native';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { Station } from '~/lib/hooks/useStations';
+import { Station, useStations } from '~/lib/hooks/useStations';
 
 // Static icon mapping
 const stationTypeIcons = {
@@ -20,9 +20,7 @@ interface ComboboxProps {
   onChangeText: (text: string) => void;
   onSelect: (item: string) => void;
   placeholder?: string;
-  suggestions: Station[];
   className?: string;
-  inputClassName?: string;
 }
 
 export function Combobox({
@@ -30,16 +28,15 @@ export function Combobox({
   onChangeText,
   onSelect,
   placeholder,
-  suggestions,
   className,
-  inputClassName,
 }: ComboboxProps) {
   const { isDarkColorScheme } = useColorScheme();
+  const { allStations } = useStations();
   const iconColor = isDarkColorScheme ? '#e5e7eb' : '#9ca3af';
 
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchText, setSearchText] = React.useState('');
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<Station[]>(suggestions);
+  const [filteredSuggestions, setFilteredSuggestions] = React.useState<Station[]>(allStations);
   const dropdownHeight = React.useRef(new Animated.Value(0)).current;
   const textInputRef = React.useRef<TextInput>(null);
 
@@ -52,7 +49,7 @@ export function Combobox({
         useNativeDriver: false,
       }).start();
     } else {
-      Keyboard.dismiss(); // 确保键盘关闭
+      Keyboard.dismiss();
       Animated.timing(dropdownHeight, {
         toValue: 0,
         duration: 200,
@@ -63,7 +60,7 @@ export function Combobox({
 
   const onSearching = (text: string) => {
     setSearchText(text);
-    const filtered = suggestions.filter(item =>
+    const filtered = allStations.filter(item =>
       item.station.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredSuggestions(filtered);
@@ -73,14 +70,13 @@ export function Combobox({
     Keyboard.dismiss(); 
     onSelect(item);
     onChangeText(item);
-    setSearchText(item);
     onDropdownToggle(false);
   };
 
   const resetSearch = () => {
     setSearchText('');
     onChangeText('');
-    setFilteredSuggestions(suggestions);
+    setFilteredSuggestions(allStations);
   };
 
   return (
