@@ -56,7 +56,13 @@ export default function TripPage() {
     <>
       <Stack.Screen
         options={{
-          title: `${origin} to ${destination}`,
+          headerTitle: () => (
+            <View className="flex-row items-center gap-4">
+              <Text className="text-lg font-bold">{origin}</Text>
+              <Text className="text-muted-foreground">to</Text>
+              <Text className="text-lg font-bold">{destination}</Text>
+            </View>
+          ),
           headerLeft: () => (
             <Pressable onPress={handleBack} className="mr-2">
               <ChevronLeft size={24} />

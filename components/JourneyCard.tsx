@@ -46,9 +46,9 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Middle: Times and Duration */}
           <View className="items-center flex-1 mx-4">
             <View className="flex-row items-center gap-2">
-              <Text className="text-base">{formatDateTime(journey.start_time)}</Text>
-              <Text className="text-sm text-muted-foreground">→</Text>
-              <Text className="text-base">{formatDateTime(journey.end_time)}</Text>
+              <Text className="text-lg font-medium">{formatDateTime(journey.start_time)}</Text>
+              <Text className="text-sm text-muted-foreground mx-2">→</Text>
+              <Text className="text-lg font-medium">{formatDateTime(journey.end_time)}</Text>
             </View>
             <Text className="text-sm text-muted-foreground">{formatMinutes(journey.duration)}</Text>
           </View>
@@ -56,7 +56,7 @@ export function JourneyCard({ journey }: JourneyCardProps) {
           {/* Right: Fee */}
           <View className="items-center">
             <Text className="text-sm text-muted-foreground">Fee</Text>
-            <Text className="text-base font-medium">{journey.fee ? "$" + journey.fee.toFixed(2) : 'No data'}</Text>
+            <Text className="font-medium">{journey.fee ? "$" + journey.fee.toFixed(2) : 'No data'}</Text>
           </View>
         </View>
       </CardContent>

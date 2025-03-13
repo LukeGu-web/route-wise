@@ -15,7 +15,7 @@ export const usePerferenceStore = create<PerferenceState>()(
   persist(
     devtools((set) => ({
       isDarkMode: null,
-      enabledServiceMessages: false,
+      enabledServiceMessages: true,
       language: null,
       setIsDarkMode: (isDarkMode) => {
         set(() => ({ isDarkMode }));
