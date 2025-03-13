@@ -32,9 +32,9 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
     // Transfer journey - accordion view
     return (
         <View className="w-full">
-            <Accordion type="single" collapsible>
-                <AccordionItem value="legs">
-                    <AccordionTrigger>
+            <Accordion type="single" collapsible className="-mb-4">
+                <AccordionItem value="legs" className="border-b-0">
+                    <AccordionTrigger >
                         <View className="flex-row gap-2">
                             {journey.legs.map((leg, index) => (
                                 <View key={index} className="flex-row items-center">
@@ -50,49 +50,27 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
                         {journey.legs.map((leg, legIndex) => (
                             <View key={legIndex} className="py-2">
                                 {/* Leg header */}
-                                <View className="flex-row items-center mb-2">
-                                    <LineIcon mode={leg.mode} line={leg.line} />
-                                    <Text className="ml-2 font-medium">
-                                        {leg.mode === 'footpath' ? 'Walk' : `${leg.mode} ${leg.line}`}
-                                    </Text>
-                                </View>
-
-                                {/* Origin stop */}
-                                <View className="ml-4 mb-2">
-                                    <Text className="text-sm text-muted-foreground">From</Text>
-                                    <View className="flex-row justify-between items-center">
-                                        <View>
-                                            <Text className="font-medium">{leg.origin.name}</Text>
-                                            {leg.origin.platform && (
-                                                <Text className="text-sm text-muted-foreground">
-                                                    Platform {leg.origin.platform}
-                                                </Text>
-                                            )}
-                                        </View>
-                                        <Text>{dayjs(leg.departure_time).format('HH:mm')}</Text>
+                                <LineIcon mode={leg.mode} line={leg.line} />
+                                <View className="flex-row items-center justify-between">
+                                    {/* Origin stop */}
+                                    <View className="items-center w-5/12">
+                                        <Text className="text-sm text-muted-foreground">{leg.origin.name.split(', ')[0]}</Text>
+                                        <Text className="text-base font-medium">{leg.origin.name.split(', ')[1]}</Text>
+                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.departure_time).format('HH:mm')}</Text>
+                                    </View>
+                                    <Text className="mx-1 text-muted-foreground">→</Text>
+                                    {/* Destination stop */}
+                                    <View className="items-center w-5/12">
+                                        <Text className="text-sm text-muted-foreground">{leg.destination.name.split(', ')[0]}</Text>
+                                        <Text className="text-base font-medium">{leg.destination.name.split(', ')[1]}</Text>
+                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.departure_time).format('HH:mm')}</Text>
                                     </View>
                                 </View>
 
-                                {/* Destination stop */}
-                                <View className="ml-4">
-                                    <Text className="text-sm text-muted-foreground">To</Text>
-                                    <View className="flex-row justify-between items-center">
-                                        <View>
-                                            <Text className="font-medium">{leg.destination.name}</Text>
-                                            {leg.destination.platform && (
-                                                <Text className="text-sm text-muted-foreground">
-                                                    Platform {leg.destination.platform}
-                                                </Text>
-                                            )}
-                                        </View>
-                                        <Text>{dayjs(leg.arrival_time).format('HH:mm')}</Text>
-                                    </View>
-                                </View>
 
                                 {/* Divider except for last leg */}
                                 {legIndex < journey.legs.length - 1 && (
-                                    <View className="my-2 border-t border-border" />
-                                )}
+                                    <View className="my-2 border-t border-border" />)}
                             </View>
                         ))}
                     </AccordionContent>
