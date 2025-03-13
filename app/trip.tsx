@@ -1,14 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import { JourneyCard } from '~/components/JourneyCard';
+import { Button } from '~/components/ui/button';
+import { Input } from '~/components/ui/input';
 import { Text } from '~/components/ui/text';
 import { useTripStore } from '~/lib/stores/useTripStore';
+import { Star } from '~/lib/icons/Star';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~/components/ui/dialog';
 
 export default function TripPage() {
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [tripName, setTripName] = useState('');
 
   const handleBack = () => {
     resetForm();
@@ -52,6 +59,10 @@ export default function TripPage() {
     return <Text className="p-4">No trips found</Text>;
   }
 
+  const handleSaveStarredTrip = () => {
+    console.log('Save starred trip');
+  }
+
   return (
     <>
       <Stack.Screen
@@ -66,6 +77,11 @@ export default function TripPage() {
           headerLeft: () => (
             <Pressable onPress={handleBack} className="mr-2">
               <ChevronLeft size={24} />
+            </Pressable>
+          ),
+          headerRight: () => (
+            <Pressable onPress={() => setIsDialogOpen(true)}>
+              <Star size={24} />
             </Pressable>
           ),
         }}
@@ -89,6 +105,40 @@ export default function TripPage() {
           ) : null
         )}
       />
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Starred Trip</DialogTitle>
+            <DialogDescription>Starred the route for quick search</DialogDescription>
+          </DialogHeader>
+          <View className="py-4 gap-4">
+            <View className="gap-2">
+              <Text className="font-semibold">Name</Text>
+              <Input
+                placeholder={`${origin}->${destination}`}
+                value={tripName}
+                onChangeText={setTripName}
+              />
+            </View>
+            <View className="flex-row items-end gap-2">
+              <Text className="font-semibold">Origin: </Text>
+              <Text className="text-lg">{origin}</Text>
+            </View>
+            <View className="flex-row items-end gap-2">
+              <Text className="font-semibold">Destination: </Text>
+              <Text className="text-lg">{destination}</Text>
+            </View>
+          </View>
+          <DialogFooter>
+            <Button variant="outline" onPress={() => setIsDialogOpen(false)}>
+              <Text>Cancel</Text>
+            </Button>
+            <Button className="bg-yellow-300" onPress={handleSaveStarredTrip}>
+              <Text className="text-black">Save</Text>
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 } 

@@ -2055,6 +2055,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-dialog@npm:^1.1.1":
+  version: 1.1.6
+  resolution: "@radix-ui/react-dialog@npm:1.1.6"
+  dependencies:
+    "@radix-ui/primitive": "npm:1.1.1"
+    "@radix-ui/react-compose-refs": "npm:1.1.1"
+    "@radix-ui/react-context": "npm:1.1.1"
+    "@radix-ui/react-dismissable-layer": "npm:1.1.5"
+    "@radix-ui/react-focus-guards": "npm:1.1.1"
+    "@radix-ui/react-focus-scope": "npm:1.1.2"
+    "@radix-ui/react-id": "npm:1.1.0"
+    "@radix-ui/react-portal": "npm:1.1.4"
+    "@radix-ui/react-presence": "npm:1.1.2"
+    "@radix-ui/react-primitive": "npm:2.0.2"
+    "@radix-ui/react-slot": "npm:1.1.2"
+    "@radix-ui/react-use-controllable-state": "npm:1.1.0"
+    aria-hidden: "npm:^1.2.4"
+    react-remove-scroll: "npm:^2.6.3"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/98e425549573c5d6fb0fee94ecd40427a8b8897bb2d9bb2a44fe64e484754376ff23b64fcf64e061d42fc774b9627a28cb5b1bb5652e567908dac9a8d8618705
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-direction@npm:1.1.0":
   version: 1.1.0
   resolution: "@radix-ui/react-direction@npm:1.1.0"
@@ -2901,6 +2933,28 @@ __metadata:
     react-native-web:
       optional: true
   checksum: 10c0/585411e03ed61dca017e567cdd4a8b88307a92b918ddd38e5975b3c092fdc4d7eb1899ba6ce89b16a91dcbea4f7cc92a7572c76dfab5522f8e7cb024e3b2d245
+  languageName: node
+  linkType: hard
+
+"@rn-primitives/dialog@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@rn-primitives/dialog@npm:1.1.0"
+  dependencies:
+    "@radix-ui/react-dialog": "npm:^1.1.1"
+    "@rn-primitives/hooks": "npm:1.1.0"
+    "@rn-primitives/slot": "npm:1.1.0"
+    "@rn-primitives/types": "npm:1.1.0"
+  peerDependencies:
+    "@rn-primitives/portal": "*"
+    react: "*"
+    react-native: "*"
+    react-native-web: "*"
+  peerDependenciesMeta:
+    react-native:
+      optional: true
+    react-native-web:
+      optional: true
+  checksum: 10c0/829a5c5059b4d35d40e352790850e5e8ef047060acba21fc162daee90042eb0ba3227a7d1634631effc2a29677cfd2ef874f313add4007a58f1ee4b11ba55e04
   languageName: node
   linkType: hard
 
@@ -8878,6 +8932,7 @@ __metadata:
     "@react-navigation/native": "npm:^7.0.0"
     "@rn-primitives/accordion": "npm:^1.1.0"
     "@rn-primitives/avatar": "npm:~1.1.0"
+    "@rn-primitives/dialog": "npm:^1.1.0"
     "@rn-primitives/dropdown-menu": "npm:^1.1.0"
     "@rn-primitives/portal": "npm:~1.1.0"
     "@rn-primitives/progress": "npm:~1.1.0"

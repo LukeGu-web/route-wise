@@ -4,13 +4,11 @@ import { DarkTheme, DefaultTheme, Theme, ThemeProvider } from '@react-navigation
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform } from 'react-native';
 import { NAV_THEME } from '~/lib/constants';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
-import { BottomNavigation } from '~/components/BottomNavigation';
 import { QueryProvider } from '~/lib/providers/query-provider';
 
 const LIGHT_THEME: Theme = {
@@ -31,6 +29,7 @@ export default function RootLayout() {
   const hasMounted = React.useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -54,32 +53,24 @@ export default function RootLayout() {
     <QueryProvider>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-        <SafeAreaView className="flex-1 bg-background" edges={['right', 'left', 'bottom']}>
-            <Stack
-              screenOptions={{
-                // Customize the animation presentation
-                presentation: 'card',
-              }}
-            >
-              <Stack.Screen
-                name="index"
-                options={{
-                  // Hide header for index screen
-                  headerShown: false,
-                  animation: 'slide_from_left',
-                }}
-              />
-              <Stack.Screen
-                name="settings"
-                options={{
-                  title: 'Settings',
-                  animation: 'slide_from_right',
-                  headerBackVisible: false,
-                }}
-              />
-            </Stack>
-            <BottomNavigation />
-        </SafeAreaView>
+
+        <Stack
+          screenOptions={{
+            // Customize the animation presentation
+            presentation: 'card',
+          }}
+        >
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="trip"
+          />
+        </Stack>
+
         <PortalHost />
       </ThemeProvider>
     </QueryProvider>

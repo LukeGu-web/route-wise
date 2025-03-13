@@ -19,7 +19,13 @@ export default function SettingsScreen() {
   };
 
   return (
-    <View className="flex-1 bg-background p-4">
+    <SafeAreaView className="flex-1 bg-background px-4" edges={['top', 'left', 'right']}>
+      {/* Header */}
+      <View className="w-full z-10 bg-background border-b border-border mb-4">
+      <View className="flex-row items-center justify-center h-14 px-4">
+        <Text className="text-xl font-bold">Settings</Text>
+        </View>
+      </View>
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Perferences</CardTitle>
@@ -49,6 +55,6 @@ export default function SettingsScreen() {
           </View>
         </CardContent>
       </Card>
-    </View>
+    </SafeAreaView>
   );
 } 

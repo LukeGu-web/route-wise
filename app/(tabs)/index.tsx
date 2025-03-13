@@ -17,16 +17,6 @@ export default function Screen() {
     // Add logic to navigate to results page
     console.log('Search completed, ready to navigate to results', data);
     
-    // Navigation to results page
-    // router.push({
-    //   pathname: '/routes',
-    //   params: {
-    //     origin: data.origin,
-    //     destination: data.destination,
-    //     date: data.date.toISOString(),
-    //     city: selectedCity
-    //   }
-    // });
   };
 
   return (
