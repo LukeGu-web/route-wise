@@ -25,9 +25,10 @@ type TrainLine = 'T1' | 'T2' | 'T3' | 'T4' | 'T5' | 'T6' | 'T7' | 'T8' | 'T9' | 
 interface LineIconProps {
   mode: string;
   line: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg';
 }
 
-export function LineIcon({ mode, line }: LineIconProps) {
+export function LineIcon({ mode, line, size = 'xs' }: LineIconProps) {
   // Handle special case for walking
   if (line === 'Unknown' && mode === 'footpath') {
     return (
@@ -37,7 +38,7 @@ export function LineIcon({ mode, line }: LineIconProps) {
       >
         <Text 
           style={{ color: lineColorMap.footpath }}
-          className="text-xs"
+          className={`text-${size}`}
         >
           Walk
         </Text>
@@ -84,7 +85,7 @@ export function LineIcon({ mode, line }: LineIconProps) {
     >
       <Text 
         style={{ color: textColor }}
-        className="text-xs"
+        className={`text-${size}`}
       >
         {line}
       </Text>

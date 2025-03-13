@@ -20,11 +20,9 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
     if (!needsTransfer) {
         // Direct journey - simple view
         return (
-            <View className="flex-row justify-between items-center">
-                <Text className="text-sm text-muted-foreground">Direct</Text>
-                <View className="flex-row items-center">
-                    <LineIcon mode={journey.legs[0].mode} line={journey.legs[0].line} />
-                </View>
+            <View className="flex-row items-center gap-4">
+                <Text className="text-green-500">Direct</Text>
+                <LineIcon mode={journey.legs[0].mode} line={journey.legs[0].line} size="lg" />
             </View>
         );
     }
@@ -54,16 +52,16 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
                                 <View className="flex-row items-center justify-between">
                                     {/* Origin stop */}
                                     <View className="items-center w-5/12">
-                                        <Text className="text-sm text-muted-foreground">{leg.origin.name.split(', ')[0]}</Text>
+                                        <Text className="text-xs text-muted-foreground">{leg.origin.name.split(', ')[0]}</Text>
                                         <Text className="text-base font-medium">{leg.origin.name.split(', ')[1]}</Text>
-                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.departure_time).format('HH:mm')}</Text>
+                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.origin.departure_time?.replace(" AEDT", "")).format('HH:mm')}</Text>
                                     </View>
                                     <Text className="mx-1 text-muted-foreground">→</Text>
                                     {/* Destination stop */}
                                     <View className="items-center w-5/12">
-                                        <Text className="text-sm text-muted-foreground">{leg.destination.name.split(', ')[0]}</Text>
+                                        <Text className="text-xs text-muted-foreground">{leg.destination.name.split(', ')[0]}</Text>
                                         <Text className="text-base font-medium">{leg.destination.name.split(', ')[1]}</Text>
-                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.departure_time).format('HH:mm')}</Text>
+                                        <Text className="text-sm text-muted-foreground">{dayjs(leg.destination.arrival_time?.replace(" AEDT", "")).format('HH:mm')}</Text>
                                     </View>
                                 </View>
 

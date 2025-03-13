@@ -43,7 +43,6 @@ export function Combobox({
   const dropdownHeight = React.useRef(new Animated.Value(0)).current;
   const textInputRef = React.useRef<TextInput>(null);
 
-  // 处理下拉菜单的打开和关闭
   const onDropdownToggle = (open: boolean) => {
     if (open) {
       setIsDropdownOpen(open);
@@ -62,7 +61,6 @@ export function Combobox({
     }
   };
 
-  // 处理搜索
   const onSearching = (text: string) => {
     setSearchText(text);
     const filtered = suggestions.filter(item =>
@@ -71,17 +69,17 @@ export function Combobox({
     setFilteredSuggestions(filtered);
   };
 
-  // 处理选择
   const handleSelect = (item: string) => {
-    Keyboard.dismiss(); // 先关闭键盘
+    Keyboard.dismiss(); 
     onSelect(item);
     onChangeText(item);
+    setSearchText(item);
     onDropdownToggle(false);
   };
 
-  // 重置搜索
   const resetSearch = () => {
     setSearchText('');
+    onChangeText('');
     setFilteredSuggestions(suggestions);
   };
 

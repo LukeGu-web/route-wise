@@ -74,7 +74,7 @@ export default function TripPage() {
             fetchNextPage();
           }
         }}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.9}
         ListFooterComponent={() => (
           isFetchingNextPage ? (
             <Text className="py-4 text-center text-muted-foreground">
