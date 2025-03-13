@@ -21,8 +21,10 @@
     "postinstall": "npx tailwindcss -i ./global.css -o ./node_modules/.cache/nativewind/global.css"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-native-community/datetimepicker": "8.2.0",
     "@react-navigation/native": "^7.0.0",
+    "@rn-primitives/accordion": "^1.1.0",
     "@rn-primitives/avatar": "~1.1.0",
     "@rn-primitives/dropdown-menu": "^1.1.0",
     "@rn-primitives/portal": "~1.1.0",
