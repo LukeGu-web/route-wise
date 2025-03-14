@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface StarredTrip {
+export interface StarredTrip {
   id: string;
   name: string;
   origin: string;

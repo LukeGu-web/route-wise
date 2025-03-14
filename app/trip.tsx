@@ -8,7 +8,7 @@ import { Text } from '~/components/ui/text';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { Star } from '~/lib/icons/Star';
 import { StarredTripDialog } from '~/components/StarredTripDialog';
-
+import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 export default function TripPage() {
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
 
@@ -33,9 +33,11 @@ export default function TripPage() {
     departure_time: date.toISOString()
   });
 
+  const { starredTrips } = useStarredTripStore();
+  const isStarred = starredTrips.some(trip => trip.origin === origin && trip.destination === destination);
+
   // Save trips to store whenever we get new data
   useEffect(() => {
-
     if (data?.pages) {
       const allJourneys = data.pages.flatMap(page => page.journeys);
       setJourneys(allJourneys);
@@ -46,15 +48,24 @@ export default function TripPage() {
     return (
       <View className="flex-1 items-center justify-center">
         <Text className="text-lg font-bold">Loading trips...</Text>
-      </View>)
+      </View>
+    )
   }
 
   if (error) {
-    return <Text className="p-4 text-red-500">Error: {error.message}</Text>;
+    return (
+      <View className="flex-1 items-center justify-center p-4">
+        <Text className="text-lg font-bold text-red-500">Error: {error.message}</Text>
+      </View>
+    )
   }
 
   if (!data?.pages[0]?.journeys.length) {
-    return <Text className="p-4">No trips found</Text>;
+    return (
+      <View className="flex-1 items-center justify-center">
+        <Text className="text-lg font-bold">No trips found</Text>
+      </View>
+    )
   }
 
 
@@ -78,7 +89,7 @@ export default function TripPage() {
           ),
           headerRight: () => (
             <Pressable onPress={() => setIsDialogOpen(true)}>
-              <Star size={24} />
+              <Star size={24} color={isStarred ? 'yellow' : 'gray'} />
             </Pressable>
           ),
         }}
@@ -101,7 +112,7 @@ export default function TripPage() {
             </Text>
           ) : null
         )}
-        />
+      />
       <StarredTripDialog
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
