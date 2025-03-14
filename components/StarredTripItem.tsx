@@ -6,11 +6,10 @@ import { Input } from './ui/input';
 import { Pencil, Trash2 } from 'lucide-react-native';
 import Animated, {
   useAnimatedStyle,
-  useAnimatedGestureHandler,
   withSpring,
   useSharedValue,
 } from 'react-native-reanimated';
-import { PanGestureHandler } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import {
   Dialog,
   DialogContent,
@@ -44,24 +43,26 @@ export function StarredTripItem({
   const [editName, setEditName] = useState(name);
   const translateX = useSharedValue(0);
 
-  const panGesture = useAnimatedGestureHandler({
-    onStart: (_, context: any) => {
-      context.startX = translateX.value;
-    },
-    onActive: (event, context) => {
-      const newTranslateX = context.startX + event.translationX;
+  const panGesture = Gesture.Pan()
+    .onBegin(() => {
+      'worklet';
+      translateX.value = translateX.value;
+    })
+    .onUpdate((event) => {
+      'worklet';
+      const newTranslateX = event.translationX;
       if (newTranslateX <= 0) {
         translateX.value = Math.max(newTranslateX, -BUTTON_WIDTH * 2);
       }
-    },
-    onEnd: (event) => {
+    })
+    .onEnd((event) => {
+      'worklet';
       if (event.translationX < SWIPE_THRESHOLD) {
         translateX.value = withSpring(-BUTTON_WIDTH * 2);
       } else {
         translateX.value = withSpring(0);
       }
-    },
-  });
+    });
 
   const rStyle = useAnimatedStyle(() => {
     return {
@@ -101,19 +102,19 @@ export function StarredTripItem({
           </Pressable>
         </View>
 
-        <PanGestureHandler onGestureEvent={panGesture}>
+        <GestureDetector gesture={panGesture}>
           <Animated.View
             style={rStyle}
-            className="bg-card p-4 rounded-lg border border-border"
+            className="bg-card py-2 px-4 rounded-lg border border-border"
           >
-            <Text className="text-lg font-bold mb-2">{name}</Text>
+            <Text className="text-lg font-bold mb-1">{name}</Text>
             <View className="flex-row items-center gap-2">
               <Text className="text-muted-foreground">{origin}</Text>
               <Text className="text-muted-foreground">→</Text>
               <Text className="text-muted-foreground">{destination}</Text>
             </View>
           </Animated.View>
-        </PanGestureHandler>
+        </GestureDetector>
       </View>
 
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>

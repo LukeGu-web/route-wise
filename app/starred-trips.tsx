@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Pressable } from 'react-native';
 import { Stack } from 'expo-router';
 import { Text } from '~/components/ui/text';
@@ -13,7 +13,13 @@ import type { StarredTrip } from '~/lib/stores/useStarredTripStore';
 export default function StarredTripsPage() {
   const { starredTrips, removeStarredTrip, editStarredTrip, reorderStarredTrips } = useStarredTripStore();
 
-  const renderItem = ({ item, drag, isActive }: RenderItemParams<StarredTrip>) => {
+  const handleDragEnd = useCallback(({ data }: { data: StarredTrip[] }) => {
+    requestAnimationFrame(() => {
+      reorderStarredTrips(data);
+    });
+  }, [reorderStarredTrips]);
+
+  const renderItem = useCallback(({ item, drag, isActive }: RenderItemParams<StarredTrip>) => {
     return (
       <ScaleDecorator>
         <Pressable onLongPress={drag} disabled={isActive}>
@@ -28,13 +34,13 @@ export default function StarredTripsPage() {
         </Pressable>
       </ScaleDecorator>
     );
-  };
+  }, [removeStarredTrip, editStarredTrip]);
 
   return (
     <>
       <Stack.Screen
         options={{
-          title: 'Starred Trips',
+          title: 'Starred Routes',
         }}
       />
       <View className="flex-1 p-4">
@@ -45,7 +51,7 @@ export default function StarredTripsPage() {
         ) : (
           <DraggableFlatList
             data={starredTrips}
-            onDragEnd={({ data }) => reorderStarredTrips(data)}
+            onDragEnd={handleDragEnd}
             keyExtractor={(item) => item.id}
             renderItem={renderItem}
           />
