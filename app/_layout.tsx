@@ -10,6 +10,7 @@ import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { QueryProvider } from '~/lib/providers/query-provider';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -29,7 +30,6 @@ export default function RootLayout() {
   const hasMounted = React.useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
-
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -53,23 +53,30 @@ export default function RootLayout() {
     <QueryProvider>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-
-        <Stack
-          screenOptions={{
-            // Customize the animation presentation
-            presentation: 'card',
-          }}
-        >
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              headerShown: false,
-              title: 'Home',
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Stack
+            screenOptions={{
+              // Customize the animation presentation
+              presentation: 'card',
             }}
-          />
-        </Stack>
+          >
+            <Stack.Screen
+              name="(tabs)"
+              options={{
+                headerShown: false,
+                title: 'Home',
+              }}
+            />
+            <Stack.Screen
+              name="trip"
+            />
+            <Stack.Screen
+              name="starred-trips"
+            />
+          </Stack>
 
-        <PortalHost />
+          <PortalHost />
+        </GestureHandlerRootView>
       </ThemeProvider>
     </QueryProvider>
   );
