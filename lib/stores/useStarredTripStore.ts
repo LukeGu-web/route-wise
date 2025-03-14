@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface StarredTrip {
   id: string;
-  name?: string;
+  name: string;
   origin: string;
   destination: string;
 }

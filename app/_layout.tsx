@@ -66,9 +66,9 @@ export default function RootLayout() {
               headerShown: false,
             }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="trip"
-          />
+          /> */}
         </Stack>
 
         <PortalHost />

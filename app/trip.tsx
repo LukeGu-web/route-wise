@@ -62,6 +62,7 @@ export default function TripPage() {
   return (
     <>
       <Stack.Screen
+        name="trip"
         options={{
           headerTitle: () => (
             <View className="flex-row items-center gap-4">

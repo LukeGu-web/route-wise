@@ -10,27 +10,9 @@ import { cn } from '~/lib/utils';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { useTripStore } from '../lib/stores/useTripStore';
 
-interface RouteSearchFormProps {
-  onSearch: (data: { origin: string; destination: string; date: Date }) => void;
-}
-
-export function RouteSearchForm({
-  onSearch,
-}: RouteSearchFormProps) {
+export function RouteSearchForm() {
   const { isDarkColorScheme } = useColorScheme();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
-  
-  // Handle origin selection
-  const handleSelectOrigin = (item: string) => {
-    console.log('Selected origin:', item);
-    setOrigin(item);
-  };
-
-  // Handle destination selection
-  const handleSelectDestination = (item: string) => {
-    console.log('Selected destination:', item);
-    setDestination(item);
-  };
 
   // Handle search button press
   const handleSearch = () => {
@@ -49,21 +31,21 @@ export function RouteSearchForm({
         <Combobox
           value={origin}
           onChangeText={setOrigin}
-          onSelect={handleSelectOrigin}
+          onSelect={(item: string) => setOrigin(item)}
           placeholder="Origin"
         />
       </View>
-      
+
       <View>
         <Text className="text-sm font-medium mb-1 text-foreground">To</Text>
         <Combobox
           value={destination}
           onChangeText={setDestination}
-          onSelect={handleSelectDestination}
+          onSelect={(item: string) => setDestination(item)}
           placeholder="Destination"
         />
       </View>
-      
+
       <View>
         <Text className="text-sm font-medium mb-1 text-foreground">Departure Time</Text>
         <DatePicker
@@ -73,21 +55,21 @@ export function RouteSearchForm({
           showTime={true}
         />
       </View>
-      
-      <Button 
+
+      <Button
         className={cn(
           'mt-2 flex-row items-center justify-center gap-4',
-          isDarkColorScheme 
-            ? 'bg-blue-900 hover:bg-blue-800 active:bg-blue-800' 
+          isDarkColorScheme
+            ? 'bg-blue-900 hover:bg-blue-800 active:bg-blue-800'
             : 'bg-blue-500 hover:bg-blue-400 active:bg-blue-400'
         )}
         onPress={handleSearch}
       >
-        <Search 
-          size={18} 
+        <Search
+          size={18}
           color={isDarkColorScheme ? '#DBEAFE' : '#FFFFFF'}
         />
-        <Text 
+        <Text
           className={cn(
             'font-medium text-lg',
             isDarkColorScheme ? 'text-blue-100' : 'text-white'
