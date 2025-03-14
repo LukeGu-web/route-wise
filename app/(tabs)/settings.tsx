@@ -28,7 +28,7 @@ export default function SettingsScreen() {
       </View>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle className="text-xl font-bold">Perferences</CardTitle>
+          <CardTitle className="text-xl font-semibold">Perferences</CardTitle>
         </CardHeader>
         <CardContent>
           {/* Dark Mode Option */}
