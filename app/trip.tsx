@@ -34,7 +34,7 @@ export default function TripPage() {
   });
 
   const { starredTrips } = useStarredTripStore();
-  const isStarred = starredTrips.some(trip => trip.origin === origin && trip.destination === destination);
+  const isStarred = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
 
   // Save trips to store whenever we get new data
   useEffect(() => {

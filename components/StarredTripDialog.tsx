@@ -26,17 +26,24 @@ export function StarredTripDialog({
     onOpenChange,
 }: StarredTripDialogProps) {
     const { origin, destination } = useTripStore();
-    const { addStarredTrip } = useStarredTripStore();
-    const [tripName, setTripName] = useState('');
+    const { addStarredTrip, editStarredTrip, starredTrips } = useStarredTripStore();
+    const starredTrip = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
+    const [tripName, setTripName] = useState(starredTrip?.name ?? '');
+
     const handleSave = () => {
-        addStarredTrip({
-            id: uuidv4(),
-            origin,
-            destination,
-            name: tripName,
-        });
+        if (starredTrip) {
+            editStarredTrip(starredTrip.id, tripName);
+        } else {
+            addStarredTrip({
+                id: uuidv4(),
+                origin,
+                destination,
+                name: tripName,
+            });
+        }
         onOpenChange(false);
     };
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
@@ -63,11 +70,19 @@ export function StarredTripDialog({
                     </View>
                 </View>
                 <DialogFooter>
+                    {starredTrip && <View className="border border-red-500 rounded-md p-4 gap-4 mt-4">
+                        <DialogDescription className="text-red-500">
+                            Unstar the route to delete it from your device
+                        </DialogDescription>
+                        <Button onPress={() => onOpenChange(false)}>
+                            <Text>Unstar</Text>
+                        </Button>
+                    </View>}
                     <Button variant="outline" onPress={() => onOpenChange(false)}>
                         <Text>Cancel</Text>
                     </Button>
                     <Button className="bg-yellow-300" onPress={handleSave}>
-                        <Text className="text-black">Save</Text>
+                        <Text className="text-black">{starredTrip ? 'Rename' : 'Star'}</Text>
                     </Button>
                 </DialogFooter>
             </DialogContent>
