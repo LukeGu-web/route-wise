@@ -11,6 +11,7 @@ const stationTypeIcons = {
   Bus: require('~/assets/images/icons/bus.png'),
   Train: require('~/assets/images/icons/train.png'),
   TrainLink: require('~/assets/images/icons/train.png'),
+  Metro: require('~/assets/images/icons/metro.png'),
   LightRail: require('~/assets/images/icons/lightrail.png'),
   Ferry: require('~/assets/images/icons/ferry.png'),
 } as const;

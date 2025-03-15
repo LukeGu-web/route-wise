@@ -25,13 +25,13 @@ export function StarredTripDialog({
 
     const handleSave = () => {
         if (starredTrip) {
-            editStarredTrip(starredTrip.id, tripName);
+            editStarredTrip(starredTrip.id, tripName || `${origin}->${destination}`);
         } else {
             addStarredTrip({
                 id: uuidv4(),
                 origin,
                 destination,
-                name: tripName,
+                name: tripName || `${origin}->${destination}`,
             });
         }
         onOpenChange(false);
