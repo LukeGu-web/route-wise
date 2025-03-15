@@ -46,7 +46,7 @@ export function StarredTripDialog({
 
     return (
         <Dialog.Root open={open} onOpenChange={onOpenChange}>
-            <Dialog.Content closeOnPress className='border border-gray-300 rounded-lg p-8 mx-4'>
+            <Dialog.Content closeOnPress className='border border-gray-300 rounded-lg p-8'>
                 <Dialog.Header>
                     <Dialog.Title>Starred Route</Dialog.Title>
                     <Dialog.Description>Starred the route for quick search</Dialog.Description>

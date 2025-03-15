@@ -38,7 +38,7 @@ function DialogRoot({ open, onOpenChange, children }: DialogRootProps) {
             >
               <Pressable 
                 onPress={() => onOpenChange(false)}
-                className="absolute right-8 top-4 p-0.5 rounded-sm opacity-70 z-10"
+                className="absolute right-4 top-4 p-0.5 rounded-sm opacity-70 z-10"
               >
                 <X size={24} color="#666" />
               </Pressable>

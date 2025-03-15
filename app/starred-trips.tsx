@@ -9,6 +9,7 @@ import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import type { StarredTrip } from '~/lib/stores/useStarredTripStore';
+import { ArrowDownUp } from '~/lib/icons/ArrowDownUp';
 
 export default function StarredTripsPage() {
   const { starredTrips, removeStarredTrip, editStarredTrip, reorderStarredTrips } = useStarredTripStore();
@@ -41,6 +42,11 @@ export default function StarredTripsPage() {
       <Stack.Screen
         options={{
           title: 'Starred Routes',
+          headerRight: () => (
+            <Pressable onPress={() => {}}>
+              <ArrowDownUp size={24} />
+            </Pressable>
+          ),
         }}
       />
       <View className="flex-1 p-4">
