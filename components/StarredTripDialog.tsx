@@ -5,14 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Text } from './ui/text';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-} from './ui/dialog';
+import * as Dialog from './ui/dialog';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 
@@ -45,12 +38,12 @@ export function StarredTripDialog({
     };
 
     return (
-        <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Starred Route</DialogTitle>
-                    <DialogDescription>Starred the route for quick search</DialogDescription>
-                </DialogHeader>
+        <Dialog.Root open={open} onOpenChange={onOpenChange}>
+            <Dialog.Content closeOnPress className='border border-gray-300 rounded-lg p-8 mx-4'>
+                <Dialog.Header>
+                    <Dialog.Title>Starred Route</Dialog.Title>
+                    <Dialog.Description>Starred the route for quick search</Dialog.Description>
+                </Dialog.Header>
                 <View className="py-4 gap-4">
                     <View className="gap-2">
                         <Text className="font-semibold">Name</Text>
@@ -58,6 +51,8 @@ export function StarredTripDialog({
                             placeholder={`${origin}->${destination}`}
                             value={tripName}
                             onChangeText={setTripName}
+                            autoCapitalize="none"
+                            autoCorrect={false}
                         />
                     </View>
                     <View className="flex-row items-end gap-2">
@@ -69,11 +64,11 @@ export function StarredTripDialog({
                         <Text className="text-lg">{destination}</Text>
                     </View>
                 </View>
-                <DialogFooter>
+                <Dialog.Footer>
                     {starredTrip && <View className="border border-red-500 rounded-md p-4 gap-4 mt-4">
-                        <DialogDescription className="text-red-500">
+                        <Dialog.Description className="text-red-500">
                             Unstar the route to delete it from your device
-                        </DialogDescription>
+                        </Dialog.Description>
                         <Button onPress={() => onOpenChange(false)}>
                             <Text>Unstar</Text>
                         </Button>
@@ -84,8 +79,8 @@ export function StarredTripDialog({
                     <Button className="bg-yellow-300" onPress={handleSave}>
                         <Text className="text-black">{starredTrip ? 'Rename' : 'Star'}</Text>
                     </Button>
-                </DialogFooter>
-            </DialogContent>
-        </Dialog>
+                </Dialog.Footer>
+            </Dialog.Content>
+        </Dialog.Root>
     );
 } 
