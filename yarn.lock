@@ -5204,6 +5204,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-localization@npm:~16.0.1":
+  version: 16.0.1
+  resolution: "expo-localization@npm:16.0.1"
+  dependencies:
+    rtl-detect: "npm:^1.0.2"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+  checksum: 10c0/7ea9c9c2b6573afefacdc14e694ecb455aa946e25595b139a5525fd698caf9d00e5653bf4265209064c2b8fe62050f9df54cf96599e7d50f7d24374b4bdd2624
+  languageName: node
+  linkType: hard
+
 "expo-manifests@npm:~0.15.7":
   version: 0.15.7
   resolution: "expo-manifests@npm:0.15.7"
@@ -9088,6 +9100,7 @@ __metadata:
     expo: "npm:~52.0.38"
     expo-dev-client: "npm:~5.0.14"
     expo-linking: "npm:~7.0.4"
+    expo-localization: "npm:~16.0.1"
     expo-navigation-bar: "npm:~4.0.7"
     expo-router: "npm:~4.0.19"
     expo-splash-screen: "npm:~0.29.20"
@@ -9114,6 +9127,13 @@ __metadata:
     zustand: "npm:^4.4.7"
   languageName: unknown
   linkType: soft
+
+"rtl-detect@npm:^1.0.2":
+  version: 1.1.2
+  resolution: "rtl-detect@npm:1.1.2"
+  checksum: 10c0/1b92888aafca1593314f837e83fdf02eb208faae3e713ab87c176804728efd3b1980d53b64f65f1fa593348087e852c5cd729b7b9372950f6e9b7be489afc0ca
+  languageName: node
+  linkType: hard
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0

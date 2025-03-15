@@ -5,6 +5,8 @@ import { Text } from '~/components/ui/text';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Switch } from '~/components/ui/switch';
 import { MoonStar } from '~/lib/icons/MoonStar';
+import { MessageSquareText } from '~/lib/icons/MessageSquareText';
+import { Languages } from '~/lib/icons/Languages';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
@@ -46,8 +48,18 @@ export default function SettingsScreen() {
           {/* Service Message Option */}
           <View className="flex-row items-center justify-between py-4 border-b border-border">
             <View className="flex-row items-center">
-              <MoonStar className="text-foreground mr-3" size={22} strokeWidth={1.25} />
+              <MessageSquareText className="text-foreground mr-3" size={22} strokeWidth={1.25} />
               <Text className="text-base font-medium">Service Messages</Text>
+            </View>
+            <Switch
+              checked={enabledServiceMessages}
+              onCheckedChange={() => setEnabledServiceMessages(!enabledServiceMessages)}
+            />
+          </View>
+          <View className="flex-row items-center justify-between py-4 border-b border-border">
+            <View className="flex-row items-center">
+              <Languages className="text-foreground mr-3" size={22} strokeWidth={1.25} />
+              <Text className="text-base font-medium">Language</Text>
             </View>
             <Switch
               checked={enabledServiceMessages}
