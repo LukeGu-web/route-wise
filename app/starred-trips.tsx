@@ -1,18 +1,20 @@
-import React, { useCallback } from 'react';
-import { View, Pressable } from 'react-native';
-import { Stack } from 'expo-router';
+import React, { useCallback, useState } from 'react';
+import { View, ScrollView, Pressable } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
 import { Text } from '~/components/ui/text';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { StarredTripItem } from '~/components/StarredTripItem';
-import DraggableFlatList, { 
+import DraggableFlatList, {
   ScaleDecorator,
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import type { StarredTrip } from '~/lib/stores/useStarredTripStore';
-import { ArrowDownUp } from '~/lib/icons/ArrowDownUp';
+import { ArrowDownUp, Save } from 'lucide-react-native';
 
-export default function StarredTripsPage() {
+export default function StarredTrips() {
+  const router = useRouter();
   const { starredTrips, removeStarredTrip, editStarredTrip, reorderStarredTrips } = useStarredTripStore();
+  const [isReordering, setIsReordering] = useState(false);
 
   const handleDragEnd = useCallback(({ data }: { data: StarredTrip[] }) => {
     requestAnimationFrame(() => {
@@ -31,36 +33,44 @@ export default function StarredTripsPage() {
             destination={item.destination}
             onDelete={removeStarredTrip}
             onEdit={editStarredTrip}
+            isReordering={isReordering}
           />
         </Pressable>
       </ScaleDecorator>
     );
-  }, [removeStarredTrip, editStarredTrip]);
+  }, [removeStarredTrip, editStarredTrip, isReordering]);
 
   return (
     <>
       <Stack.Screen
         options={{
-          title: 'Starred Routes',
+          title: isReordering ? 'Reorder' : 'Starred Routes',
+          headerLeft: isReordering ? () => (<></>) : undefined,
           headerRight: () => (
-            <Pressable onPress={() => {}}>
-              <ArrowDownUp size={24} />
+            <Pressable onPress={() => setIsReordering(!isReordering)}>
+              {isReordering ? (
+                <Save size={24} />
+              ) : (
+                <ArrowDownUp size={24} />
+              )}
             </Pressable>
           ),
         }}
       />
-      <View className="flex-1 p-4">
+      <View className={`flex-1 p-4`}>
         {starredTrips.length === 0 ? (
           <View className="flex-1 items-center justify-center">
             <Text className="text-lg text-muted-foreground">No starred trips yet</Text>
           </View>
         ) : (
+
           <DraggableFlatList
             data={starredTrips}
             onDragEnd={handleDragEnd}
             keyExtractor={(item) => item.id}
             renderItem={renderItem}
           />
+
         )}
       </View>
     </>
