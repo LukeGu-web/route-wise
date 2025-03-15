@@ -64,7 +64,7 @@ const DialogContent = React.forwardRef<
   const { open } = DialogPrimitive.useRootContext();
   return (
     <DialogPortal hostName={portalHost}>
-      <DialogOverlay>
+      <DialogOverlay closeOnPress={false}>
         <DialogPrimitive.Content
           ref={ref}
           className={cn(
