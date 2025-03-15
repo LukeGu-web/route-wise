@@ -118,7 +118,7 @@ export function StarredTripItem({
       </View>
 
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent>
+        <DialogContent closeOnPress className='border border-gray-400 rounded-lg p-8 mx-4'>
           <DialogHeader>
             <DialogTitle>Edit Trip Name</DialogTitle>
             <DialogDescription>Change the name of your starred trip</DialogDescription>

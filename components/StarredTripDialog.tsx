@@ -19,7 +19,7 @@ export function StarredTripDialog({
     onOpenChange,
 }: StarredTripDialogProps) {
     const { origin, destination } = useTripStore();
-    const { addStarredTrip, editStarredTrip, starredTrips } = useStarredTripStore();
+    const { addStarredTrip, editStarredTrip, removeStarredTrip, starredTrips } = useStarredTripStore();
     const starredTrip = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
     const [tripName, setTripName] = useState(starredTrip?.name ?? '');
 
@@ -33,6 +33,13 @@ export function StarredTripDialog({
                 destination,
                 name: tripName,
             });
+        }
+        onOpenChange(false);
+    };
+
+    const handleUnstar = () => {
+        if (starredTrip) {
+            removeStarredTrip(starredTrip.id);
         }
         onOpenChange(false);
     };
@@ -67,9 +74,9 @@ export function StarredTripDialog({
                 <Dialog.Footer>
                     {starredTrip && <View className="border border-red-500 rounded-md p-4 gap-4 mt-4">
                         <Dialog.Description className="text-red-500">
-                            Unstar the route to delete it from your device
+                            Unstar the route to remove it from the starred routes list
                         </Dialog.Description>
-                        <Button onPress={() => onOpenChange(false)}>
+                        <Button onPress={handleUnstar}>
                             <Text>Unstar</Text>
                         </Button>
                     </View>}

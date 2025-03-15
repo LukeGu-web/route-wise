@@ -55,7 +55,8 @@ export default function TripPage() {
   if (error) {
     return (
       <View className="flex-1 items-center justify-center p-4">
-        <Text className="text-lg font-bold text-red-500">Error: {error.message}</Text>
+        <Text className="text-lg">Sorry, something went wrong.</Text>
+        <Text className="text-lg">Please go back and try again.</Text>
       </View>
     )
   }
