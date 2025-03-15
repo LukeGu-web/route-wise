@@ -5,7 +5,6 @@ import { Text } from '~/components/ui/text';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { StarredTripItem } from '~/components/StarredTripItem';
 import DraggableFlatList, {
-  ScaleDecorator,
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
 import type { StarredTrip } from '~/lib/stores/useStarredTripStore';
@@ -24,8 +23,11 @@ export default function StarredTrips() {
 
   const renderItem = useCallback(({ item, drag, isActive }: RenderItemParams<StarredTrip>) => {
     return (
-      <ScaleDecorator>
-        <Pressable onLongPress={drag} disabled={isActive}>
+      <View className="border-b border-border last:border-b-0">
+        <Pressable
+          onPressIn={isReordering ? drag : undefined}
+          disabled={!isReordering}
+        >
           <StarredTripItem
             id={item.id}
             name={item.name}
@@ -36,7 +38,7 @@ export default function StarredTrips() {
             isReordering={isReordering}
           />
         </Pressable>
-      </ScaleDecorator>
+      </View>
     );
   }, [removeStarredTrip, editStarredTrip, isReordering]);
 
@@ -57,20 +59,19 @@ export default function StarredTrips() {
           ),
         }}
       />
-      <View className={`flex-1 p-4`}>
+      <View className="flex-1 p-4">
         {starredTrips.length === 0 ? (
           <View className="flex-1 items-center justify-center">
             <Text className="text-lg text-muted-foreground">No starred trips yet</Text>
           </View>
         ) : (
-
           <DraggableFlatList
             data={starredTrips}
             onDragEnd={handleDragEnd}
             keyExtractor={(item) => item.id}
             renderItem={renderItem}
+            containerStyle={{ paddingVertical: 0 }}
           />
-
         )}
       </View>
     </>
