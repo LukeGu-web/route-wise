@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
 import dayjs from 'dayjs';
@@ -14,12 +15,25 @@ export function RouteSearchForm() {
   const { isDarkColorScheme } = useColorScheme();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
 
+  const [displayDate, setDisplayDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => { // Creates an interval which will update the current data every minute
+      // This will trigger a rerender every component that uses the useDate hook.
+      const currentDate = new Date();
+      setDisplayDate(new Date(currentDate.setTime(currentDate.getTime() + 1000 * 60)));
+    }, 60 * 1000);
+    return () => {
+      clearInterval(timer); // Return a funtion to clear the timer so that it will stop being called on unmount
+    }
+  }, []);
+
   // Handle search button press
   const handleSearch = () => {
     console.log('Searching for routes:', {
       origin,
       destination,
-      date: dayjs(date).format('YYYY-MM-DDTHH:mm:ss')
+      date: dayjs(date ?? new Date()).format('YYYY-MM-DDTHH:mm:ss')
     });
     router.push('/trip');
   };
@@ -49,7 +63,7 @@ export function RouteSearchForm() {
       <View>
         <Text className="text-sm font-medium mb-1 text-foreground">Departure Time</Text>
         <DatePicker
-          date={date}
+          date={date || displayDate}
           onDateChange={setDate}
           placeholder="Select date and time"
           showTime={true}

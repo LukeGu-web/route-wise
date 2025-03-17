@@ -30,7 +30,7 @@ export default function TripPage() {
   } = useTrip({
     from_location: origin,
     to_location: destination,
-    departure_time: date.toISOString()
+    departure_time: (date ?? new Date())?.toISOString()
   });
 
   const { starredTrips } = useStarredTripStore();
@@ -89,8 +89,8 @@ export default function TripPage() {
             </Pressable>
           ),
           headerRight: () => (
-            <Pressable onPress={() => setIsDialogOpen(true)}>
-              <Star size={24} color={isStarred ? 'yellow' : 'gray'} />
+            <Pressable className="mr-2" onPress={() => setIsDialogOpen(true)}>
+              <Star size={24} strokeWidth={3} color={isStarred ? '#fde047' : 'gray'} />
             </Pressable>
           ),
         }}

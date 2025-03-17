@@ -4,7 +4,7 @@ import { Journey } from '../api/trip';
 interface TripState {
   origin: string;
   destination: string;
-  date: Date;
+  date: Date | null;
   journeys:  Journey[];
   setOrigin: (origin: string) => void;
   setDestination: (destination: string) => void;
@@ -16,7 +16,7 @@ interface TripState {
 export const useTripStore = create<TripState>((set) => ({
   origin: '',
   destination: '',
-  date: new Date(),
+  date: null,
   journeys: [],
   setOrigin: (origin) => set({ origin }),
   setDestination: (destination) => set({ destination }),
@@ -25,7 +25,7 @@ export const useTripStore = create<TripState>((set) => ({
   resetForm: () => set({
     origin: '',
     destination: '',
-    date: new Date(),
+    date: null,
     journeys: []
   })
 })); 
