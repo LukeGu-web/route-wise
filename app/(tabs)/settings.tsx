@@ -10,8 +10,12 @@ import { MessageSquareText } from '~/lib/icons/MessageSquareText';
 import { Languages } from '~/lib/icons/Languages';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+import languageNameMap from '~/assets/statics/language_name_map.json';
+
+type LanguageCode = keyof typeof languageNameMap;
+
 export default function SettingsScreen() {
-  const { isDarkMode, enabledServiceMessages, setIsDarkMode, setEnabledServiceMessages } = usePerferenceStore();
+  const { isDarkMode, enabledServiceMessages, language, setIsDarkMode, setEnabledServiceMessages, setLanguage } = usePerferenceStore();
   const { setColorScheme } = useNativewindColorScheme();
 
   const handleThemeChange = (isChecked: boolean) => {
@@ -62,10 +66,7 @@ export default function SettingsScreen() {
               <Languages className="text-foreground mr-3" size={22} strokeWidth={1.25} />
               <Text className="text-base font-medium">Language</Text>
             </View>
-            <Switch
-              checked={enabledServiceMessages}
-              onCheckedChange={() => setEnabledServiceMessages(!enabledServiceMessages)}
-            />
+            <Text className="text-base font-medium">{languageNameMap[(language?.code ?? 'en') as LanguageCode]}</Text>
           </View>
         </CardContent>
       </Card>

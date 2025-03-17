@@ -74,6 +74,13 @@
     "@types/react-native-get-random-values": "^1",
     "typescript": "^5.3.3"
   },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
+  },
   "private": true,
   "packageManager": "yarn@4.7.0"
 }

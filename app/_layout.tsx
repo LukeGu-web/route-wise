@@ -2,6 +2,7 @@ import '~/global.css';
 import { DarkTheme, DefaultTheme, Theme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { getLocales } from 'expo-localization';
 import * as React from 'react';
 import { Platform, useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -28,8 +29,9 @@ export {
 
 export default function RootLayout() {
   const hasMounted = React.useRef(false);
+  const locales = getLocales();
   const  colorScheme  = useColorScheme();
-  const { isDarkMode, setIsDarkMode } = usePerferenceStore();
+  const { isDarkMode, setIsDarkMode, language, setLanguage } = usePerferenceStore();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
 
   useIsomorphicLayoutEffect(() => {
@@ -41,15 +43,29 @@ export default function RootLayout() {
       // Adds the background color to the html element to prevent white background on overscroll.
       document.documentElement.classList.add('bg-background');
     }
-    setAndroidNavigationBar(colorScheme as 'light' | 'dark');
-    setIsDarkMode(colorScheme === 'dark');
+    // set theme
+    if(isDarkMode === null) {
+      setAndroidNavigationBar(colorScheme as 'light' | 'dark');
+      setIsDarkMode(colorScheme === 'dark');
+    }
     setIsColorSchemeLoaded(true);
+
+    // set language
+    if(language === null) {
+      setLanguage({
+        code: locales[0].languageCode,
+        tag: locales[0].languageTag,
+      });
+    }
+
     hasMounted.current = true;
   }, []);
 
   if (!isColorSchemeLoaded) {
     return null;
   }
+
+  console.log('locales', locales.length); 
 
   return (
     <QueryProvider>
