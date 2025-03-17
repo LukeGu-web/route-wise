@@ -8,11 +8,11 @@ import { Combobox } from '~/components/ui/combobox';
 import { DatePicker } from '~/components/ui/date-picker';
 import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
-import { useColorScheme } from '~/lib/useColorScheme';
 import { useTripStore } from '../lib/stores/useTripStore';
+import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 
 export function RouteSearchForm() {
-  const { isDarkColorScheme } = useColorScheme();
+  const { isDarkMode } = usePerferenceStore();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
 
   const [displayDate, setDisplayDate] = useState<Date>(new Date());
@@ -73,7 +73,7 @@ export function RouteSearchForm() {
       <Button
         className={cn(
           'mt-2 flex-row items-center justify-center gap-4',
-          isDarkColorScheme
+          isDarkMode
             ? 'bg-blue-900 hover:bg-blue-800 active:bg-blue-800'
             : 'bg-blue-500 hover:bg-blue-400 active:bg-blue-400'
         )}
@@ -82,12 +82,12 @@ export function RouteSearchForm() {
       >
         <Search
           size={18}
-          color={isDarkColorScheme ? '#DBEAFE' : '#FFFFFF'}
+          color={isDarkMode ? '#DBEAFE' : '#FFFFFF'}
         />
         <Text
           className={cn(
             'font-medium text-lg',
-            isDarkColorScheme ? 'text-blue-100' : 'text-white'
+            isDarkMode ? 'text-blue-100' : 'text-white'
           )}
         >
           Search

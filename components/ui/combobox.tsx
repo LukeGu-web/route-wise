@@ -3,8 +3,8 @@ import { View, TextInput, FlatList, Pressable,Image, Animated, Keyboard, Touchab
 import { Text } from '~/components/ui/text';
 import { cn } from '~/lib/utils';
 import { ChevronDown, ChevronUp, Search, X } from 'lucide-react-native';
-import { useColorScheme } from '~/lib/useColorScheme';
 import { Station, useStations } from '~/lib/hooks/useStations';
+import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 
 // Static icon mapping
 const stationTypeIcons = {
@@ -31,9 +31,9 @@ export function Combobox({
   placeholder,
   className,
 }: ComboboxProps) {
-  const { isDarkColorScheme } = useColorScheme();
+  const { isDarkMode } = usePerferenceStore();
   const { allStations } = useStations();
-  const iconColor = isDarkColorScheme ? '#e5e7eb' : '#9ca3af';
+  const iconColor = isDarkMode ? '#e5e7eb' : '#9ca3af';
 
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchText, setSearchText] = React.useState('');

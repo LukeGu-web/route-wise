@@ -1,22 +1,23 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useColorScheme as useNativewindColorScheme } from 'nativewind';
 import { Text } from '~/components/ui/text';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Switch } from '~/components/ui/switch';
 import { MoonStar } from '~/lib/icons/MoonStar';
 import { MessageSquareText } from '~/lib/icons/MessageSquareText';
 import { Languages } from '~/lib/icons/Languages';
-import { useColorScheme } from '~/lib/useColorScheme';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 export default function SettingsScreen() {
   const { isDarkMode, enabledServiceMessages, setIsDarkMode, setEnabledServiceMessages } = usePerferenceStore();
-  const { isDarkColorScheme, setColorScheme } = useColorScheme();
+  const { setColorScheme } = useNativewindColorScheme();
 
   const handleThemeChange = (isChecked: boolean) => {
     const newTheme = isChecked ? 'dark' : 'light';
     setColorScheme(newTheme);
+    setIsDarkMode(isChecked);
     setAndroidNavigationBar(newTheme);
   };
 
@@ -41,7 +42,7 @@ export default function SettingsScreen() {
               <Text className="text-base font-medium">Dark Mode</Text>
             </View>
             <Switch
-              checked={isDarkColorScheme}
+              checked={isDarkMode ?? false}
               onCheckedChange={handleThemeChange}
             />
           </View>

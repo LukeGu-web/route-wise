@@ -7,7 +7,7 @@ import Animated, {
   useDerivedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useColorScheme } from '~/lib/useColorScheme';
+import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 import { cn } from '~/lib/utils';
 
 const SwitchWeb = React.forwardRef<SwitchPrimitives.RootRef, SwitchPrimitives.RootProps>(
@@ -47,7 +47,8 @@ const RGB_COLORS = {
 
 const SwitchNative = React.forwardRef<SwitchPrimitives.RootRef, SwitchPrimitives.RootProps>(
   ({ className, ...props }, ref) => {
-    const { colorScheme } = useColorScheme();
+    const { isDarkMode } = usePerferenceStore();
+    const colorScheme = isDarkMode ? 'dark' : 'light';
     const translateX = useDerivedValue(() => (props.checked ? 18 : 0));
     const animatedRootStyle = useAnimatedStyle(() => {
       return {
