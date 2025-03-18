@@ -1,7 +1,8 @@
-import * as React from 'react';
+import { useRef } from 'react';
 import { View, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useColorScheme as useNativewindColorScheme } from 'nativewind';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { Text } from '~/components/ui/text';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Switch } from '~/components/ui/switch';
@@ -15,10 +16,12 @@ import { useTranslation } from 'react-i18next';
 import i18n from '~/lib/i18n';
 import { LanguagePicker } from '~/components/LanguagePicker';
 
+
 type LanguageCode = keyof typeof languageNameMap;
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const { isDarkMode, enabledServiceMessages, language, setIsDarkMode, setEnabledServiceMessages, setLanguage } = usePerferenceStore();
   const { setColorScheme } = useNativewindColorScheme();
 
@@ -27,14 +30,6 @@ export default function SettingsScreen() {
     setColorScheme(newTheme);
     setIsDarkMode(isChecked);
     setAndroidNavigationBar(newTheme);
-  };
-
-  const handleLanguageChange = () => {
-    const newLang = language?.code === 'en' 
-      ? { code: 'zh', tag: 'zh-CN' } 
-      : { code: 'en', tag: 'en-AU' };
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang.code as string);
   };
 
   return (
@@ -74,10 +69,9 @@ export default function SettingsScreen() {
             />
           </View>
           {/* Language Option */}
-          {/* <LanguagePicker /> */}
           <Pressable 
             className="flex-row items-center justify-between py-4 border-b border-border"
-            onPress={handleLanguageChange}
+            onPress={() => bottomSheetModalRef.current?.present()}
           >
             <View className="flex-row items-center">
               <Languages className="text-foreground mr-3" size={22} strokeWidth={1.25} />
@@ -87,7 +81,7 @@ export default function SettingsScreen() {
           </Pressable>
         </CardContent>
       </Card>
-
+      <LanguagePicker bottomSheetModalRef={bottomSheetModalRef} />
       </View>
     </SafeAreaView>
   );

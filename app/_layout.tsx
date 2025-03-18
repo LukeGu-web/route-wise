@@ -4,6 +4,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { getLocales } from 'expo-localization';
 import * as React from 'react';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { Platform, useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NAV_THEME } from '~/lib/constants';
@@ -83,6 +84,7 @@ export default function RootLayout() {
       <ThemeProvider value={isDarkMode ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkMode ? 'light' : 'dark'} />
         <GestureHandlerRootView style={{ flex: 1 }}>
+        <BottomSheetModalProvider>
           <Stack
             screenOptions={{
               // Customize the animation presentation
@@ -105,6 +107,7 @@ export default function RootLayout() {
           </Stack>
 
           <PortalHost />
+        </BottomSheetModalProvider>
         </GestureHandlerRootView>
       </ThemeProvider>
     </QueryProvider>
