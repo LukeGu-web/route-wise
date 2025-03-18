@@ -12,6 +12,7 @@ import Animated, {
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import * as Dialog from './ui/dialog';
 import { Menu } from '~/lib/icons/Menu';
+import { useTranslation } from 'react-i18next';
 
 const BUTTON_WIDTH = 80;
 const SWIPE_THRESHOLD = -BUTTON_WIDTH * 1.5;
@@ -35,25 +36,18 @@ export function StarredTripItem({
   onEdit,
   isReordering = false,
 }: StarredTripItemProps) {
+  const { t } = useTranslation();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editName, setEditName] = useState(name);
   const translateX = useSharedValue(0);
 
   const panGesture = Gesture.Pan()
-    .onBegin(() => {
-      'worklet';
-      translateX.value = translateX.value;
-    })
     .onUpdate((event) => {
-      'worklet';
       if (isReordering) return;
-      const newTranslateX = event.translationX;
-      if (newTranslateX <= 0) {
-        translateX.value = Math.max(newTranslateX, -BUTTON_WIDTH * 2);
-      }
+      const x = Math.min(0, Math.max(event.translationX, -BUTTON_WIDTH * 2));
+      translateX.value = x;
     })
     .onEnd((event) => {
-      'worklet';
       if (isReordering) return;
       if (event.translationX < SWIPE_THRESHOLD) {
         translateX.value = withSpring(-BUTTON_WIDTH * 2);
@@ -62,21 +56,18 @@ export function StarredTripItem({
       }
     });
 
-  const rStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: translateX.value }],
-    };
-  });
+  const rStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
+  const handleDelete = () => {
+    translateX.value = withSpring(0);
+    onDelete(id);
+  };
 
   const handleEdit = () => {
     onEdit(id, editName);
     setIsEditDialogOpen(false);
-    translateX.value = withSpring(0);
-  };
-
-  const handleDelete = () => {
-    onDelete(id);
-    translateX.value = withSpring(0);
   };
 
   return (
@@ -123,26 +114,26 @@ export function StarredTripItem({
       </View>
 
       <Dialog.Root open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <Dialog.Content closeOnPress className='border border-gray-400 rounded-lg p-8'>
+        <Dialog.Content>
           <Dialog.Header>
-            <Dialog.Title>Edit Trip Name</Dialog.Title>
-            <Dialog.Description>Change the name of your starred trip</Dialog.Description>
+            <Dialog.Title>{t('starredTrip.editTitle')}</Dialog.Title>
+            <Dialog.Description>{t('starredTrip.editDescription')}</Dialog.Description>
           </Dialog.Header>
           <View className="py-4">
             <Input
+              placeholder={t('starredTrip.enterName')}
               value={editName}
               onChangeText={setEditName}
-              placeholder="Enter new name"
               autoCapitalize="none"
               autoCorrect={false}
             />
           </View>
           <Dialog.Footer>
             <Button variant="outline" onPress={() => setIsEditDialogOpen(false)}>
-              <Text>Cancel</Text>
+              {t('common.cancel')}
             </Button>
             <Button onPress={handleEdit}>
-              <Text>Save</Text>
+              {t('common.edit')}
             </Button>
           </Dialog.Footer>
         </Dialog.Content>

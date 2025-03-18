@@ -10,8 +10,10 @@ import { Search } from 'lucide-react-native';
 import { cn } from '~/lib/utils';
 import { useTripStore } from '../lib/stores/useTripStore';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+import { useTranslation } from 'react-i18next';
 
 export function RouteSearchForm() {
+  const { t } = useTranslation();
   const { isDarkMode } = usePerferenceStore();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
 
@@ -41,31 +43,31 @@ export function RouteSearchForm() {
   return (
     <View className='gap-4'>
       <View>
-        <Text className="text-sm font-medium mb-1 text-foreground">From</Text>
+        <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.from')}</Text>
         <Combobox
           value={origin}
           onChangeText={setOrigin}
           onSelect={(item: string) => setOrigin(item)}
-          placeholder="Origin"
+          placeholder={t('trip.from')}
         />
       </View>
 
       <View>
-        <Text className="text-sm font-medium mb-1 text-foreground">To</Text>
+        <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.to')}</Text>
         <Combobox
           value={destination}
           onChangeText={setDestination}
           onSelect={(item: string) => setDestination(item)}
-          placeholder="Destination"
+          placeholder={t('trip.to')}
         />
       </View>
 
       <View>
-        <Text className="text-sm font-medium mb-1 text-foreground">Departure Time</Text>
+        <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.departure')}</Text>
         <DatePicker
           date={date || displayDate}
           onDateChange={setDate}
-          placeholder="Select date and time"
+          placeholder={t('routeSearch.selectDate')}
           showTime={true}
         />
       </View>
@@ -90,7 +92,7 @@ export function RouteSearchForm() {
             isDarkMode ? 'text-blue-100' : 'text-white'
           )}
         >
-          Search
+          {t('trip.search')}
         </Text>
       </Button>
     </View>

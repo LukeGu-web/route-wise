@@ -28,6 +28,36 @@
     "noResults": "No results found",
     "starredRoutes": "Starred Routes",
     "noStarredRoutes": "No starred trips yet",
-    "reorder": "Reorder"
+    "reorder": "Reorder",
+    "wait": "Wait",
+    "fee": "Fee",
+    "noFee": "No data",
+    "direct": "Direct",
+    "day": "d",
+    "hour": "h",
+    "minute": "m",
+    "walk": "Walk"
+  },
+  "notFound": {
+    "title": "Oops!",
+    "message": "This screen doesn't exist.",
+    "goHome": "Go to home screen!"
+  },
+  "routeSearch": {
+    "from": "From",
+    "to": "To",
+    "date": "Date",
+    "search": "Search",
+    "selectDate": "Select Date"
+  },
+  "starredTrip": {
+    "title": "Starred Route",
+    "description": "Star the route for quick search",
+    "name": "Name",
+    "unstar": "Unstar",
+    "unstarDescription": "Unstar the route to delete it from your device",
+    "editTitle": "Edit Trip Name",
+    "editDescription": "Change the name of your starred trip",
+    "enterName": "Enter new name"
   }
 }

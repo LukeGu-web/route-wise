@@ -9,7 +9,10 @@ import { useTripStore } from '~/lib/stores/useTripStore';
 import { Star } from '~/lib/icons/Star';
 import { StarredTripDialog } from '~/components/StarredTripDialog';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
+import { useTranslation } from 'react-i18next';
+
 export default function TripPage() {
+  const { t } = useTranslation();
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -47,7 +50,7 @@ export default function TripPage() {
   if (isLoading) {
     return (
       <View className="flex-1 items-center justify-center">
-        <Text className="text-lg font-bold">Loading trips...</Text>
+        <Text className="text-lg font-bold">{t('common.loading')}</Text>
       </View>
     )
   }
@@ -55,8 +58,8 @@ export default function TripPage() {
   if (error) {
     return (
       <View className="flex-1 items-center justify-center p-4">
-        <Text className="text-lg">Sorry, something went wrong.</Text>
-        <Text className="text-lg">Please go back and try again.</Text>
+        <Text className="text-lg">{t('common.error')}</Text>
+        <Text className="text-lg">{t('common.retry')}</Text>
       </View>
     )
   }
@@ -64,7 +67,7 @@ export default function TripPage() {
   if (!data?.pages[0]?.journeys.length) {
     return (
       <View className="flex-1 items-center justify-center">
-        <Text className="text-lg font-bold">No trips found</Text>
+        <Text className="text-lg font-bold">{t('trip.noResults')}</Text>
       </View>
     )
   }
@@ -79,7 +82,7 @@ export default function TripPage() {
           headerTitle: () => (
             <View className="flex-row items-center gap-4">
               <Text className="text-lg font-bold">{origin}</Text>
-              <Text className="text-muted-foreground">to</Text>
+              <Text className="text-muted-foreground">{t('trip.to').toLowerCase()}</Text>
               <Text className="text-lg font-bold">{destination}</Text>
             </View>
           ),
@@ -109,7 +112,7 @@ export default function TripPage() {
         ListFooterComponent={() => (
           isFetchingNextPage ? (
             <Text className="py-4 text-center text-muted-foreground">
-              Loading more trips...
+              {t('common.loading')}
             </Text>
           ) : null
         )}

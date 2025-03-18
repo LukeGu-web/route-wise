@@ -21,13 +21,44 @@
     "from": "出发地",
     "to": "目的地",
     "departure": "出发",
-    "arrival": "到达",
+    "arrival": "到达",    
     "duration": "时长",
+
     "waitingTime": "等待时间",
     "price": "价格",
     "noResults": "未找到结果",
     "starredRoutes": "收藏路线",
     "noStarredRoutes": "暂无收藏路线",
-    "reorder": "重新排序"
+    "reorder": "重新排序",
+    "wait": "等待",
+    "fee": "费用",
+    "noFee": "暂无数据",
+    "direct": "直达",
+    "day": "天",
+    "hour": "小时",
+    "minute": "分钟",
+    "walk": "步行"
+  },
+  "notFound": {
+    "title": "哎呀！",
+    "message": "这个页面不存在。",
+    "goHome": "返回首页！"
+  },
+  "routeSearch": {
+    "from": "出发地",
+    "to": "目的地",
+    "date": "日期",
+    "search": "搜索",
+    "selectDate": "选择日期"
+  },
+  "starredTrip": {
+    "title": "收藏路线",
+    "description": "收藏路线以便快速搜索",
+    "name": "名称",
+    "unstar": "取消收藏",
+    "unstarDescription": "取消收藏将从您的设备中删除该路线",
+    "editTitle": "编辑路线名称",
+    "editDescription": "更改收藏路线的名称",
+    "enterName": "输入新名称"
   }
 }

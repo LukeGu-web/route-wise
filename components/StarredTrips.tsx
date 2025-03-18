@@ -5,8 +5,10 @@ import { Text } from '~/components/ui/text';
 import { useStarredTripStore, StarredTrip } from '~/lib/stores/useStarredTripStore';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { ChevronsRight } from '~/lib/icons/ChevronsRight';
+import { useTranslation } from 'react-i18next';
 
 export function StarredTrips() {
+    const { t } = useTranslation();
     const { starredTrips } = useStarredTripStore();
     const { setOrigin, setDestination } = useTripStore();
 
@@ -22,7 +24,7 @@ export function StarredTrips() {
     return (
         <View className='flex-col gap-4'>
             <View className='flex-row items-center justify-between px-4'>
-                <Text className='text-lg font-bold'>Starred Routes</Text>
+                <Text className='text-lg font-bold'>{t('starredTrip.title')}</Text>
                 <Link href='/starred-trips'>
                     <ChevronsRight size={18} />
                 </Link>

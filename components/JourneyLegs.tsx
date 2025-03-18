@@ -9,19 +9,21 @@ import {
     AccordionTrigger,
 } from './ui/accordion';
 import { Journey } from '~/lib/api/trip';
+import { useTranslation } from 'react-i18next';
 
 interface JourneyLegsProps {
     journey: Journey;
 }
 
 export function JourneyLegs({ journey }: JourneyLegsProps) {
+    const { t } = useTranslation();
     const needsTransfer = journey.legs.length > 1;
 
     if (!needsTransfer) {
         // Direct journey - simple view
         return (
             <View className="flex-row items-center gap-4">
-                <Text className="text-green-500">Direct</Text>
+                <Text className="text-green-500">{t('trip.direct')}</Text>
                 <LineIcon mode={journey.legs[0].mode} line={journey.legs[0].line} size="lg" />
             </View>
         );
@@ -64,7 +66,6 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
                                         <Text className="text-sm text-muted-foreground">{dayjs(leg.destination.arrival_time?.replace(" AEDT", "")).format('HH:mm')}</Text>
                                     </View>
                                 </View>
-
 
                                 {/* Divider except for last leg */}
                                 {legIndex < journey.legs.length - 1 && (

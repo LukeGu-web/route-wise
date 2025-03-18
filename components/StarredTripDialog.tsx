@@ -8,6 +8,7 @@ import { Input } from './ui/input';
 import * as Dialog from './ui/dialog';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
+import { useTranslation } from 'react-i18next';
 
 interface StarredTripDialogProps {
     open: boolean;
@@ -18,6 +19,7 @@ export function StarredTripDialog({
     open,
     onOpenChange,
 }: StarredTripDialogProps) {
+    const { t } = useTranslation();
     const { origin, destination } = useTripStore();
     const { addStarredTrip, editStarredTrip, removeStarredTrip, starredTrips } = useStarredTripStore();
     const starredTrip = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
@@ -48,12 +50,12 @@ export function StarredTripDialog({
         <Dialog.Root open={open} onOpenChange={onOpenChange}>
             <Dialog.Content closeOnPress className='border border-gray-300 rounded-lg p-8'>
                 <Dialog.Header>
-                    <Dialog.Title>Starred Route</Dialog.Title>
-                    <Dialog.Description>Starred the route for quick search</Dialog.Description>
+                    <Dialog.Title>{t('starredTrip.title')}</Dialog.Title>
+                    <Dialog.Description>{t('starredTrip.description')}</Dialog.Description>
                 </Dialog.Header>
                 <View className="py-4 gap-4">
                     <View className="gap-2">
-                        <Text className="font-semibold">Name</Text>
+                        <Text className="font-semibold">{t('starredTrip.name')}</Text>
                         <Input
                             placeholder={`${origin}->${destination}`}
                             value={tripName}
@@ -63,28 +65,28 @@ export function StarredTripDialog({
                         />
                     </View>
                     <View className="flex-row items-end gap-2">
-                        <Text className="font-semibold">Origin: </Text>
+                        <Text className="font-semibold">{t('trip.from')}: </Text>
                         <Text className="text-lg">{origin}</Text>
                     </View>
                     <View className="flex-row items-end gap-2">
-                        <Text className="font-semibold">Destination: </Text>
+                        <Text className="font-semibold">{t('trip.to')}: </Text>
                         <Text className="text-lg">{destination}</Text>
                     </View>
                 </View>
                 <Dialog.Footer>
                     {starredTrip && <View className="border border-red-500 rounded-md p-4 gap-4 mt-4">
                         <Dialog.Description className="text-red-500">
-                            Unstar the route to remove it from the starred routes list
+                            {t('starredTrip.unstarDescription')}
                         </Dialog.Description>
                         <Button onPress={handleUnstar}>
-                            <Text>Unstar</Text>
+                            <Text>{t('starredTrip.unstar')}</Text>
                         </Button>
                     </View>}
                     <Button variant="outline" onPress={() => onOpenChange(false)}>
-                        <Text>Cancel</Text>
+                        <Text>{t('common.cancel')}</Text>
                     </Button>
                     <Button className="bg-yellow-300" onPress={handleSave}>
-                        <Text className="text-black">{starredTrip ? 'Rename' : 'Star'}</Text>
+                        <Text className="text-black">{starredTrip ? t('common.edit') : t('starredTrip.title')}</Text>
                     </Button>
                 </Dialog.Footer>
             </Dialog.Content>

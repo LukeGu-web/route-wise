@@ -3,12 +3,14 @@ import { Text } from './ui/text';
 import { Journey } from '~/lib/api/trip';
 import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
 import { JourneyLegs } from './JourneyLegs';
+import { useTranslation } from 'react-i18next';
 
 interface JourneyCardProps {
   journey: Journey;
 }
 
 export function JourneyCard({ journey }: JourneyCardProps) {
+  const { t } = useTranslation();
   const firstLeg = journey.legs[0];
   const lastLeg = journey.legs[journey.legs.length - 1];
   
@@ -17,9 +19,9 @@ export function JourneyCard({ journey }: JourneyCardProps) {
   };
 
   const formatMinutes = (minutes: number) => {
-    if (minutes >= 1440) return Math.floor(minutes / 1440) + 'd'; // Days
-    if (minutes >= 60) return Math.floor(minutes / 60) + 'h'; // Hours
-    return minutes + 'm'; // Minutes
+    if (minutes >= 1440) return Math.floor(minutes / 1440) + t('trip.day'); // Days
+    if (minutes >= 60) return Math.floor(minutes / 60) + t('trip.hour'); // Hours
+    return minutes + t('trip.minute'); // Minutes
   };
 
   return (
@@ -39,7 +41,7 @@ export function JourneyCard({ journey }: JourneyCardProps) {
         <View className="flex-row justify-between items-center">
           {/* Left: Waiting Time */}
           <View className="items-center">
-            <Text className="text-sm text-muted-foreground">Wait</Text>
+            <Text className="text-sm text-muted-foreground">{t('trip.wait')}</Text>
             <Text className="text-base font-medium">{formatMinutes(journey.waiting_time)}</Text>
           </View>
 
@@ -50,13 +52,13 @@ export function JourneyCard({ journey }: JourneyCardProps) {
               <Text className="text-sm text-muted-foreground mx-2">→</Text>
               <Text className="text-lg font-medium">{formatDateTime(journey.end_time)}</Text>
             </View>
-            <Text className="text-sm text-muted-foreground">{formatMinutes(journey.duration)}</Text>
+            <Text className="text-sm text-muted-foreground">{t('trip.duration')}: {formatMinutes(journey.duration)}</Text>
           </View>
 
           {/* Right: Fee */}
           <View className="items-center">
-            <Text className="text-sm text-muted-foreground">Fee</Text>
-            <Text className="font-medium">{journey.fee ? "$" + journey.fee.toFixed(2) : 'No data'}</Text>
+            <Text className="text-sm text-muted-foreground">{t('trip.fee')}</Text>
+            <Text className="font-medium">{journey.fee ? "$" + journey.fee.toFixed(2) : t('trip.noFee')}</Text>
           </View>
         </View>
       </CardContent>

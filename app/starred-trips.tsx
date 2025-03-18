@@ -9,8 +9,10 @@ import DraggableFlatList, {
 } from 'react-native-draggable-flatlist';
 import type { StarredTrip } from '~/lib/stores/useStarredTripStore';
 import { ArrowDownUp, Save } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 
 export default function StarredTrips() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { starredTrips, removeStarredTrip, editStarredTrip, reorderStarredTrips } = useStarredTripStore();
   const [isReordering, setIsReordering] = useState(false);
@@ -46,8 +48,8 @@ export default function StarredTrips() {
     <>
       <Stack.Screen
         options={{
-          title: isReordering ? 'Reorder' : 'Starred Routes',
-          headerLeft: isReordering ? () => (<></>) : undefined,
+          title: isReordering ? t('trip.reorder') : t('trip.starredRoutes'),
+          headerLeft: isReordering ? () => null : undefined,
           headerRight: () => (
             <Pressable onPress={() => setIsReordering(!isReordering)}>
               {isReordering ? (
@@ -62,16 +64,18 @@ export default function StarredTrips() {
       <View className="flex-1 p-4">
         {starredTrips.length === 0 ? (
           <View className="flex-1 items-center justify-center">
-            <Text className="text-lg text-muted-foreground">No starred trips yet</Text>
+            <Text className="text-lg text-muted-foreground">{t('trip.noStarredRoutes')}</Text>
           </View>
         ) : (
-          <DraggableFlatList
-            data={starredTrips}
-            onDragEnd={handleDragEnd}
-            keyExtractor={(item) => item.id}
-            renderItem={renderItem}
-            containerStyle={{ paddingVertical: 0 }}
-          />
+          <View className="border border-border rounded-lg overflow-hidden">
+            <DraggableFlatList
+              data={starredTrips}
+              onDragEnd={handleDragEnd}
+              keyExtractor={(item) => item.id}
+              renderItem={renderItem}
+              containerStyle={{ paddingVertical: 0 }}
+            />
+          </View>
         )}
       </View>
     </>
