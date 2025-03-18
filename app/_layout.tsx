@@ -11,6 +11,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { QueryProvider } from '~/lib/providers/query-provider';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+import '~/lib/i18n';
 
 
 const LIGHT_THEME: Theme = {
@@ -30,7 +31,7 @@ export {
 export default function RootLayout() {
   const hasMounted = React.useRef(false);
   const locales = getLocales();
-  const  colorScheme  = useColorScheme();
+  const colorScheme = useColorScheme();
   const { isDarkMode, setIsDarkMode, language, setLanguage } = usePerferenceStore();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
 

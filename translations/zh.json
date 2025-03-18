@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "title": "设置",
+    "preferences": "偏好设置",
+    "darkMode": "深色模式",
+    "serviceMessages": "服务消息",
+    "language": "语言"
+  },
+  "common": {
+    "cancel": "取消",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "confirm": "确认",
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试"
+  },
+  "trip": {
+    "search": "搜索",
+    "from": "出发地",
+    "to": "目的地",
+    "departure": "出发",
+    "arrival": "到达",
+    "duration": "时长",
+    "waitingTime": "等待时间",
+    "price": "价格",
+    "noResults": "未找到结果",
+    "starredRoutes": "收藏路线",
+    "noStarredRoutes": "暂无收藏路线",
+    "reorder": "重新排序"
+  }
+}

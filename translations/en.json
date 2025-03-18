@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "title": "Settings",
+    "preferences": "Preferences",
+    "darkMode": "Dark Mode",
+    "serviceMessages": "Service Messages",
+    "language": "Language"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry"
+  },
+  "trip": {
+    "search": "Search",
+    "from": "From",
+    "to": "To",
+    "departure": "Departure",
+    "arrival": "Arrival",
+    "duration": "Duration",
+    "waitingTime": "Waiting Time",
+    "price": "Price",
+    "noResults": "No results found",
+    "starredRoutes": "Starred Routes",
+    "noStarredRoutes": "No starred trips yet",
+    "reorder": "Reorder"
+  }
+}
