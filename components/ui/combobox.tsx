@@ -107,7 +107,7 @@ export function Combobox({
           onPress={() => onDropdownToggle(true)}
         >
           <Text className="flex-grow dark:text-white">
-            {value || placeholder || "Select an option"}
+            {value ? (allStations.find(s => s.station === value)?.label || value) : (placeholder || "Select an option")}
           </Text>
           <ChevronDown size={20} color={iconColor} />
         </Pressable>
@@ -142,7 +142,7 @@ export function Combobox({
                       source={stationTypeIcons[item.type]}
                       className="w-6 h-6 mr-2"
                     />
-                    <Text className="flex-1">{item.station}</Text>
+                    <Text className="flex-1">{item.label || item.station}</Text>
                   </Pressable>
                 )}
               />
