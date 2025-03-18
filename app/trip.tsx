@@ -11,13 +11,14 @@ import { StarredTripDialog } from '~/components/StarredTripDialog';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { useTranslation } from 'react-i18next';
 import { useStations } from '~/lib/hooks/useStations';
+import { useAlerts } from '~/lib/hooks/useAlerts';
+import { AlertDialog } from '~/components/AlertDialog';
 
 export default function TripPage() {
   const { t } = useTranslation();
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
+  const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
 
   const handleBack = () => {
     resetForm();
@@ -39,6 +40,11 @@ export default function TripPage() {
 
   const { starredTrips } = useStarredTripStore();
   const { allStations } = useStations();
+  const { data: alertsData } = useAlerts({
+    from_location: origin,
+    to_location: destination,
+  });
+
   const originStation = allStations.find(s => s.station === origin);
   const destinationStation = allStations.find(s => s.station === destination);
   const isStarred = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
@@ -50,6 +56,13 @@ export default function TripPage() {
       setJourneys(allJourneys);
     }
   }, [data, setJourneys]);
+
+  // Show alert dialog when alerts are available
+  useEffect(() => {
+    if (alertsData?.alerts && alertsData.alerts.length > 0) {
+      setIsAlertDialogOpen(true);
+    }
+  }, [alertsData]);
 
   if (isLoading) {
     return (
@@ -75,8 +88,6 @@ export default function TripPage() {
       </View>
     )
   }
-
-
 
   return (
     <>
@@ -125,6 +136,13 @@ export default function TripPage() {
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
       />
+      {alertsData?.alerts && alertsData.alerts.length > 0 && (
+        <AlertDialog
+          open={isAlertDialogOpen}
+          onOpenChange={setIsAlertDialogOpen}
+          alerts={alertsData.alerts}
+        />
+      )}
     </>
   );
 } 
