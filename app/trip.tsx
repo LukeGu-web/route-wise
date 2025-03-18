@@ -82,7 +82,7 @@ export default function TripPage() {
           headerTitle: () => (
             <View className="flex-row items-center gap-4">
               <Text className="text-lg font-bold">{origin}</Text>
-              <Text className="text-muted-foreground">{t('trip.to').toLowerCase()}</Text>
+              <Text className="text-muted-foreground">{'->'}</Text>
               <Text className="text-lg font-bold">{destination}</Text>
             </View>
           ),

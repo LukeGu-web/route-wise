@@ -37,6 +37,9 @@ export function RouteSearchForm() {
       destination,
       date: dayjs(date ?? new Date()).format('YYYY-MM-DDTHH:mm:ss')
     });
+    if(!date) {
+      setDate(new Date());
+    }
     router.push('/trip');
   };
 
@@ -79,7 +82,7 @@ export function RouteSearchForm() {
             ? 'bg-blue-900 hover:bg-blue-800 active:bg-blue-800'
             : 'bg-blue-500 hover:bg-blue-400 active:bg-blue-400'
         )}
-        disabled={!origin || !destination || !date}
+        disabled={!origin || !destination}
         onPress={handleSearch}
       >
         <Search

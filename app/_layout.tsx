@@ -11,7 +11,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { QueryProvider } from '~/lib/providers/query-provider';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
-import '~/lib/i18n';
+import i18n from '~/lib/i18n';
 
 
 const LIGHT_THEME: Theme = {
@@ -58,6 +58,7 @@ export default function RootLayout() {
         tag: locales[0].languageTag,
       });
     }
+    i18n.changeLanguage((language?.code ?? locales[0].languageCode) as string);
 
     hasMounted.current = true;
   }, []);

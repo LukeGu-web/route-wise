@@ -31,7 +31,7 @@ export default function SettingsScreen() {
   const handleLanguageChange = () => {
     const newLang = language?.code === 'en' 
       ? { code: 'zh', tag: 'zh-CN' } 
-      : { code: 'en', tag: 'en-US' };
+      : { code: 'en', tag: 'en-AU' };
     setLanguage(newLang);
     i18n.changeLanguage(newLang.code as string);
   };
