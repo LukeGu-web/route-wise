@@ -4,7 +4,8 @@
     "preferences": "偏好设置",
     "darkMode": "深色模式",
     "serviceMessages": "服务消息",
-    "language": "语言"
+    "language": "语言",
+    "selectLanguage": "选择语言"
   },
   "common": {
     "cancel": "取消",
@@ -23,13 +24,13 @@
     "Brisbane": "布里斯班"
   },
   "trip": {
+    "title": "行程",
     "search": "搜索",
     "from": "出发地",
     "to": "目的地",
     "departure": "出发",
     "arrival": "到达",    
     "duration": "时长",
-
     "waitingTime": "等待时间",
     "price": "价格",
     "noResults": "未找到结果",

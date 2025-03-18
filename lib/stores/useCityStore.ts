@@ -7,7 +7,6 @@ export type CityName = 'Sydney' | 'Melbourne' | 'Brisbane';
 
 export interface CityInfo {
   name: CityName;
-  label: string;
   isAvailable: boolean;
 }
 
@@ -21,27 +20,9 @@ export const useCityStore = create<CityState>()(
   persist(
     devtools((set) => ({
       cities: [
-        { 
-          name: 'Sydney', 
-          get label() {
-            return i18n.t('city.Sydney');
-          },
-          isAvailable: true 
-        },
-        { 
-          name: 'Melbourne', 
-          get label() {
-            return `${i18n.t('city.Melbourne')} (${i18n.t('common.comingSoon')})`;
-          },
-          isAvailable: false 
-        },
-        { 
-          name: 'Brisbane', 
-          get label() {
-            return `${i18n.t('city.Brisbane')} (${i18n.t('common.comingSoon')})`;
-          },
-          isAvailable: false 
-        },
+        { name: 'Sydney', isAvailable: true },
+        { name: 'Melbourne', isAvailable: false },
+        { name: 'Brisbane', isAvailable: false },
       ],
       selectedCity: 'Sydney',
       setSelectedCity: (city) => set({ selectedCity: city }),

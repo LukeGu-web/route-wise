@@ -27,7 +27,7 @@ export function LanguagePicker({ bottomSheetModalRef }: LanguagePickerProps) {
     <BottomSheet bottomSheetModalRef={bottomSheetModalRef} height={270}>
       <View className='items-center flex-1 w-full gap-2 p-2'>
         <Text className='text-xl font-semibold dark:color-white'>
-          Select Language
+          {t('settings.selectLanguage')}
         </Text>
         <View className='items-center flex-1 w-full '>
           <PickerIOS

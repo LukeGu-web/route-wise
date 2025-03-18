@@ -4,7 +4,8 @@
     "preferences": "Preferences",
     "darkMode": "Dark Mode",
     "serviceMessages": "Service Messages",
-    "language": "Language"
+    "language": "Language",
+    "selectLanguage": "Select Language"
   },
   "common": {
     "cancel": "Cancel",
@@ -23,6 +24,7 @@
     "Brisbane": "Brisbane"
   },
   "trip": {
+    "title": "Trip",
     "search": "Search",
     "from": "From",
     "to": "To",
@@ -42,8 +44,7 @@
     "day": "d",
     "hour": "h",
     "minute": "m",
-    "walk": "Walk",
-    "duration": "Duration"
+    "walk": "Walk"
   },
   "notFound": {
     "title": "Oops!",

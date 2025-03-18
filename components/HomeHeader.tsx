@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { cn } from '~/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface HomeHeaderProps {
   title?: string;
@@ -21,12 +22,17 @@ interface HomeHeaderProps {
 export function HomeHeader({ title }: HomeHeaderProps) {
   const insets = useSafeAreaInsets();
   const [isOpen, setIsOpen] = React.useState(false);
-  
-  // 使用 zustand store
   const { cities, selectedCity, setSelectedCity } = useCityStore();
-  
-  // 获取当前选中城市的标签
-  const selectedCityLabel = cities.find(city => city.name === selectedCity)?.label || selectedCity;
+  const { t } = useTranslation();
+
+  const getCityLabel = (city: CityName) => {
+    if (city === 'Sydney') return t('city.Sydney');
+    if (city === 'Melbourne') return `${t('city.Melbourne')} (${t('common.comingSoon')})`;
+    if (city === 'Brisbane') return `${t('city.Brisbane')} (${t('common.comingSoon')})`;
+    return city;
+  };
+
+  const selectedCityLabel = getCityLabel(selectedCity);
   
   return (
     <View 
@@ -63,7 +69,7 @@ export function HomeHeader({ title }: HomeHeaderProps) {
                 )}
                 disabled={!city.isAvailable}
               >
-                <Text>{city.label}</Text>
+                <Text>{getCityLabel(city.name)}</Text>
                 {selectedCity === city.name && city.isAvailable && (
                   <Check size={16} className="text-primary" />
                 )}
