@@ -10,7 +10,7 @@ import { MessageSquareText } from '~/lib/icons/MessageSquareText';
 import { Languages } from '~/lib/icons/Languages';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
-import languageNameMap from '~/assets/statics/language_name_map.json';
+import languageNameMap from '~/translations/language_name_map.json';
 
 type LanguageCode = keyof typeof languageNameMap;
 

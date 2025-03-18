@@ -65,8 +65,6 @@ export default function RootLayout() {
     return null;
   }
 
-  console.log('locales', locales.length); 
-
   return (
     <QueryProvider>
       <ThemeProvider value={isDarkMode ? DARK_THEME : LIGHT_THEME}>
