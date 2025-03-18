@@ -67,7 +67,6 @@ export default function StarredTrips() {
             <Text className="text-lg text-muted-foreground">{t('trip.noStarredRoutes')}</Text>
           </View>
         ) : (
-          <View className="border border-border rounded-lg overflow-hidden">
             <DraggableFlatList
               data={starredTrips}
               onDragEnd={handleDragEnd}
@@ -75,7 +74,6 @@ export default function StarredTrips() {
               renderItem={renderItem}
               containerStyle={{ paddingVertical: 0 }}
             />
-          </View>
         )}
       </View>
     </>
