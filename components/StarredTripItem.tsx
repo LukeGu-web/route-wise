@@ -13,6 +13,8 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import * as Dialog from './ui/dialog';
 import { Menu } from '~/lib/icons/Menu';
 import { useTranslation } from 'react-i18next';
+import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+import { useStations } from '~/lib/hooks/useStations';
 
 const BUTTON_WIDTH = 80;
 const SWIPE_THRESHOLD = -BUTTON_WIDTH * 1.5;
@@ -37,6 +39,11 @@ export function StarredTripItem({
   isReordering = false,
 }: StarredTripItemProps) {
   const { t } = useTranslation();
+  const { language } = usePerferenceStore();
+  const { allStations } = useStations();
+  const originStation = allStations.find(s => s.station === origin);
+  const destinationStation = allStations.find(s => s.station === destination);
+
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editName, setEditName] = useState(name);
   const translateX = useSharedValue(0);
@@ -100,6 +107,15 @@ export function StarredTripItem({
           >
             <View>
               <Text className="text-lg font-bold mb-1">{name}</Text>
+              {
+                language?.code !== 'en' && (
+                  <View className="flex-row items-center gap-2">
+                    <Text className="text-muted-foreground">{originStation?.label?.split(' (')[0] || origin}</Text>
+                    <Text className="text-muted-foreground">→</Text>
+                    <Text className="text-muted-foreground">{destinationStation?.label?.split(' (')[0] || destination}</Text>
+                  </View>
+                )
+              }
               <View className="flex-row items-center gap-2">
                 <Text className="text-muted-foreground">{origin}</Text>
                 <Text className="text-muted-foreground">→</Text>
@@ -130,10 +146,10 @@ export function StarredTripItem({
           </View>
           <Dialog.Footer>
             <Button variant="outline" onPress={() => setIsEditDialogOpen(false)}>
-              {t('common.cancel')}
+              <Text>{t('common.cancel')}</Text>
             </Button>
             <Button onPress={handleEdit}>
-              {t('common.edit')}
+              <Text className="text-black">{t('common.edit')}</Text>
             </Button>
           </Dialog.Footer>
         </Dialog.Content>
