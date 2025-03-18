@@ -12,6 +12,9 @@ import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { QueryProvider } from '~/lib/providers/query-provider';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 import i18n from '~/lib/i18n';
+import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import languageNameMap from '~/translations/language_name_map.json';
 
 
 const LIGHT_THEME: Theme = {
@@ -33,7 +36,9 @@ export default function RootLayout() {
   const locales = getLocales();
   const colorScheme = useColorScheme();
   const { isDarkMode, setIsDarkMode, language, setLanguage } = usePerferenceStore();
+  const { t } = useTranslation();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+  const insets = useSafeAreaInsets();
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -53,12 +58,18 @@ export default function RootLayout() {
 
     // set language
     if(language === null) {
+      const defaultLanguageCode = locales[0].languageCode;
+      // 检查默认语言是否在支持的语言列表中
+      const supportedLanguageCode = Object.keys(languageNameMap).includes(defaultLanguageCode || '') 
+        ? defaultLanguageCode 
+        : 'en';
+      
       setLanguage({
-        code: locales[0].languageCode,
-        tag: locales[0].languageTag,
+        code: supportedLanguageCode || 'en',
+        tag: supportedLanguageCode || 'en',
       });
     }
-    i18n.changeLanguage((language?.code ?? locales[0].languageCode) as string);
+    i18n.changeLanguage((language?.code ?? 'en') as string);
 
     hasMounted.current = true;
   }, []);

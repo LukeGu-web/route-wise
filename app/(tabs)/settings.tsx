@@ -13,6 +13,7 @@ import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 import languageNameMap from '~/translations/language_name_map.json';
 import { useTranslation } from 'react-i18next';
 import i18n from '~/lib/i18n';
+import { LanguagePicker } from '~/components/LanguagePicker';
 
 type LanguageCode = keyof typeof languageNameMap;
 
@@ -73,6 +74,7 @@ export default function SettingsScreen() {
             />
           </View>
           {/* Language Option */}
+          {/* <LanguagePicker /> */}
           <Pressable 
             className="flex-row items-center justify-between py-4 border-b border-border"
             onPress={handleLanguageChange}
@@ -85,6 +87,7 @@ export default function SettingsScreen() {
           </Pressable>
         </CardContent>
       </Card>
+
       </View>
     </SafeAreaView>
   );
