@@ -14,7 +14,13 @@
     "confirm": "Confirm",
     "loading": "Loading...",
     "error": "Error",
-    "retry": "Retry"
+    "retry": "Retry",
+    "comingSoon": "coming soon"
+  },
+  "city": {
+    "Sydney": "Sydney",
+    "Melbourne": "Melbourne",
+    "Brisbane": "Brisbane"
   },
   "trip": {
     "search": "Search",
@@ -36,7 +42,8 @@
     "day": "d",
     "hour": "h",
     "minute": "m",
-    "walk": "Walk"
+    "walk": "Walk",
+    "duration": "Duration"
   },
   "notFound": {
     "title": "Oops!",

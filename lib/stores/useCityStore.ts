@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import i18n from '~/lib/i18n';
 
 export type CityName = 'Sydney' | 'Melbourne' | 'Brisbane';
 
@@ -20,9 +21,27 @@ export const useCityStore = create<CityState>()(
   persist(
     devtools((set) => ({
       cities: [
-        { name: 'Sydney', label: 'Sydney', isAvailable: true },
-        { name: 'Melbourne', label: 'Melbourne (coming soon)', isAvailable: false },
-        { name: 'Brisbane', label: 'Brisbane (coming soon)', isAvailable: false },
+        { 
+          name: 'Sydney', 
+          get label() {
+            return i18n.t('city.Sydney');
+          },
+          isAvailable: true 
+        },
+        { 
+          name: 'Melbourne', 
+          get label() {
+            return `${i18n.t('city.Melbourne')} (${i18n.t('common.comingSoon')})`;
+          },
+          isAvailable: false 
+        },
+        { 
+          name: 'Brisbane', 
+          get label() {
+            return `${i18n.t('city.Brisbane')} (${i18n.t('common.comingSoon')})`;
+          },
+          isAvailable: false 
+        },
       ],
       selectedCity: 'Sydney',
       setSelectedCity: (city) => set({ selectedCity: city }),

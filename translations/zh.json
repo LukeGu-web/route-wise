@@ -14,7 +14,13 @@
     "confirm": "确认",
     "loading": "加载中...",
     "error": "错误",
-    "retry": "重试"
+    "retry": "重试",
+    "comingSoon": "即将推出"
+  },
+  "city": {
+    "Sydney": "悉尼",
+    "Melbourne": "墨尔本",
+    "Brisbane": "布里斯班"
   },
   "trip": {
     "search": "搜索",
