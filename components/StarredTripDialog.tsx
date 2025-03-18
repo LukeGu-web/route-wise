@@ -9,6 +9,7 @@ import * as Dialog from './ui/dialog';
 import { useTripStore } from '~/lib/stores/useTripStore';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { useTranslation } from 'react-i18next';
+import { useStations } from '~/lib/hooks/useStations';
 
 interface StarredTripDialogProps {
     open: boolean;
@@ -21,19 +22,24 @@ export function StarredTripDialog({
 }: StarredTripDialogProps) {
     const { t } = useTranslation();
     const { origin, destination } = useTripStore();
+    const { allStations } = useStations();
     const { addStarredTrip, editStarredTrip, removeStarredTrip, starredTrips } = useStarredTripStore();
     const starredTrip = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
     const [tripName, setTripName] = useState(starredTrip?.name ?? '');
 
+    const originStation = allStations.find(s => s.station === origin);
+    const destinationStation = allStations.find(s => s.station === destination);
+    const defaultName = `${originStation?.label?.split(' (')[0] || origin} -> ${destinationStation?.label?.split(' (')[0] || destination}`;
+
     const handleSave = () => {
         if (starredTrip) {
-            editStarredTrip(starredTrip.id, tripName || `${origin}->${destination}`);
+            editStarredTrip(starredTrip.id, tripName || defaultName);
         } else {
             addStarredTrip({
                 id: uuidv4(),
                 origin,
                 destination,
-                name: tripName || `${origin}->${destination}`,
+                name: tripName || defaultName,
             });
         }
         onOpenChange(false);
@@ -57,7 +63,7 @@ export function StarredTripDialog({
                     <View className="gap-2">
                         <Text className="font-semibold">{t('starredTrip.name')}</Text>
                         <Input
-                            placeholder={`${origin}->${destination}`}
+                            placeholder={defaultName}
                             value={tripName}
                             onChangeText={setTripName}
                             autoCapitalize="none"
@@ -66,11 +72,11 @@ export function StarredTripDialog({
                     </View>
                     <View className="flex-row items-end gap-2">
                         <Text className="font-semibold">{t('trip.from')}: </Text>
-                        <Text className="text-lg">{origin}</Text>
+                        <Text className="text-lg">{originStation?.label?.split(' (')[0] || origin}</Text>
                     </View>
                     <View className="flex-row items-end gap-2">
                         <Text className="font-semibold">{t('trip.to')}: </Text>
-                        <Text className="text-lg">{destination}</Text>
+                        <Text className="text-lg">{destinationStation?.label?.split(' (')[0] || destination}</Text>
                     </View>
                 </View>
                 <Dialog.Footer>

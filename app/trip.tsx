@@ -10,6 +10,7 @@ import { Star } from '~/lib/icons/Star';
 import { StarredTripDialog } from '~/components/StarredTripDialog';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { useTranslation } from 'react-i18next';
+import { useStations } from '~/lib/hooks/useStations';
 
 export default function TripPage() {
   const { t } = useTranslation();
@@ -37,6 +38,9 @@ export default function TripPage() {
   });
 
   const { starredTrips } = useStarredTripStore();
+  const { allStations } = useStations();
+  const originStation = allStations.find(s => s.station === origin);
+  const destinationStation = allStations.find(s => s.station === destination);
   const isStarred = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
 
   // Save trips to store whenever we get new data
@@ -81,9 +85,9 @@ export default function TripPage() {
         options={{
           headerTitle: () => (
             <View className="flex-row items-center gap-4">
-              <Text className="text-lg font-bold">{origin}</Text>
+              <Text className="text-lg font-bold">{originStation?.label?.split(' (')[0] || origin}</Text>
               <Text className="text-muted-foreground">{'->'}</Text>
-              <Text className="text-lg font-bold">{destination}</Text>
+              <Text className="text-lg font-bold">{destinationStation?.label?.split(' (')[0] || destination}</Text>
             </View>
           ),
           headerLeft: () => (

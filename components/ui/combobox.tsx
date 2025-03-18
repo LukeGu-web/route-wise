@@ -62,7 +62,8 @@ export function Combobox({
   const onSearching = (text: string) => {
     setSearchText(text);
     const filtered = allStations.filter(item =>
-      item.station.toLowerCase().includes(text.toLowerCase())
+      item.station.toLowerCase().includes(text.toLowerCase()) ||
+      (item.label && item.label.toLowerCase().includes(text.toLowerCase()))
     );
     setFilteredSuggestions(filtered);
   };
