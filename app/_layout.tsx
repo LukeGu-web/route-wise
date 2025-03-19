@@ -106,11 +106,22 @@ export default function RootLayout() {
             />
             <Stack.Screen
               name="starred-trips"
+              options={{
+                title: t('starredTrip.title'),
+              }}
             />
             <Stack.Screen
               name="help"
               options={{
                 title: t('help.title'),
+                headerTitle: t('help.title'),
+              }}
+            />
+            <Stack.Screen
+              name="about"
+              options={{
+                title: t('about.title'),
+                headerTitle: t('about.title'),
               }}
             />
           </Stack>
