@@ -11,7 +11,8 @@
     "about": "About",
     "help": "Help",
     "rate": "Rate Route Wise",
-    "share": "Share app with friends"
+    "share": "Share App with friends",
+    "shareMessage": "Check out {{appName}}! A great app for planning your public transport routes. Download it here: {{storeUrl}}"
   },
   "common": {
     "cancel": "Cancel",

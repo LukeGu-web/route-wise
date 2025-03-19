@@ -11,7 +11,8 @@
     "about": "关于",
     "help": "帮助",
     "rate": "请给个好评",
-    "share": "分享给朋友"
+    "share": "分享给朋友",
+    "shareMessage": "推荐你使用{{appName}}！这是一个规划公共交通路线的优秀应用。在这里下载：{{storeUrl}}"
   },
   "common": {
     "cancel": "取消",
