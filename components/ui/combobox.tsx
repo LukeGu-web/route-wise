@@ -1,10 +1,11 @@
-import * as React from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { View, TextInput, FlatList, Pressable, Image, Animated, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Text } from '~/components/ui/text';
 import { cn } from '~/lib/utils';
 import { ChevronDown, ChevronUp, Search, X } from 'lucide-react-native';
 import { Station, useStations } from '~/lib/hooks/useStations';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+
 
 // Static icon mapping
 const stationTypeIcons = {
@@ -35,11 +36,15 @@ export function Combobox({
   const { allStations } = useStations();
   const iconColor = isDarkMode ? '#e5e7eb' : '#9ca3af';
 
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [searchText, setSearchText] = React.useState('');
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<Station[]>(allStations);
-  const dropdownHeight = React.useRef(new Animated.Value(0)).current;
-  const textInputRef = React.useRef<TextInput>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [filteredSuggestions, setFilteredSuggestions] = useState<Station[]>(allStations);
+  const dropdownHeight = useRef(new Animated.Value(0)).current;
+  const textInputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    setFilteredSuggestions(allStations);
+  }, [allStations]);
 
   const onDropdownToggle = (open: boolean) => {
     if (open) {
