@@ -5,7 +5,12 @@
     "darkMode": "深色模式",
     "serviceMessages": "服务消息",
     "language": "语言",
-    "selectLanguage": "选择语言"
+    "selectLanguage": "选择语言",
+    "information": "相关信息",
+    "about": "关于",
+    "help": "帮助",
+    "rate": "请给个好评",
+    "share": "分享给朋友"
   },
   "common": {
     "cancel": "取消",

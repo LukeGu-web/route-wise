@@ -5,7 +5,12 @@
     "darkMode": "Dark Mode",
     "serviceMessages": "Service Messages",
     "language": "Language",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "information": "Information",
+    "about": "About",
+    "help": "Help",
+    "rate": "Rate App",
+    "share": "Share App"
   },
   "common": {
     "cancel": "Cancel",
