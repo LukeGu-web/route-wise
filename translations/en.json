@@ -74,5 +74,20 @@
     "editTitle": "Edit Trip Name",
     "editDescription": "Change the name of your starred trip",
     "enterName": "Enter new name"
+  },
+  "help": {
+    "title": "Help",
+    "transportIcons": "Transport Mode Icons",
+    "lineIcons": "Line Icons",
+    "trainLines": "Train Lines",
+    "otherTransport": "Other Transport Modes",
+    "otherTransportDesc": "Each transport mode uses a specific color, and the text in the middle will show the correct line number",
+    "transportTypes": {
+      "train": "Train",
+      "lightrail": "Light Rail",
+      "ferry": "Ferry",
+      "bus": "Bus",
+      "metro": "Metro"
+    }
   }
 }

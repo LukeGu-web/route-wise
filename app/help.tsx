@@ -9,12 +9,10 @@ export default function HelpScreen() {
 
     return (
         <ScrollView className="flex-1 bg-background p-4">
-            <Text className="text-2xl font-bold mb-4">{t('settings.help')}</Text>
-
             {/* 交通方式图标说明 */}
             <Card className="mb-6">
                 <CardHeader>
-                    <CardTitle className="text-lg font-semibold">交通方式图标说明</CardTitle>
+                    <CardTitle className="text-lg font-semibold">{t('help.transportIcons')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <View className="space-y-4">
@@ -23,35 +21,35 @@ export default function HelpScreen() {
                                 source={require('~/assets/images/icons/train.png')}
                                 className="w-8 h-8 mr-3"
                             />
-                            <Text className="text-base">火车 (Train)</Text>
+                            <Text className="text-base">{t('help.transportTypes.train')}</Text>
                         </View>
                         <View className="flex-row items-center">
                             <Image
                                 source={require('~/assets/images/icons/lightrail.png')}
                                 className="w-8 h-8 mr-3"
                             />
-                            <Text className="text-base">轻轨 (Light Rail)</Text>
+                            <Text className="text-base">{t('help.transportTypes.lightrail')}</Text>
                         </View>
                         <View className="flex-row items-center">
                             <Image
                                 source={require('~/assets/images/icons/ferry.png')}
                                 className="w-8 h-8 mr-3"
                             />
-                            <Text className="text-base">渡轮 (Ferry)</Text>
+                            <Text className="text-base">{t('help.transportTypes.ferry')}</Text>
                         </View>
                         <View className="flex-row items-center">
                             <Image
                                 source={require('~/assets/images/icons/bus.png')}
                                 className="w-8 h-8 mr-3"
                             />
-                            <Text className="text-base">巴士 (Bus)</Text>
+                            <Text className="text-base">{t('help.transportTypes.bus')}</Text>
                         </View>
                         <View className="flex-row items-center">
                             <Image
                                 source={require('~/assets/images/icons/metro.png')}
                                 className="w-8 h-8 mr-3"
                             />
-                            <Text className="text-base">地铁 (Metro)</Text>
+                            <Text className="text-base">{t('help.transportTypes.metro')}</Text>
                         </View>
                     </View>
                 </CardContent>
@@ -60,12 +58,12 @@ export default function HelpScreen() {
             {/* 线路图标说明 */}
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-lg font-semibold">线路图标说明</CardTitle>
+                    <CardTitle className="text-lg font-semibold">{t('help.lineIcons')}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <View className="space-y-4">
+                    <View className="space-y-4 gap-4">
                         <View className="space-y-2">
-                            <Text className="text-base font-medium">火车线路</Text>
+                            <Text className="text-base font-medium">{t('help.trainLines')}</Text>
                             <View className="flex-row flex-wrap gap-2">
                                 <LineIcon mode="Train" line="T1" size="sm" />
                                 <LineIcon mode="Train" line="T2" size="sm" />
@@ -81,7 +79,8 @@ export default function HelpScreen() {
                         </View>
 
                         <View className="space-y-2">
-                            <Text className="text-base font-medium">其他交通方式</Text>
+                            <Text className="text-base font-medium">{t('help.otherTransport')}</Text>
+                            <Text className="text-sm text-muted-foreground mb-2">{t('help.otherTransportDesc')}</Text>
                             <View className="flex-row flex-wrap gap-2">
                                 <LineIcon mode="Metro" line="Metro" size="sm" />
                                 <LineIcon mode="Buses" line="Buses" size="sm" />

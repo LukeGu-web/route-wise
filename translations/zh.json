@@ -74,5 +74,20 @@
     "editTitle": "编辑路线名称",
     "editDescription": "更改收藏路线的名称",
     "enterName": "输入新名称"
+  },
+  "help": {
+    "title": "帮助",
+    "transportIcons": "交通方式图标说明",
+    "lineIcons": "线路图标说明",
+    "trainLines": "火车线路",
+    "otherTransport": "其他交通方式",
+    "otherTransportDesc": "特定的交通工具会使用特定的颜色，中间的文字会变成正确的路线",
+    "transportTypes": {
+      "train": "火车 (Train)",
+      "lightrail": "轻轨 (Light Rail)",
+      "ferry": "渡轮 (Ferry)",
+      "bus": "巴士 (Bus)",
+      "metro": "地铁 (Metro)"
+    }
   }
 }

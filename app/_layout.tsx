@@ -100,9 +100,18 @@ export default function RootLayout() {
             />
             <Stack.Screen
               name="trip"
+              options={{
+                title: t('trip.title'),
+              }}
             />
             <Stack.Screen
               name="starred-trips"
+            />
+            <Stack.Screen
+              name="help"
+              options={{
+                title: t('help.title'),
+              }}
             />
           </Stack>
 
