@@ -49,8 +49,8 @@ export function HomeHeader({ title }: HomeHeaderProps) {
               variant="ghost"
               className="flex-row items-center justify-center px-2 py-1"
             >
-              <Text className="text-lg font-medium mr-1">{selectedCityLabel}</Text>
-              <ChevronDown size={18} className="text-foreground" />
+              <Text className="text-lg font-bold mr-1">{selectedCityLabel}</Text>
+              <ChevronDown size={18} strokeWidth={2.5} className="text-foreground" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 z-50">
