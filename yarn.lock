@@ -5315,6 +5315,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-sharing@npm:~13.0.1":
+  version: 13.0.1
+  resolution: "expo-sharing@npm:13.0.1"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/ecbd03c51fff90dc88dd06a7c8e8c5d5aeab564fc4c23893cef2734ca65e5525957cb700899a5a723e07e74b53056419ce5496b94442afaad35d7e62e42b4b12
+  languageName: node
+  linkType: hard
+
 "expo-splash-screen@npm:~0.29.20":
   version: 0.29.22
   resolution: "expo-splash-screen@npm:0.29.22"
@@ -5333,6 +5342,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/b608901ea6699e684a196cd0a92c79d08a2dbbb2affb7c3246ca767730d8a75045687b4b87adca8b862e58934f73c6dbf5bd8ce78bc59ce87920adc84ebada81
+  languageName: node
+  linkType: hard
+
+"expo-store-review@npm:~8.0.1":
+  version: 8.0.1
+  resolution: "expo-store-review@npm:8.0.1"
+  peerDependencies:
+    expo: "*"
+    react-native: "*"
+  checksum: 10c0/3c24f76999c21c36878e12dbd2cb0541153392d0ce2fb2e66b5384108bdcc289fa4f5a7cb254859202b19c1aa4f2d22468be93bb6c1ea28fdb6b2fbcde4ad067
   languageName: node
   linkType: hard
 
@@ -9155,8 +9174,10 @@ __metadata:
     expo-localization: "npm:~16.0.1"
     expo-navigation-bar: "npm:~4.0.7"
     expo-router: "npm:~4.0.19"
+    expo-sharing: "npm:~13.0.1"
     expo-splash-screen: "npm:~0.29.20"
     expo-status-bar: "npm:~2.0.1"
+    expo-store-review: "npm:~8.0.1"
     expo-system-ui: "npm:~4.0.7"
     i18next: "npm:^24.2.3"
     lucide-react-native: "npm:^0.378.0"
