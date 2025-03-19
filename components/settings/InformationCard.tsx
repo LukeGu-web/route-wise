@@ -92,7 +92,7 @@ export function InformationCard() {
         </Link>
         {/* Help */}
         <Link
-          href="/"
+          href="/help"
           className="flex-row items-center justify-between py-4 border-b border-border"
         >
           <View className="flex-row items-center">
