@@ -5,6 +5,8 @@ import { Switch } from '~/components/ui/switch';
 import { MoonStar } from '~/lib/icons/MoonStar';
 import { MessageSquareText } from '~/lib/icons/MessageSquareText';
 import { Languages } from '~/lib/icons/Languages';
+import { CircleHelp } from '~/lib/icons/CircleHelp';
+import { Tooltip, TooltipTrigger, TooltipContent } from '~/components/ui/tooltip';
 import { useTranslation } from 'react-i18next';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 import { useColorScheme as useNativewindColorScheme } from 'nativewind';
@@ -58,6 +60,14 @@ export function PreferencesCard({ bottomSheetModalRef }: PreferencesCardProps) {
           <View className="flex-row items-center">
             <MessageSquareText className="text-foreground mr-3" size={22} strokeWidth={1.25} />
             <Text className="text-base font-medium">{t('settings.serviceMessages')}</Text>
+            <Tooltip delayDuration={150}>
+              <TooltipTrigger asChild>
+                <CircleHelp className="text-muted-foreground ml-2" size={16} strokeWidth={1.25} />
+              </TooltipTrigger>
+              <TooltipContent className="bg-zinc-800 text-foreground">
+                <Text className="text-sm">{t('settings.serviceMessagesTooltip')}</Text>
+              </TooltipContent>
+            </Tooltip>
           </View>
           <Switch
             checked={enabledServiceMessages}

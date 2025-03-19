@@ -4,6 +4,7 @@
     "preferences": "Preferences",
     "darkMode": "Dark Mode",
     "serviceMessages": "Service Messages",
+    "serviceMessagesTooltip": "When enabled, you will receive notifications about service disruptions, delays, or other important updates for your searched routes.",
     "language": "Language",
     "selectLanguage": "Select Language",
     "information": "Information",

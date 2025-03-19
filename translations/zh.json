@@ -4,6 +4,7 @@
     "preferences": "偏好设置",
     "darkMode": "深色模式",
     "serviceMessages": "服务消息",
+    "serviceMessagesTooltip": "开启后，当您搜索的路线出现服务中断、延误或其他重要更新时，您将收到相关通知。",
     "language": "语言",
     "selectLanguage": "选择语言",
     "information": "相关信息",
