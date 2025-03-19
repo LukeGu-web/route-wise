@@ -4,6 +4,7 @@ export interface TripParams {
   from_location: string;
   to_location: string;
   departure_time: string;
+  language_code?: string;
 }
 
 export interface Stop {

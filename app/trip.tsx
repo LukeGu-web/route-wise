@@ -13,9 +13,10 @@ import { useTranslation } from 'react-i18next';
 import { useStations } from '~/lib/hooks/useStations';
 import { useAlerts } from '~/lib/hooks/useAlerts';
 import { AlertDialog } from '~/components/AlertDialog';
-
+import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 export default function TripPage() {
   const { t } = useTranslation();
+  const { language } = usePerferenceStore();
   const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
@@ -35,7 +36,8 @@ export default function TripPage() {
   } = useTrip({
     from_location: origin,
     to_location: destination,
-    departure_time: (date ?? new Date())?.toISOString()
+    departure_time: (date ?? new Date())?.toISOString(),
+    language_code: language?.code ?? 'en'
   });
 
   const { starredTrips } = useStarredTripStore();
