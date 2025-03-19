@@ -16,30 +16,46 @@ export function RouteSearchForm() {
   const { t } = useTranslation();
   const { isDarkMode } = usePerferenceStore();
   const { origin, destination, date, setOrigin, setDestination, setDate } = useTripStore();
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-  const [displayDate, setDisplayDate] = useState<Date>(new Date());
-
+  // 立即更新时间
   useEffect(() => {
-    const timer = setInterval(() => { // Creates an interval which will update the current data every minute
-      // This will trigger a rerender every component that uses the useDate hook.
-      const currentDate = new Date();
-      setDisplayDate(new Date(currentDate.setTime(currentDate.getTime() + 1000 * 60)));
-    }, 60 * 1000);
-    return () => {
-      clearInterval(timer); // Return a funtion to clear the timer so that it will stop being called on unmount
+    const now = new Date();
+    setCurrentDate(now);
+    if (!date) {
+      setDate(now);
     }
   }, []);
+
+  // 每秒更新一次时间
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      setCurrentDate(now);
+      // 如果用户没有手动选择时间，则更新 trip store 中的时间
+      if (!date) {
+        setDate(now);
+      }
+    }, 30 * 1000); // 每10秒更新一次
+
+    return () => clearInterval(timer);
+  }, [date]);
+
+  // 当用户手动选择时间时，更新 currentDate
+  useEffect(() => {
+    if (date) {
+      setCurrentDate(date);
+    }
+  }, [date]);
 
   // Handle search button press
   const handleSearch = () => {
     console.log('Searching for routes:', {
       origin,
       destination,
-      date: dayjs(date ?? new Date()).format('YYYY-MM-DDTHH:mm:ss')
+      date: dayjs(currentDate).format('YYYY-MM-DDTHH:mm:ss')
     });
-    if(!date) {
-      setDate(new Date());
-    }
+    setDate(currentDate);
     router.push('/trip');
   };
 
@@ -68,8 +84,11 @@ export function RouteSearchForm() {
       <View>
         <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.departure')}</Text>
         <DatePicker
-          date={date || displayDate}
-          onDateChange={setDate}
+          date={currentDate}
+          onDateChange={(newDate) => {
+            setCurrentDate(newDate);
+            setDate(newDate);
+          }}
           placeholder={t('routeSearch.selectDate')}
           showTime={true}
         />
