@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import i18n from '~/lib/i18n';
 
 export type CityName = 'Sydney' | 'Melbourne' | 'Brisbane';
 

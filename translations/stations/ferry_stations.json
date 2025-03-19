@@ -1,0 +1,162 @@
+[
+  {
+    "station": "Circular Quay 2",
+    "type": "Ferry"
+  },
+  {
+    "station": "Circular Quay 3",
+    "type": "Ferry"
+  },
+  {
+    "station": "Circular Quay 4",
+    "type": "Ferry"
+  },
+  {
+    "station": "Circular Quay 5",
+    "type": "Ferry"
+  },
+  {
+    "station": "Manly",
+    "type": "Ferry"
+  },
+  {
+    "station": "Garden Island",
+    "type": "Ferry"
+  },
+  {
+    "station": "Cockatoo Island",
+    "type": "Ferry"
+  },
+  {
+    "station": "Darling Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Double Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "Rose Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "Watsons Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "Pyrmont Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "Birchgrove",
+    "type": "Ferry"
+  },
+  {
+    "station": "Balmain",
+    "type": "Ferry"
+  },
+  {
+    "station": "Balmain East",
+    "type": "Ferry"
+  },
+  {
+    "station": "Abbotsford",
+    "type": "Ferry"
+  },
+  {
+    "station": "Chiswick",
+    "type": "Ferry"
+  },
+  {
+    "station": "Drummoyne",
+    "type": "Ferry"
+  },
+  {
+    "station": "Huntleys Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Barangaroo 1",
+    "type": "Ferry"
+  },
+  {
+    "station": "Barangaroo 2",
+    "type": "Ferry"
+  },
+  {
+    "station": "McMahons Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "North Sydney",
+    "type": "Ferry"
+  },
+  {
+    "station": "Milsons Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Kirribilli",
+    "type": "Ferry"
+  },
+  {
+    "station": "Greenwich",
+    "type": "Ferry"
+  },
+  {
+    "station": "Mosman Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "South Mosman",
+    "type": "Ferry"
+  },
+  {
+    "station": "Taronga Zoo",
+    "type": "Ferry"
+  },
+  {
+    "station": "Neutral Bay",
+    "type": "Ferry"
+  },
+  {
+    "station": "Kurraba Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Cremorne Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Old Cremorne",
+    "type": "Ferry"
+  },
+  {
+    "station": "Woolwich",
+    "type": "Ferry"
+  },
+  {
+    "station": "Kissing Point",
+    "type": "Ferry"
+  },
+  {
+    "station": "Meadowbank",
+    "type": "Ferry"
+  },
+  {
+    "station": "Rydalmere",
+    "type": "Ferry"
+  },
+  {
+    "station": "Olympic Park",
+    "type": "Ferry"
+  },
+  {
+    "station": "Cabarita",
+    "type": "Ferry"
+  },
+  {
+    "station": "Parramatta",
+    "type": "Ferry"
+  }
+]

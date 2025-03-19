@@ -1,0 +1,15 @@
+[
+  { "station": "Tallawong", "type": "Metro" },
+  { "station": "Rouse Hill", "type": "Metro" },
+  { "station": "Kellyville", "type": "Metro" },
+  { "station": "Bella Vista", "type": "Metro" },
+  { "station": "Norwest", "type": "Metro" },
+  { "station": "Hills Showground", "type": "Metro" },
+  { "station": "Castle Hill", "type": "Metro" },
+  { "station": "Cherrybrook", "type": "Metro" },
+  { "station": "Crows Nest", "type": "Metro" },
+  { "station": "Victoria Cross", "type": "Metro" },
+  { "station": "Barangaroo", "type": "Metro" },
+  { "station": "Gadigal", "type": "Metro" },
+  { "station": "Waterloo", "type": "Metro" }
+]
