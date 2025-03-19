@@ -51,7 +51,7 @@ export function RouteSearchForm() {
           value={origin}
           onChangeText={setOrigin}
           onSelect={(item: string) => setOrigin(item)}
-          placeholder={t('trip.from')}
+          placeholder={t('routeSearch.from')}
         />
       </View>
 
@@ -61,7 +61,7 @@ export function RouteSearchForm() {
           value={destination}
           onChangeText={setDestination}
           onSelect={(item: string) => setDestination(item)}
-          placeholder={t('trip.to')}
+          placeholder={t('routeSearch.to')}
         />
       </View>
 

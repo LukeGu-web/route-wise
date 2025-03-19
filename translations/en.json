@@ -52,8 +52,8 @@
     "goHome": "Go to home screen!"
   },
   "routeSearch": {
-    "from": "From",
-    "to": "To",
+    "from": "Origin",
+    "to": "Destination",
     "date": "Date",
     "search": "Search",
     "selectDate": "Select Date"

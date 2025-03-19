@@ -26,8 +26,8 @@
   "trip": {
     "title": "行程",
     "search": "搜索",
-    "from": "出发地",
-    "to": "目的地",
+    "from": "从",
+    "to": "到",
     "departure": "出发",
     "arrival": "到达",    
     "duration": "时长",

@@ -31,7 +31,7 @@ export function Combobox({
   placeholder,
   className,
 }: ComboboxProps) {
-  const { isDarkMode } = usePerferenceStore();
+  const { isDarkMode, language } = usePerferenceStore();
   const { allStations } = useStations();
   const iconColor = isDarkMode ? '#e5e7eb' : '#9ca3af';
 
@@ -140,10 +140,10 @@ export function Combobox({
                     className="flex-row items-center px-3 py-2 hover:bg-muted active:bg-muted"
                   >
                     <Image
-                      source={stationTypeIcons[item.type]}
+                      source={stationTypeIcons[item.type as keyof typeof stationTypeIcons]}
                       className="w-6 h-6 mr-2"
                     />
-                    <Text className="flex-1">{item.label || item.station}</Text>
+                    <Text className="flex-1">{language?.code !== 'en' ? item.label : item.station}</Text>
                   </Pressable>
                 )}
               />

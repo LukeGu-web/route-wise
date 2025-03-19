@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FlatList, Pressable, View } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
-import { ChevronLeft } from 'lucide-react-native';
+import { ChevronLeft, MoveRight } from 'lucide-react-native';
 import { JourneyCard } from '~/components/JourneyCard';
 import { Text } from '~/components/ui/text';
 import { useTripStore } from '~/lib/stores/useTripStore';
@@ -97,7 +97,7 @@ export default function TripPage() {
           headerTitle: () => (
             <View className="flex-row items-center gap-4">
               <Text className="text-lg font-bold">{originStation?.label?.split(' (')[0] || origin}</Text>
-              <Text className="text-muted-foreground">{'->'}</Text>
+              <MoveRight color='gray' size={24} />
               <Text className="text-lg font-bold">{destinationStation?.label?.split(' (')[0] || destination}</Text>
             </View>
           ),

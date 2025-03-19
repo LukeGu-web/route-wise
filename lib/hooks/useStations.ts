@@ -9,6 +9,12 @@ import trainlinkTranslations from '~/translations/stations/trainlink_stations.js
 import lightrailTranslations from '~/translations/stations/lightrail_stations.json';
 import ferryTranslations from '~/translations/stations/ferry_stations.json';
 
+export interface Station {
+  station: string;
+  type: string;
+  label?: string;
+}
+
 interface StationTranslation {
   en: string;
   zh: string;
