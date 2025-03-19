@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, TextInput, FlatList, Pressable,Image, Animated, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, TextInput, FlatList, Pressable, Image, Animated, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Text } from '~/components/ui/text';
 import { cn } from '~/lib/utils';
 import { ChevronDown, ChevronUp, Search, X } from 'lucide-react-native';
@@ -69,7 +69,7 @@ export function Combobox({
   };
 
   const handleSelect = (item: string) => {
-    Keyboard.dismiss(); 
+    Keyboard.dismiss();
     onSelect(item);
     onChangeText(item);
     onDropdownToggle(false);
@@ -108,7 +108,9 @@ export function Combobox({
           onPress={() => onDropdownToggle(true)}
         >
           <Text className="flex-grow dark:text-white">
-            {value ? (allStations.find(s => s.station === value)?.label || value) : (placeholder || "Select an option")}
+            {value ?
+              (language?.code !== 'en' ? (allStations.find(s => s.station === value)?.label || value) : value)
+              : (placeholder || "Select an option")}
           </Text>
           <ChevronDown size={20} color={iconColor} />
         </Pressable>
