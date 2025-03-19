@@ -89,5 +89,14 @@
       "bus": "巴士 (Bus)",
       "metro": "地铁 (Metro)"
     }
+  },
+  "about": {
+    "title": "关于",
+    "version": "版本",
+    "transportnsw": "前往 Transport for NSW",
+    "thankYou": "感谢您使用 Route Wise！",
+    "description": "Route Wise 是一个帮助您规划公共交通路线的应用。我们致力于为您提供最便捷的出行体验。",
+    "dataSource": "数据来源",
+    "dataSourceDesc": "本应用使用 Transport for NSW 提供的实时数据。虽然我们尽最大努力确保时刻表数据的准确性，但无法保证其完全准确。如需查看官方时刻表信息，请访问 Transport for NSW 网站。"
   }
 }

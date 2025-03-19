@@ -89,5 +89,14 @@
       "bus": "Bus",
       "metro": "Metro"
     }
+  },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "transportnsw": "Go to Transport for NSW",
+    "thankYou": "Thank you for using Route Wise!",
+    "description": "Route Wise is an app that helps you plan your public transport journeys. We are committed to providing you with the most convenient travel experience.",
+    "dataSource": "Data Source",
+    "dataSourceDesc": "This app uses real-time data provided by Transport for NSW. While we make every effort to ensure the accuracy of the timetable data, no guarantees are made. For official timetable information, please visit the Transport for NSW website."
   }
 }

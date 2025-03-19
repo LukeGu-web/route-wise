@@ -82,7 +82,7 @@ export function InformationCard() {
       <CardContent>
         {/* About */}
         <Link
-          href="/"
+          href="/about"
           className="flex-row items-center justify-between py-4 border-b border-border"
         >
           <View className="flex-row items-center">
