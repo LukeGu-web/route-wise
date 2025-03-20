@@ -16,6 +16,7 @@ import i18n from '~/lib/i18n';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import languageNameMap from '~/translations/language_name_map.json';
+import { useAutoReview } from '~/lib/hooks/useAutoReview';
 
 
 const LIGHT_THEME: Theme = {
@@ -40,6 +41,8 @@ export default function RootLayout() {
   const { t } = useTranslation();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
   const insets = useSafeAreaInsets();
+
+  useAutoReview();
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
