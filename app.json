@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "Route Wise",
-    "slug": "Route Wise",
+    "slug": "route-wise",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "route-wise",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
