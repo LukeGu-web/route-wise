@@ -14,6 +14,8 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { cn } from '~/lib/utils';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'expo-router';
+import { CircleHelp } from '~/lib/icons/CircleHelp';
 
 interface HomeHeaderProps {
   title?: string;
@@ -33,16 +35,17 @@ export function HomeHeader({ title }: HomeHeaderProps) {
   };
 
   const selectedCityLabel = getCityLabel(selectedCity);
-  
+
   return (
-    <View 
+    <View
       style={[
-        styles.container, 
+        styles.container,
         { paddingTop: insets.top }
       ]}
       className="bg-background border-b border-border"
     >
-      <View className="flex-row items-center justify-center h-14 px-4">
+      <View className="flex-row items-center justify-between h-14 px-4">
+        <Text className="text-transparent p-4">{selectedCityLabel}</Text>
         <DropdownMenu onOpenChange={setIsOpen}>
           <DropdownMenuTrigger asChild>
             <Button
@@ -77,6 +80,9 @@ export function HomeHeader({ title }: HomeHeaderProps) {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <Link href="/help" className="p-4">
+          <CircleHelp className="text-foreground mr-3" size={24} />
+        </Link>
       </View>
     </View>
   );
