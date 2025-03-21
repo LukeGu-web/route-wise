@@ -18,21 +18,23 @@ export interface Station {
 interface StationTranslation {
   en: string;
   zh: string;
-  ar: string;
-  de: string;
-  fr: string;
-  it: string;
-  ja: string;
-  ko: string;
-  pt: string;
-  ru: string;
-  th: string;
-  vi: string;
+  ar?: string;
+  de?: string;
+  fr?: string;
+  it?: string;
+  ja?: string;
+  ko?: string;
+  pt?: string;
+  ru?: string;
+  th?: string;
+  vi?: string;
   type: string;
 }
 
 type StationTranslations = Record<string, StationTranslation>;
 
+// 使用英语站台名的语言列表
+const ENGLISH_STATION_LANGUAGES = ['en', 'de', 'fr', 'it', 'pt', 'vi'];
 
 export function useStations() {
   const { i18n } = useTranslation();
@@ -55,7 +57,7 @@ export function useStations() {
     return stations
       .map(station => ({
         ...station,
-        label: translations[station.station] ? 
+        label: translations[station.station] && !ENGLISH_STATION_LANGUAGES.includes(i18n.language) ? 
           `${translations[station.station][i18n.language as keyof StationTranslation]} (${station.station})` : 
           station.station
       }))
