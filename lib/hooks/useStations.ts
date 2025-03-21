@@ -15,19 +15,15 @@ export interface Station {
   label?: string;
 }
 
+// 'de', 'fr', 'it', 'pt', 'vi' use English station name
 interface StationTranslation {
   en: string;
   zh: string;
-  ar?: string;
-  de?: string;
-  fr?: string;
-  it?: string;
-  ja?: string;
-  ko?: string;
-  pt?: string;
-  ru?: string;
-  th?: string;
-  vi?: string;
+  ar: string;
+  ja: string;
+  ko: string;
+  ru: string;
+  th: string;
   type: string;
 }
 
