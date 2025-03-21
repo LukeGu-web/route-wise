@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "title": "設定",
+    "preferences": "設定",
+    "darkMode": "ダークモード",
+    "serviceMessages": "サービスメッセージ",
+    "serviceMessagesTooltip": "有効にすると、検索したルートのサービス中断、遅延、その他の重要な更新に関する通知を受け取ることができます。",
+    "language": "言語",
+    "selectLanguage": "言語を選択",
+    "information": "情報",
+    "about": "アプリについて",
+    "help": "ヘルプ",
+    "rate": "Route Wiseを評価",
+    "share": "友達とアプリを共有",
+    "shareMessage": "{{appName}}をチェック！公共交通機関のルートを計画するのに便利なアプリです。こちらからダウンロード: {{storeUrl}}"
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "save": "保存",
+    "edit": "編集",
+    "delete": "削除",
+    "confirm": "確認",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "retry": "再試行",
+    "comingSoon": "近日公開"
+  },
+  "city": {
+    "Sydney": "シドニー",
+    "Melbourne": "メルボルン",
+    "Brisbane": "ブリスベン"
+  },
+  "trip": {
+    "title": "旅行",
+    "search": "検索",
+    "from": "出発地",
+    "to": "目的地",
+    "departure": "出発",
+    "arrival": "到着",
+    "duration": "所要時間",
+    "waitingTime": "待ち時間",
+    "price": "料金",
+    "noResults": "結果が見つかりません",
+    "starredRoutes": "お気に入りルート",
+    "noStarredRoutes": "お気に入りの旅行はまだありません",
+    "reorder": "並べ替え",
+    "wait": "待つ",
+    "fee": "料金",
+    "noFee": "データなし",
+    "direct": "直行",
+    "day": "日",
+    "hour": "時間",
+    "minute": "分",
+    "walk": "徒歩"
+  },
+  "notFound": {
+    "title": "おっと!",
+    "message": "この画面は存在しません。",
+    "goHome": "ホーム画面に戻る"
+  },
+  "routeSearch": {
+    "from": "出発地",
+    "to": "目的地",
+    "date": "日付",
+    "search": "検索",
+    "selectDate": "日付を選択"
+  },
+  "starredTrip": {
+    "title": "お気に入りルート",
+    "description": "ルートをお気に入り登録して素早く検索",
+    "name": "名前",
+    "unstar": "お気に入り解除",
+    "unstarDescription": "ルートのお気に入りを解除し、デバイスから削除",
+    "editTitle": "旅行名を編集",
+    "editDescription": "お気に入り旅行の名前を変更",
+    "enterName": "新しい名前を入力"
+  },
+  "help": {
+    "title": "ヘルプ",
+    "transportIcons": "交通機関アイコン",
+    "lineIcons": "路線アイコン",
+    "trainLines": "電車の路線",
+    "otherTransport": "その他の交通機関",
+    "otherTransportDesc": "各交通機関には特定の色が割り当てられ、中央のテキストには正しい路線番号が表示されます。",
+    "transportTypes": {
+      "train": "電車",
+      "lightrail": "ライトレール",
+      "ferry": "フェリー",
+      "bus": "バス",
+      "metro": "地下鉄"
+    }
+  },
+  "about": {
+    "title": "アプリについて",
+    "version": "バージョン",
+    "transportnsw": "Transport for NSWへ移動",
+    "thankYou": "Route Wiseをご利用いただきありがとうございます！",
+    "description": "Route Wiseは、公共交通機関の移動を計画するためのアプリです。最も便利な旅行体験を提供することを目指しています。",
+    "dataSource": "データソース",
+    "dataSourceDesc": "このアプリは、Transport for NSWが提供するリアルタイムデータを使用しています。時刻表データの正確性を確保するよう努めていますが、保証はできません。公式の時刻表情報については、Transport for NSWのウェブサイトをご確認ください。"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "title": "Configurações",
+    "preferences": "Preferências",
+    "darkMode": "Modo escuro",
+    "serviceMessages": "Mensagens de serviço",
+    "serviceMessagesTooltip": "Quando ativado, você receberá notificações sobre interrupções de serviço, atrasos ou outras atualizações importantes para as rotas pesquisadas.",
+    "language": "Idioma",
+    "selectLanguage": "Selecionar idioma",
+    "information": "Informações",
+    "about": "Sobre",
+    "help": "Ajuda",
+    "rate": "Avaliar Route Wise",
+    "share": "Compartilhar app com amigos",
+    "shareMessage": "Confira o {{appName}}! Um ótimo aplicativo para planejar suas rotas de transporte público. Baixe aqui: {{storeUrl}}"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "confirm": "Confirmar",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "retry": "Tentar novamente",
+    "comingSoon": "em breve"
+  },
+  "city": {
+    "Sydney": "Sydney",
+    "Melbourne": "Melbourne",
+    "Brisbane": "Brisbane"
+  },
+  "trip": {
+    "title": "Viagem",
+    "search": "Pesquisar",
+    "from": "De",
+    "to": "Para",
+    "departure": "Partida",
+    "arrival": "Chegada",
+    "duration": "Duração",
+    "waitingTime": "Tempo de espera",
+    "price": "Preço",
+    "noResults": "Nenhum resultado encontrado",
+    "starredRoutes": "Rotas favoritas",
+    "noStarredRoutes": "Ainda não há viagens favoritas",
+    "reorder": "Reordenar",
+    "wait": "Espera",
+    "fee": "Tarifa",
+    "noFee": "Sem dados",
+    "direct": "Direto",
+    "day": "d",
+    "hour": "h",
+    "minute": "min",
+    "walk": "Caminhar"
+  },
+  "notFound": {
+    "title": "Ops!",
+    "message": "Esta tela não existe.",
+    "goHome": "Ir para a tela inicial!"
+  },
+  "routeSearch": {
+    "from": "Origem",
+    "to": "Destino",
+    "date": "Data",
+    "search": "Pesquisar",
+    "selectDate": "Selecionar data"
+  },
+  "starredTrip": {
+    "title": "Rota favorita",
+    "description": "Marque a rota como favorita para pesquisa rápida",
+    "name": "Nome",
+    "unstar": "Remover dos favoritos",
+    "unstarDescription": "Remover a rota dos favoritos para excluí-la do seu dispositivo",
+    "editTitle": "Editar nome da viagem",
+    "editDescription": "Alterar o nome da sua viagem favorita",
+    "enterName": "Digite o novo nome"
+  },
+  "help": {
+    "title": "Ajuda",
+    "transportIcons": "Ícones de modo de transporte",
+    "lineIcons": "Ícones de linha",
+    "trainLines": "Linhas de trem",
+    "otherTransport": "Outros modos de transporte",
+    "otherTransportDesc": "Cada modo de transporte usa uma cor específica, e o texto no meio mostrará o número correto da linha",
+    "transportTypes": {
+      "train": "Trem",
+      "lightrail": "VLT",
+      "ferry": "Balsa",
+      "bus": "Ônibus",
+      "metro": "Metrô"
+    }
+  },
+  "about": {
+    "title": "Sobre",
+    "version": "Versão",
+    "transportnsw": "Ir para Transport for NSW",
+    "thankYou": "Obrigado por usar o Route Wise!",
+    "description": "Route Wise é um aplicativo que ajuda você a planejar suas viagens de transporte público. Estamos comprometidos em proporcionar a experiência de viagem mais conveniente possível.",
+    "dataSource": "Fonte de dados",
+    "dataSourceDesc": "Este aplicativo usa dados em tempo real fornecidos pelo Transport for NSW. Embora nos esforcemos para garantir a precisão dos dados de horários, nenhuma garantia é oferecida. Para informações oficiais de horários, visite o site do Transport for NSW."
+  }
+}

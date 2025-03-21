@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "title": "Cài đặt",
+    "preferences": "Tùy chọn",
+    "darkMode": "Chế độ tối",
+    "serviceMessages": "Thông báo dịch vụ",
+    "serviceMessagesTooltip": "Khi được bật, bạn sẽ nhận được thông báo về sự gián đoạn dịch vụ, chậm trễ hoặc các cập nhật quan trọng khác cho các tuyến đường bạn đã tìm kiếm.",
+    "language": "Ngôn ngữ",
+    "selectLanguage": "Chọn ngôn ngữ",
+    "information": "Thông tin",
+    "about": "Giới thiệu",
+    "help": "Trợ giúp",
+    "rate": "Đánh giá Route Wise",
+    "share": "Chia sẻ ứng dụng với bạn bè",
+    "shareMessage": "Hãy thử {{appName}}! Một ứng dụng tuyệt vời để lập kế hoạch cho các tuyến giao thông công cộng của bạn. Tải về tại đây: {{storeUrl}}"
+  },
+  "common": {
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "confirm": "Xác nhận",
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "retry": "Thử lại",
+    "comingSoon": "sắp ra mắt"
+  },
+  "city": {
+    "Sydney": "Sydney",
+    "Melbourne": "Melbourne",
+    "Brisbane": "Brisbane"
+  },
+  "trip": {
+    "title": "Hành trình",
+    "search": "Tìm kiếm",
+    "from": "Từ",
+    "to": "Đến",
+    "departure": "Khởi hành",
+    "arrival": "Đến nơi",
+    "duration": "Thời gian",
+    "waitingTime": "Thời gian chờ",
+    "price": "Giá",
+    "noResults": "Không tìm thấy kết quả",
+    "starredRoutes": "Tuyến đường đã đánh dấu sao",
+    "noStarredRoutes": "Chưa có hành trình nào được đánh dấu sao",
+    "reorder": "Sắp xếp lại",
+    "wait": "Chờ",
+    "fee": "Phí",
+    "noFee": "Không có dữ liệu",
+    "direct": "Trực tiếp",
+    "day": "ng",
+    "hour": "g",
+    "minute": "p",
+    "walk": "Đi bộ"
+  },
+  "notFound": {
+    "title": "Rất tiếc!",
+    "message": "Màn hình này không tồn tại.",
+    "goHome": "Đi đến màn hình chính!"
+  },
+  "routeSearch": {
+    "from": "Điểm xuất phát",
+    "to": "Điểm đến",
+    "date": "Ngày",
+    "search": "Tìm kiếm",
+    "selectDate": "Chọn ngày"
+  },
+  "starredTrip": {
+    "title": "Tuyến đường đã đánh dấu sao",
+    "description": "Đánh dấu sao tuyến đường để tìm kiếm nhanh",
+    "name": "Tên",
+    "unstar": "Bỏ đánh dấu sao",
+    "unstarDescription": "Bỏ đánh dấu sao tuyến đường để xóa nó khỏi thiết bị của bạn",
+    "editTitle": "Chỉnh sửa tên hành trình",
+    "editDescription": "Thay đổi tên của hành trình đã đánh dấu sao",
+    "enterName": "Nhập tên mới"
+  },
+  "help": {
+    "title": "Trợ giúp",
+    "transportIcons": "Biểu tượng phương tiện giao thông",
+    "lineIcons": "Biểu tượng tuyến",
+    "trainLines": "Tuyến tàu hỏa",
+    "otherTransport": "Các phương tiện giao thông khác",
+    "otherTransportDesc": "Mỗi phương tiện giao thông sử dụng một màu cụ thể, và chữ ở giữa sẽ hiển thị số tuyến chính xác",
+    "transportTypes": {
+      "train": "Tàu hỏa",
+      "lightrail": "Tàu điện nhẹ",
+      "ferry": "Phà",
+      "bus": "Xe buýt",
+      "metro": "Tàu điện ngầm"
+    }
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "version": "Phiên bản",
+    "transportnsw": "Đi đến Transport for NSW",
+    "thankYou": "Cảm ơn bạn đã sử dụng Route Wise!",
+    "description": "Route Wise là một ứng dụng giúp bạn lập kế hoạch cho các hành trình giao thông công cộng. Chúng tôi cam kết mang đến cho bạn trải nghiệm di chuyển thuận tiện nhất.",
+    "dataSource": "Nguồn dữ liệu",
+    "dataSourceDesc": "Ứng dụng này sử dụng dữ liệu thời gian thực được cung cấp bởi Transport for NSW. Mặc dù chúng tôi nỗ lực đảm bảo tính chính xác của dữ liệu lịch trình, nhưng không đảm bảo hoàn toàn. Để biết thông tin lịch trình chính thức, vui lòng truy cập trang web của Transport for NSW."
+  }
+}

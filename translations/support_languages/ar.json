@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "title": "الإعدادات",
+    "preferences": "التفضيلات",
+    "darkMode": "الوضع الداكن",
+    "serviceMessages": "رسائل الخدمة",
+    "serviceMessagesTooltip": "عند التمكين، ستتلقى إشعارات حول انقطاع الخدمة أو التأخيرات أو التحديثات المهمة الأخرى للمسارات التي بحثت عنها.",
+    "language": "اللغة",
+    "selectLanguage": "اختر اللغة",
+    "information": "المعلومات",
+    "about": "حول",
+    "help": "مساعدة",
+    "rate": "قيّم Route Wise",
+    "share": "شارك التطبيق مع الأصدقاء",
+    "shareMessage": "اكتشف {{appName}}! تطبيق رائع لتخطيط مسارات النقل العام. حمّله من هنا: {{storeUrl}}"
+  },
+  "common": {
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "confirm": "تأكيد",
+    "loading": "جارٍ التحميل...",
+    "error": "خطأ",
+    "retry": "إعادة المحاولة",
+    "comingSoon": "قريبًا"
+  },
+  "city": {
+    "Sydney": "سيدني",
+    "Melbourne": "ملبورن",
+    "Brisbane": "بريزبن"
+  },
+  "trip": {
+    "title": "الرحلة",
+    "search": "بحث",
+    "from": "من",
+    "to": "إلى",
+    "departure": "المغادرة",
+    "arrival": "الوصول",
+    "duration": "المدة",
+    "waitingTime": "وقت الانتظار",
+    "price": "السعر",
+    "noResults": "لم يتم العثور على نتائج",
+    "starredRoutes": "المسارات المفضلة",
+    "noStarredRoutes": "لا توجد رحلات مفضلة بعد",
+    "reorder": "إعادة الترتيب",
+    "wait": "انتظار",
+    "fee": "الرسوم",
+    "noFee": "لا توجد بيانات",
+    "direct": "مباشر",
+    "day": "يوم",
+    "hour": "ساعة",
+    "minute": "دقيقة",
+    "walk": "المشي"
+  },
+  "notFound": {
+    "title": "عذرًا!",
+    "message": "هذه الشاشة غير موجودة.",
+    "goHome": "الذهاب إلى الشاشة الرئيسية!"
+  },
+  "routeSearch": {
+    "from": "المصدر",
+    "to": "الوجهة",
+    "date": "التاريخ",
+    "search": "بحث",
+    "selectDate": "اختر التاريخ"
+  },
+  "starredTrip": {
+    "title": "المسار المفضل",
+    "description": "قم بتحديد المسار كمفضل للوصول إليه بسرعة",
+    "name": "الاسم",
+    "unstar": "إلغاء التفضيل",
+    "unstarDescription": "قم بإلغاء تفضيل المسار لحذفه من جهازك",
+    "editTitle": "تحرير اسم الرحلة",
+    "editDescription": "قم بتغيير اسم الرحلة المفضلة",
+    "enterName": "أدخل اسمًا جديدًا"
+  },
+  "help": {
+    "title": "مساعدة",
+    "transportIcons": "أيقونات أوضاع النقل",
+    "lineIcons": "أيقونات الخطوط",
+    "trainLines": "خطوط القطارات",
+    "otherTransport": "وسائل النقل الأخرى",
+    "otherTransportDesc": "يستخدم كل وضع نقل لونًا محددًا، والنص في المنتصف سيعرض رقم الخط الصحيح",
+    "transportTypes": {
+      "train": "قطار",
+      "lightrail": "ترام",
+      "ferry": "عبّارة",
+      "bus": "حافلة",
+      "metro": "مترو"
+    }
+  },
+  "about": {
+    "title": "حول",
+    "version": "الإصدار",
+    "transportnsw": "انتقل إلى Transport for NSW",
+    "thankYou": "شكرًا لاستخدام Route Wise!",
+    "description": "Route Wise هو تطبيق يساعدك في تخطيط رحلات النقل العام الخاصة بك. نحن ملتزمون بتوفير تجربة سفر مريحة لك.",
+    "dataSource": "مصدر البيانات",
+    "dataSourceDesc": "يستخدم هذا التطبيق بيانات حية مقدمة من Transport for NSW. بينما نبذل قصارى جهدنا لضمان دقة بيانات الجداول الزمنية، لا نقدم أي ضمانات. للحصول على معلومات الجداول الرسمية، يرجى زيارة موقع Transport for NSW."
+  }
+}

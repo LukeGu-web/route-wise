@@ -1,0 +1,102 @@
+{
+  "settings": {
+    "title": "설정",
+    "preferences": "환경 설정",
+    "darkMode": "다크 모드",
+    "serviceMessages": "서비스 메시지",
+    "serviceMessagesTooltip": "활성화하면 검색한 경로에 대한 서비스 중단, 지연 또는 기타 중요한 업데이트에 관한 알림을 받게 됩니다.",
+    "language": "언어",
+    "selectLanguage": "언어 선택",
+    "information": "정보",
+    "about": "소개",
+    "help": "도움말",
+    "rate": "Route Wise 평가하기",
+    "share": "친구에게 앱 공유하기",
+    "shareMessage": "{{appName}}을(를) 확인해보세요! 대중교통 경로 계획을 위한 훌륭한 앱입니다. 여기서 다운로드하세요: {{storeUrl}}"
+  },
+  "common": {
+    "cancel": "취소",
+    "save": "저장",
+    "edit": "편집",
+    "delete": "삭제",
+    "confirm": "확인",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "retry": "다시 시도",
+    "comingSoon": "곧 출시 예정"
+  },
+  "city": {
+    "Sydney": "시드니",
+    "Melbourne": "멜버른",
+    "Brisbane": "브리즈번"
+  },
+  "trip": {
+    "title": "여행",
+    "search": "검색",
+    "from": "출발지",
+    "to": "도착지",
+    "departure": "출발",
+    "arrival": "도착",
+    "duration": "소요 시간",
+    "waitingTime": "대기 시간",
+    "price": "가격",
+    "noResults": "결과를 찾을 수 없습니다",
+    "starredRoutes": "즐겨찾기 경로",
+    "noStarredRoutes": "아직 즐겨찾기한 여행이 없습니다",
+    "reorder": "재정렬",
+    "wait": "대기",
+    "fee": "요금",
+    "noFee": "데이터 없음",
+    "direct": "직행",
+    "day": "일",
+    "hour": "시간",
+    "minute": "분",
+    "walk": "도보"
+  },
+  "notFound": {
+    "title": "이런!",
+    "message": "이 화면이 존재하지 않습니다.",
+    "goHome": "홈 화면으로 이동!"
+  },
+  "routeSearch": {
+    "from": "출발지",
+    "to": "목적지",
+    "date": "날짜",
+    "search": "검색",
+    "selectDate": "날짜 선택"
+  },
+  "starredTrip": {
+    "title": "즐겨찾기 경로",
+    "description": "빠른 검색을 위해 경로를 즐겨찾기하세요",
+    "name": "이름",
+    "unstar": "즐겨찾기 해제",
+    "unstarDescription": "즐겨찾기를 해제하여 기기에서 삭제합니다",
+    "editTitle": "여행 이름 편집",
+    "editDescription": "즐겨찾기한 여행의 이름을 변경합니다",
+    "enterName": "새 이름 입력"
+  },
+  "help": {
+    "title": "도움말",
+    "transportIcons": "교통 수단 아이콘",
+    "lineIcons": "노선 아이콘",
+    "trainLines": "열차 노선",
+    "otherTransport": "기타 교통 수단",
+    "otherTransportDesc": "각 교통 수단은 특정 색상을 사용하며, 중앙의 텍스트는 정확한 노선 번호를 표시합니다",
+    "transportTypes": {
+      "train": "기차",
+      "lightrail": "경전철",
+      "ferry": "페리",
+      "bus": "버스",
+      "metro": "지하철"
+    }
+  },
+  "about": {
+    "title": "소개",
+    "version": "버전",
+    "transportnsw": "Transport for NSW로 이동",
+    "thankYou": "Route Wise를 이용해 주셔서 감사합니다!",
+    "description": "Route Wise는 대중교통 여행 계획을 도와주는 앱입니다. 저희는 가장 편리한 여행 경험을 제공하기 위해 노력하고 있습니다.",
+    "dataSource": "데이터 소스",
+    "dataSourceDesc": "이 앱은 Transport for NSW에서 제공하는 실시간 데이터를 사용합니다. 시간표 데이터의 정확성을 보장하기 위해 모든 노력을 기울이고 있지만, 보증은 하지 않습니다. 공식 시간표 정보는 Transport for NSW 웹사이트를 방문하세요."
+  }
+}
