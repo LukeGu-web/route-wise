@@ -36,6 +36,7 @@ export function useTrip(params: TripParams, city?: string) {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
     enabled: !!params.from_location && !!params.to_location && !!params.departure_time,
+    retry: 3,
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 }

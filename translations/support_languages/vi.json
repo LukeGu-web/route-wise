@@ -22,6 +22,7 @@
     "confirm": "Xác nhận",
     "loading": "Đang tải...",
     "error": "Lỗi",
+    "errorMessage": "Đã xảy ra lỗi. Vui lòng nhấn nút bên dưới để thử lại.",
     "retry": "Thử lại",
     "comingSoon": "sắp ra mắt"
   },

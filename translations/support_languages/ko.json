@@ -22,6 +22,7 @@
     "confirm": "확인",
     "loading": "로딩 중...",
     "error": "오류",
+    "errorMessage": "오류가 발생했습니다. 아래 버튼을 클릭하여 다시 시도해주세요.",
     "retry": "다시 시도",
     "comingSoon": "곧 출시 예정"
   },

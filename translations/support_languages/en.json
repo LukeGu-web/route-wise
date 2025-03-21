@@ -22,6 +22,7 @@
     "confirm": "Confirm",
     "loading": "Loading...",
     "error": "Error",
+    "errorMessage": "Something went wrong. Please click the button below to try again.",
     "retry": "Retry",
     "comingSoon": "coming soon"
   },

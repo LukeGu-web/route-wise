@@ -22,6 +22,7 @@
     "confirm": "Bestätigen",
     "loading": "Wird geladen...",
     "error": "Fehler",
+    "errorMessage": "Etwas ist schief gelaufen. Bitte klicken Sie auf die Schaltfläche unten, um erneut zu versuchen.",
     "retry": "Wiederholen",
     "comingSoon": "demnächst verfügbar"
   },

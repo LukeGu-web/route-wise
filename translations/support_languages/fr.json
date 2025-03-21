@@ -22,6 +22,7 @@
     "confirm": "Confirmer",
     "loading": "Chargement...",
     "error": "Erreur",
+    "errorMessage": "Une erreur est survenue. Veuillez cliquer sur le bouton ci-dessous pour réessayer.",
     "retry": "Réessayer",
     "comingSoon": "bientôt disponible"
   },

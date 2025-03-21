@@ -22,6 +22,7 @@
     "confirm": "Confirmar",
     "loading": "Carregando...",
     "error": "Erro",
+    "errorMessage": "Ocorreu um erro. Por favor, clique no botão abaixo para tentar novamente.",
     "retry": "Tentar novamente",
     "comingSoon": "em breve"
   },

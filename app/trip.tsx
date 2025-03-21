@@ -29,6 +29,7 @@ export default function TripPage() {
   const {
     data,
     fetchNextPage,
+    refetch,
     hasNextPage,
     isFetchingNextPage,
     isLoading,
@@ -76,9 +77,11 @@ export default function TripPage() {
 
   if (error) {
     return (
-      <View className="flex-1 items-center justify-center p-4">
-        <Text className="text-lg">{t('common.error')}</Text>
-        <Text className="text-lg">{t('common.retry')}</Text>
+      <View className="flex-1 items-center justify-center p-4 gap-2">
+        <Text className="text-lg p-2">{t('common.errorMessage')}</Text>
+        <Pressable onPress={() => refetch()} className="p-2 bg-primary rounded-md">
+          <Text className="text-lg">{t('common.retry')}</Text>
+        </Pressable>
       </View>
     )
   }
