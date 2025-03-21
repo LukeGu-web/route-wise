@@ -18,6 +18,16 @@ export interface Station {
 interface StationTranslation {
   en: string;
   zh: string;
+  ar: string;
+  de: string;
+  fr: string;
+  it: string;
+  ja: string;
+  ko: string;
+  pt: string;
+  ru: string;
+  th: string;
+  vi: string;
   type: string;
 }
 
