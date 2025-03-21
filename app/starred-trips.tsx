@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { View, ScrollView, Pressable } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { Text } from '~/components/ui/text';
 import { useStarredTripStore } from '~/lib/stores/useStarredTripStore';
 import { StarredTripItem } from '~/components/StarredTripItem';
+import GoBackButton from '~/components/GoBackButton';
 import DraggableFlatList, {
   RenderItemParams,
 } from 'react-native-draggable-flatlist';
@@ -13,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function StarredTrips() {
   const { t } = useTranslation();
-  const router = useRouter();
   const { starredTrips, removeStarredTrip, editStarredTrip, reorderStarredTrips } = useStarredTripStore();
   const [isReordering, setIsReordering] = useState(false);
 
@@ -49,9 +49,9 @@ export default function StarredTrips() {
       <Stack.Screen
         options={{
           title: isReordering ? t('trip.reorder') : t('trip.starredRoutes'),
-          headerLeft: isReordering ? () => null : undefined,
+          headerLeft: isReordering ? () => null : GoBackButton,
           headerRight: () => (
-            <Pressable onPress={() => setIsReordering(!isReordering)}>
+            <Pressable onPress={() => setIsReordering(!isReordering)} className="p-2">
               {isReordering ? (
                 <Save size={24} />
               ) : (

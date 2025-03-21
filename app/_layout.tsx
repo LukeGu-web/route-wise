@@ -5,8 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { getLocales } from 'expo-localization';
 import * as React from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { Platform, useColorScheme, Pressable } from 'react-native';
-import { router } from 'expo-router';
+import { Platform, useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NAV_THEME } from '~/lib/constants';
 import { PortalHost } from '@rn-primitives/portal';
@@ -18,8 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import languageNameMap from '~/translations/language_name_map.json';
 import { useAutoReview } from '~/lib/hooks/useAutoReview';
-import { ChevronLeft } from 'lucide-react-native';
-
+import GoBackButton from '~/components/GoBackButton';
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
   colors: NAV_THEME.light,
@@ -55,20 +53,20 @@ export default function RootLayout() {
       document.documentElement.classList.add('bg-background');
     }
     // set theme
-    if(isDarkMode === null) {
+    if (isDarkMode === null) {
       setAndroidNavigationBar(colorScheme as 'light' | 'dark');
       setIsDarkMode(colorScheme === 'dark');
     }
     setIsColorSchemeLoaded(true);
 
     // set language
-    if(language === null) {
+    if (language === null) {
       const defaultLanguageCode = locales[0].languageCode;
       // 检查默认语言是否在支持的语言列表中
-      const supportedLanguageCode = Object.keys(languageNameMap).includes(defaultLanguageCode || '') 
-        ? defaultLanguageCode 
+      const supportedLanguageCode = Object.keys(languageNameMap).includes(defaultLanguageCode || '')
+        ? defaultLanguageCode
         : 'en';
-      
+
       setLanguage({
         code: supportedLanguageCode || 'en',
         tag: supportedLanguageCode || 'en',
@@ -88,59 +86,52 @@ export default function RootLayout() {
       <ThemeProvider value={isDarkMode ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkMode ? 'light' : 'dark'} />
         <GestureHandlerRootView style={{ flex: 1 }}>
-        <BottomSheetModalProvider>
-          <Stack
-            screenOptions={{
-              presentation: 'card',
-            }}
-          >
-            <Stack.Screen
-              name="(tabs)"
-              options={{
-                headerShown: false,
-                title: '',
+          <BottomSheetModalProvider>
+            <Stack
+              screenOptions={{
+                presentation: 'card',
               }}
-            />
-            <Stack.Screen
-              name="trip"
-              options={{
-                title: t('trip.title'),
-              }}
-            />
-            <Stack.Screen
-              name="starred-trips"
-              options={{
-                title: t('starredTrip.title'),
-              }}
-            />
-            <Stack.Screen
-              name="help"
-              options={{
-                title: t('help.title'),
-                headerTitle: t('help.title'),
-                headerLeft: () => (
-                  <Pressable onPress={()=>router.back()} className="p-2">
-                    <ChevronLeft size={24} />
-                  </Pressable>
-                ),
-              }}
-            />
-            <Stack.Screen
-              name="about"
-              options={{
-                title: t('about.title'),
-                headerTitle: t('about.title'),
-                headerLeft: () => (
-                  <Pressable onPress={()=>router.back()} className="p-2">
-                    <ChevronLeft size={24} />
-                  </Pressable>
-                ),
-              }}
-            />
-          </Stack>
+            >
+              <Stack.Screen
+                name="(tabs)"
+                options={{
+                  headerShown: false,
+                  title: '',
+                }}
+              />
+              <Stack.Screen
+                name="trip"
+                options={{
+                  title: t('trip.title'),
+                  headerLeft: GoBackButton,
+                }}
+              />
+              <Stack.Screen
+                name="starred-trips"
+                options={{
+                  title: t('starredTrip.title')
+                }}
+              />
+              <Stack.Screen
+                name="help"
+                options={{
+                  title: t('help.title'),
+                  headerTitle: t('help.title'),
+                  headerLeft: GoBackButton,
+                }}
+              />
+              <Stack.Screen
+                name="about"
+                options={{
+                  title: t('about.title'),
+                  headerTitle: t('about.title'),
+                  headerLeft: GoBackButton,
+                }}
+              />
+            </Stack>
 
-          <PortalHost />
-        </BottomSheetModalProvider>
+            <PortalHost />
+          </BottomSheetModalProvider>
         </GestureHandlerRootView>
       </ThemeProvider>
     </QueryProvider>
