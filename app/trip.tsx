@@ -104,12 +104,12 @@ export default function TripPage() {
             </View>
           ),
           headerLeft: () => (
-            <Pressable onPress={handleBack} className="mr-2">
+            <Pressable onPress={handleBack} className="py-2 pr-4">
               <ChevronLeft size={24} />
             </Pressable>
           ),
           headerRight: () => (
-            <Pressable className="mr-2" onPress={() => setIsDialogOpen(true)}>
+            <Pressable className="py-2 pl-4" onPress={() => setIsDialogOpen(true)}>
               <Star size={24} strokeWidth={3} color={isStarred ? '#fde047' : 'gray'} />
             </Pressable>
           ),

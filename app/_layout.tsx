@@ -5,7 +5,8 @@ import { StatusBar } from 'expo-status-bar';
 import { getLocales } from 'expo-localization';
 import * as React from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { Platform, useColorScheme } from 'react-native';
+import { Platform, useColorScheme, Pressable } from 'react-native';
+import { router } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NAV_THEME } from '~/lib/constants';
 import { PortalHost } from '@rn-primitives/portal';
@@ -17,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import languageNameMap from '~/translations/language_name_map.json';
 import { useAutoReview } from '~/lib/hooks/useAutoReview';
-
+import { ChevronLeft } from 'lucide-react-native';
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -90,7 +91,6 @@ export default function RootLayout() {
         <BottomSheetModalProvider>
           <Stack
             screenOptions={{
-              // Customize the animation presentation
               presentation: 'card',
             }}
           >
@@ -118,6 +118,11 @@ export default function RootLayout() {
               options={{
                 title: t('help.title'),
                 headerTitle: t('help.title'),
+                headerLeft: () => (
+                  <Pressable onPress={()=>router.back()} className="p-2">
+                    <ChevronLeft size={24} />
+                  </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -125,6 +130,11 @@ export default function RootLayout() {
               options={{
                 title: t('about.title'),
                 headerTitle: t('about.title'),
+                headerLeft: () => (
+                  <Pressable onPress={()=>router.back()} className="p-2">
+                    <ChevronLeft size={24} />
+                  </Pressable>
+                ),
               }}
             />
           </Stack>
