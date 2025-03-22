@@ -54,8 +54,12 @@ export default function RootLayout() {
     }
     // set theme
     if (isDarkMode === null) {
+      // 用户第一次使用 app，使用系统主题
       setAndroidNavigationBar(colorScheme as 'light' | 'dark');
       setIsDarkMode(colorScheme === 'dark');
+    } else {
+      // 用户已经选择了主题，使用用户的选择
+      setAndroidNavigationBar(isDarkMode ? 'dark' : 'light');
     }
     setIsColorSchemeLoaded(true);
 
@@ -71,8 +75,15 @@ export default function RootLayout() {
         code: supportedLanguageCode || 'en',
         tag: supportedLanguageCode || 'en',
       });
+
+      // 使用 setTimeout 确保 i18n 完全初始化后再切换语言
+      setTimeout(() => {
+        i18n.changeLanguage(supportedLanguageCode || 'en');
+      }, 100);
+    } else {
+      // 如果语言已经设置，直接切换
+      i18n.changeLanguage(language.code || 'en');
     }
-    i18n.changeLanguage((language?.code ?? 'en') as string);
 
     hasMounted.current = true;
   }, []);
