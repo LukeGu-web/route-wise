@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { FlatList, Pressable, View, AppState, AppStateStatus } from 'react-native';
+import { FlatList, Pressable, View, AppState, AppStateStatus, ActivityIndicator } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft, MoveRight } from 'lucide-react-native';
@@ -14,6 +14,7 @@ import { useStations } from '~/lib/hooks/useStations';
 import { useAlerts } from '~/lib/hooks/useAlerts';
 import { AlertDialog } from '~/components/AlertDialog';
 import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
+
 export default function TripPage() {
   const { t } = useTranslation();
   const { language } = usePerferenceStore();
@@ -22,7 +23,8 @@ export default function TripPage() {
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
   const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
-
+  const [isPullRefreshing, setIsPullRefreshing] = useState(false);
+  
   const handleBack = () => {
     resetForm();
     router.back();
@@ -73,7 +75,7 @@ export default function TripPage() {
   useEffect(() => {
     // 创建AppState监听
     const appStateSubscription = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
-      if (nextAppState === 'active' && data?.pages && data.pages.length > 0) {
+      if (nextAppState === 'active' && data?.pages && data.pages.length > 0 && !isPullRefreshing) {
         // App重新回到前台时刷新数据
         setIsRefreshing(true);
         refetch().finally(() => {
@@ -89,7 +91,7 @@ export default function TripPage() {
       }
       
       refreshIntervalRef.current = setInterval(() => {
-        if (data?.pages && data.pages.length > 0 && AppState.currentState === 'active') {
+        if (data?.pages && data.pages.length > 0 && AppState.currentState === 'active' && !isPullRefreshing && !isRefreshing) {
           setIsRefreshing(true);
           // Refetch to update all loaded pages
           refetch().finally(() => {
@@ -110,7 +112,7 @@ export default function TripPage() {
       }
       appStateSubscription.remove();
     };
-  }, [data, refetch]);
+  }, [data, refetch, isPullRefreshing, isRefreshing]);
 
   // Show alert dialog when alerts are available
   useEffect(() => {
@@ -118,6 +120,14 @@ export default function TripPage() {
       setIsAlertDialogOpen(true);
     }
   }, [alertsData]);
+
+  // 处理手动下拉刷新
+  const handlePullRefresh = () => {
+    setIsPullRefreshing(true);
+    refetch().finally(() => {
+      setIsPullRefreshing(false);
+    });
+  };
 
   if (isLoading) {
     return (
@@ -164,9 +174,16 @@ export default function TripPage() {
             </Pressable>
           ),
           headerRight: () => (
-            <Pressable className="py-2 pl-4" onPress={() => setIsDialogOpen(true)}>
-              <Star size={24} strokeWidth={3} color={isStarred ? '#fde047' : 'gray'} />
-            </Pressable>
+            <View className="flex-row items-center">
+              {isRefreshing && (
+                <View className="mr-4">
+                  <ActivityIndicator size="small" color="gray" />
+                </View>
+              )}
+              <Pressable className="py-2 pl-4" onPress={() => setIsDialogOpen(true)}>
+                <Star size={24} strokeWidth={3} color={isStarred ? '#fde047' : 'gray'} />
+              </Pressable>
+            </View>
           ),
         }}
       />
@@ -181,6 +198,8 @@ export default function TripPage() {
           }
         }}
         onEndReachedThreshold={0.9}
+        refreshing={isPullRefreshing}
+        onRefresh={handlePullRefresh}
         ListFooterComponent={() => (
           isFetchingNextPage || isRefreshing ? (
             <Text className="py-4 text-center text-muted-foreground">
