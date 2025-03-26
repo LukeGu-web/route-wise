@@ -9,6 +9,7 @@ import {
     AccordionTrigger,
 } from './ui/accordion';
 import { Journey } from '~/lib/api/trip';
+import { useStations } from '~/lib/hooks/useStations';
 import { useTranslation } from 'react-i18next';
 
 interface JourneyLegsProps {
@@ -17,6 +18,7 @@ interface JourneyLegsProps {
 
 export function JourneyLegs({ journey }: JourneyLegsProps) {
     const { t } = useTranslation();
+    const { isEnglish } = useStations();
     const needsTransfer = journey.legs.length > 1;
 
     if (!needsTransfer) {
@@ -54,15 +56,17 @@ export function JourneyLegs({ journey }: JourneyLegsProps) {
                                 <View className="flex-row items-center justify-between">
                                     {/* Origin stop */}
                                     <View className="items-center w-5/12">
-                                        <Text className="text-xs text-muted-foreground">{leg.origin.name.split(', ')[0]}</Text>
-                                        <Text className="text-base font-medium">{leg.origin.name.split(', ')[1]}</Text>
+                                        {!isEnglish && <Text className="text-xs text-muted-foreground">{leg.origin.name.split(', ')[0]}</Text>}
+                                        <Text className="text-xs text-muted-foreground">{leg.origin.translated_name.split(', ')[0]}</Text>
+                                        <Text className="text-base font-medium">{leg.origin.translated_name.split(', ')[1]}</Text>
                                         <Text className="text-sm text-muted-foreground">{dayjs(leg.origin.departure_time?.replace(" AEDT", "")).format('HH:mm')}</Text>
                                     </View>
                                     <Text className="mx-1 text-muted-foreground">→</Text>
                                     {/* Destination stop */}
                                     <View className="items-center w-5/12">
-                                        <Text className="text-xs text-muted-foreground">{leg.destination.name.split(', ')[0]}</Text>
-                                        <Text className="text-base font-medium">{leg.destination.name.split(', ')[1]}</Text>
+                                        {!isEnglish && <Text className="text-xs text-muted-foreground">{leg.destination.name.split(', ')[0]}</Text>}
+                                        <Text className="text-xs text-muted-foreground">{leg.destination.translated_name.split(', ')[0]}</Text>
+                                        <Text className="text-base font-medium">{leg.destination.translated_name.split(', ')[1]}</Text>
                                         <Text className="text-sm text-muted-foreground">{dayjs(leg.destination.arrival_time?.replace(" AEDT", "")).format('HH:mm')}</Text>
                                     </View>
                                 </View>

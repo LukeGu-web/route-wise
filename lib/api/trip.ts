@@ -9,6 +9,7 @@ export interface TripParams {
 
 export interface Stop {
   name: string;
+  translated_name: string;
   platform?: string;
   departure_time: string | null;
   arrival_time: string | null;

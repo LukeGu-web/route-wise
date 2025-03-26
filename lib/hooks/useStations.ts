@@ -35,6 +35,8 @@ const ENGLISH_STATION_LANGUAGES = ['en', 'de', 'fr', 'it', 'pt', 'vi'];
 export function useStations() {
   const { i18n } = useTranslation();
 
+  const isEnglish = ENGLISH_STATION_LANGUAGES.includes(i18n.language);
+
   const allStations = useMemo(() => {
     const stations = [
       ...trainStations,
@@ -53,7 +55,7 @@ export function useStations() {
     return stations
       .map(station => ({
         ...station,
-        label: translations[station.station] && !ENGLISH_STATION_LANGUAGES.includes(i18n.language) ? 
+        label: translations[station.station] && !isEnglish ? 
           `${translations[station.station][i18n.language as keyof StationTranslation]} (${station.station})` : 
           station.station
       }))
@@ -70,6 +72,7 @@ export function useStations() {
   };
 
   return {
+    isEnglish,
     allStations,
     getFilteredStations,
   };

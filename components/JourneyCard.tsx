@@ -3,6 +3,7 @@ import { Text } from './ui/text';
 import { Journey } from '~/lib/api/trip';
 import { Card, CardHeader, CardContent, CardFooter } from '~/components/ui/card';
 import { JourneyLegs } from './JourneyLegs';
+import { useStations } from '~/lib/hooks/useStations';
 import { useTranslation } from 'react-i18next';
 
 interface JourneyCardProps {
@@ -11,9 +12,10 @@ interface JourneyCardProps {
 
 export function JourneyCard({ journey }: JourneyCardProps) {
   const { t } = useTranslation();
+  const { isEnglish } = useStations();
   const firstLeg = journey.legs[0];
   const lastLeg = journey.legs[journey.legs.length - 1];
-  
+
   const formatDateTime = (time: string) => {
     return time.split(" ")[1].slice(0, 5);
   };
@@ -28,12 +30,14 @@ export function JourneyCard({ journey }: JourneyCardProps) {
     <Card className="mb-4">
       <CardHeader className="flex-row items-center justify-between">
         <View className="items-center">
-          <Text className="text-sm text-muted-foreground">{firstLeg.origin.name.split(', ')[0]}</Text>
-          <Text className="text-base font-medium">{firstLeg.origin.name.split(', ')[1]}</Text>
+          {!isEnglish && <Text className="text-sm text-muted-foreground">{firstLeg.origin.name.split(', ')[0]}</Text>}
+          <Text className="text-sm text-muted-foreground">{firstLeg.origin.translated_name.split(', ')[0]}</Text>
+          <Text className="text-base font-medium">{firstLeg.origin.translated_name.split(', ')[1]}</Text>
         </View>
         <View className="items-center">
-          <Text className="text-sm text-muted-foreground">{lastLeg.destination.name.split(', ')[0]}</Text>
-          <Text className="text-base font-medium">{lastLeg.destination.name.split(', ')[1]}</Text>
+          {!isEnglish && <Text className="text-sm text-muted-foreground">{lastLeg.destination.name.split(', ')[0]}</Text>}
+          <Text className="text-sm text-muted-foreground">{lastLeg.destination.translated_name.split(', ')[0]}</Text>
+          <Text className="text-base font-medium">{lastLeg.destination.translated_name.split(', ')[1]}</Text>
         </View>
       </CardHeader>
 
