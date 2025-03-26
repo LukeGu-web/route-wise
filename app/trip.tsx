@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { FlatList, Pressable, View } from 'react-native';
+import { useEffect, useState, useRef } from 'react';
+import { FlatList, Pressable, View, AppState, AppStateStatus } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft, MoveRight } from 'lucide-react-native';
@@ -17,9 +17,11 @@ import { usePerferenceStore } from '~/lib/stores/usePerferenceStore';
 export default function TripPage() {
   const { t } = useTranslation();
   const { language } = usePerferenceStore();
-  const { origin, destination, date, resetForm, journeys, setJourneys } = useTripStore();
+  const { origin, destination, date, resetForm, journeys, setJourneys, updateJourneys } = useTripStore();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+  const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const handleBack = () => {
     resetForm();
@@ -56,9 +58,59 @@ export default function TripPage() {
   useEffect(() => {
     if (data?.pages) {
       const allJourneys = data.pages.flatMap(page => page.journeys);
-      setJourneys(allJourneys);
+      
+      // 首次加载使用setJourneys，保证直接替换
+      if (journeys.length === 0) {
+        setJourneys(allJourneys);
+      } else {
+        // 更新时使用updateJourneys，保证智能合并
+        updateJourneys(allJourneys);
+      }
     }
-  }, [data, setJourneys]);
+  }, [data, setJourneys, updateJourneys, journeys.length]);
+
+  // Set up auto-refresh interval
+  useEffect(() => {
+    // 创建AppState监听
+    const appStateSubscription = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
+      if (nextAppState === 'active' && data?.pages && data.pages.length > 0) {
+        // App重新回到前台时刷新数据
+        setIsRefreshing(true);
+        refetch().finally(() => {
+          setIsRefreshing(false);
+        });
+      }
+    });
+    
+    // Start refresh interval
+    const startRefreshInterval = () => {
+      if (refreshIntervalRef.current) {
+        clearInterval(refreshIntervalRef.current);
+      }
+      
+      refreshIntervalRef.current = setInterval(() => {
+        if (data?.pages && data.pages.length > 0 && AppState.currentState === 'active') {
+          setIsRefreshing(true);
+          // Refetch to update all loaded pages
+          refetch().finally(() => {
+            setIsRefreshing(false);
+          });
+        }
+      }, 30000); // 30 seconds
+    };
+
+    // Start the interval when component mounts
+    startRefreshInterval();
+
+    // Clean up interval on component unmount
+    return () => {
+      if (refreshIntervalRef.current) {
+        clearInterval(refreshIntervalRef.current);
+        refreshIntervalRef.current = null;
+      }
+      appStateSubscription.remove();
+    };
+  }, [data, refetch]);
 
   // Show alert dialog when alerts are available
   useEffect(() => {
@@ -130,7 +182,7 @@ export default function TripPage() {
         }}
         onEndReachedThreshold={0.9}
         ListFooterComponent={() => (
-          isFetchingNextPage ? (
+          isFetchingNextPage || isRefreshing ? (
             <Text className="py-4 text-center text-muted-foreground">
               {t('common.loading')}
             </Text>
