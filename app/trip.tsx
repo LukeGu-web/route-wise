@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { FlatList, Pressable, View, AppState, AppStateStatus, ActivityIndicator } from 'react-native';
+import { FlatList, Pressable, View, AppState, AppStateStatus } from 'react-native';
 import { useTrip } from '~/lib/hooks/useTrip';
 import { Stack, router } from 'expo-router';
 import { ChevronLeft, MoveRight } from 'lucide-react-native';
@@ -175,11 +175,6 @@ export default function TripPage() {
           ),
           headerRight: () => (
             <View className="flex-row items-center">
-              {isRefreshing && (
-                <View className="mr-4">
-                  <ActivityIndicator size="small" color="gray" />
-                </View>
-              )}
               <Pressable className="py-2 pl-4" onPress={() => setIsDialogOpen(true)}>
                 <Star size={24} strokeWidth={3} color={isStarred ? '#fde047' : 'gray'} />
               </Pressable>
