@@ -1,13 +1,18 @@
 import { create } from 'zustand';
 import { Journey } from '../api/trip';
 
+type Station = {
+  station: string;
+  tsn?: string;
+}
+
 interface TripState {
-  origin: string;
-  destination: string;
+  origin: Station;
+  destination: Station;
   date: Date | null;
-  journeys:  Journey[];
-  setOrigin: (origin: string) => void;
-  setDestination: (destination: string) => void;
+  journeys: Journey[];
+  setOrigin: (origin: Station) => void;
+  setDestination: (destination: Station) => void;
   setDate: (date: Date) => void;
   setJourneys: (journeys: Journey[]) => void;
   updateJourneys: (journeys: Journey[]) => void;
@@ -15,8 +20,12 @@ interface TripState {
 }
 
 export const useTripStore = create<TripState>((set, get) => ({
-  origin: '',
-  destination: '',
+  origin: {
+    station: ''
+  },
+  destination: {
+    station: ''
+  },
   date: null,
   journeys: [],
   setOrigin: (origin) => set({ origin }),
@@ -25,33 +34,37 @@ export const useTripStore = create<TripState>((set, get) => ({
   setJourneys: (journeys) => set({ journeys }),
   updateJourneys: (newJourneys) => {
     const currentJourneys = get().journeys;
-    
+
     // 创建一个通过start_time、end_time和第一段行程信息组合的键来唯一标识每个journey
     const journeyMap = new Map<string, Journey>();
-    
+
     // 将当前journeys放入Map
     currentJourneys.forEach(journey => {
       const firstLeg = journey.legs[0]?.line || '';
       const key = `${journey.start_time}-${journey.end_time}-${firstLeg}`;
       journeyMap.set(key, journey);
     });
-    
+
     // 用新数据更新Map
     newJourneys.forEach(journey => {
       const firstLeg = journey.legs[0]?.line || '';
       const key = `${journey.start_time}-${journey.end_time}-${firstLeg}`;
       journeyMap.set(key, journey);
     });
-    
+
     // 转换回数组并按出发时间排序
     const updatedJourneys = Array.from(journeyMap.values())
       .sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime());
-    
+
     set({ journeys: updatedJourneys });
   },
   resetForm: () => set({
-    origin: '',
-    destination: '',
+    origin: {
+      station: ''
+    },
+    destination: {
+      station: ''
+    },
     date: null,
     journeys: []
   })

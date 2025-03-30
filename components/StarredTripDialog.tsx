@@ -24,12 +24,12 @@ export function StarredTripDialog({
     const { origin, destination } = useTripStore();
     const { allStations } = useStations();
     const { addStarredTrip, editStarredTrip, removeStarredTrip, starredTrips } = useStarredTripStore();
-    const starredTrip = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
+    const starredTrip = starredTrips.find(trip => trip.origin === origin.station && trip.destination === destination.station);
     const [tripName, setTripName] = useState(starredTrip?.name ?? '');
 
-    const originStation = allStations.find(s => s.station === origin);
-    const destinationStation = allStations.find(s => s.station === destination);
-    const defaultName = `${originStation?.label?.split(' (')[0] || origin} -> ${destinationStation?.label?.split(' (')[0] || destination}`;
+    const originStation = allStations.find(s => s.station === origin.station);
+    const destinationStation = allStations.find(s => s.station === destination.station);
+    const defaultName = `${originStation?.label?.split(' (')[0] || origin.station} -> ${destinationStation?.label?.split(' (')[0] || destination.station}`;
 
     const handleSave = () => {
         if (starredTrip) {
@@ -37,8 +37,8 @@ export function StarredTripDialog({
         } else {
             addStarredTrip({
                 id: uuidv4(),
-                origin,
-                destination,
+                origin: origin.station,
+                destination: destination.station,
                 name: tripName || defaultName,
             });
         }
@@ -72,11 +72,11 @@ export function StarredTripDialog({
                     </View>
                     <View className="flex-row items-end gap-2">
                         <Text className="font-semibold">{t('trip.from')}: </Text>
-                        <Text className="text-lg">{originStation?.label?.split(' (')[0] || origin}</Text>
+                        <Text className="text-lg">{originStation?.label?.split(' (')[0] || origin.station}</Text>
                     </View>
                     <View className="flex-row items-end gap-2">
                         <Text className="font-semibold">{t('trip.to')}: </Text>
-                        <Text className="text-lg">{destinationStation?.label?.split(' (')[0] || destination}</Text>
+                        <Text className="text-lg">{destinationStation?.label?.split(' (')[0] || destination.station}</Text>
                     </View>
                 </View>
                 <Dialog.Footer>

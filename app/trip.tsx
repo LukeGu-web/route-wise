@@ -24,7 +24,7 @@ export default function TripPage() {
   const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isPullRefreshing, setIsPullRefreshing] = useState(false);
-  
+
   const handleBack = () => {
     resetForm();
     router.back();
@@ -39,8 +39,8 @@ export default function TripPage() {
     isLoading,
     error
   } = useTrip({
-    from_location: origin,
-    to_location: destination,
+    from_location: origin.tsn || origin.station,
+    to_location: destination.tsn || destination.station,
     departure_time: (date ?? new Date())?.toISOString(),
     language_code: language?.code ?? 'en'
   });
@@ -48,19 +48,19 @@ export default function TripPage() {
   const { starredTrips } = useStarredTripStore();
   const { allStations } = useStations();
   const { data: alertsData } = useAlerts({
-    from_location: origin,
-    to_location: destination,
+    from_location: origin.tsn || origin.station,
+    to_location: destination.tsn || destination.station,
   });
 
-  const originStation = allStations.find(s => s.station === origin);
-  const destinationStation = allStations.find(s => s.station === destination);
-  const isStarred = starredTrips.find(trip => trip.origin === origin && trip.destination === destination);
+  const originStation = allStations.find(s => s.station === origin.station);
+  const destinationStation = allStations.find(s => s.station === destination.station);
+  const isStarred = starredTrips.find(trip => trip.origin === origin.station && trip.destination === destination.station);
 
   // Save trips to store whenever we get new data
   useEffect(() => {
     if (data?.pages) {
       const allJourneys = data.pages.flatMap(page => page.journeys);
-      
+
       // 首次加载使用setJourneys，保证直接替换
       if (journeys.length === 0) {
         setJourneys(allJourneys);
@@ -83,13 +83,13 @@ export default function TripPage() {
         });
       }
     });
-    
+
     // Start refresh interval
     const startRefreshInterval = () => {
       if (refreshIntervalRef.current) {
         clearInterval(refreshIntervalRef.current);
       }
-      
+
       refreshIntervalRef.current = setInterval(() => {
         if (data?.pages && data.pages.length > 0 && AppState.currentState === 'active' && !isPullRefreshing && !isRefreshing) {
           setIsRefreshing(true);
@@ -163,9 +163,9 @@ export default function TripPage() {
         options={{
           headerTitle: () => (
             <View className="flex-row items-center gap-4">
-              <Text className="text-lg font-bold">{originStation?.label?.split(' (')[0] || origin}</Text>
+              <Text className="text-lg font-bold">{originStation?.label?.split(' (')[0] || origin.station}</Text>
               <MoveRight color='gray' size={24} />
-              <Text className="text-lg font-bold">{destinationStation?.label?.split(' (')[0] || destination}</Text>
+              <Text className="text-lg font-bold">{destinationStation?.label?.split(' (')[0] || destination.station}</Text>
             </View>
           ),
           headerLeft: () => (
