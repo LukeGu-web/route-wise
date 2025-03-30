@@ -28,7 +28,7 @@
   { "station": "QVB", "type": "LightRail" },
   { "station": "Town Hall", "type": "LightRail" },
   { "station": "Chinatown", "type": "LightRail" },
-  { "station": "Haymarket", "type": "LightRail" },
+  { "station": "Haymarket", "type": "LightRail", "tsn": "2000445" },
   { "station": "Central Chalmers Street", "type": "LightRail" },
   { "station": "Surry Hills", "type": "LightRail" },
   { "station": "Moore Park", "type": "LightRail" },

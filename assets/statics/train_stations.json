@@ -589,7 +589,8 @@
   },
   {
     "station": "St Leonards",
-    "type": "Train"
+    "type": "Train",
+    "tsn": "206520"
   },
   {
     "station": "Artarmon",
