@@ -1,12 +1,13 @@
 import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Station } from '../hooks/useStations';
 
 export interface StarredTrip {
   id: string;
   name: string;
-  origin: string;
-  destination: string;
+  origin: Station;
+  destination: Station;
 }
 
 interface StarredTripState {

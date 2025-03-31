@@ -24,7 +24,7 @@ export function StarredTripDialog({
     const { origin, destination } = useTripStore();
     const { allStations } = useStations();
     const { addStarredTrip, editStarredTrip, removeStarredTrip, starredTrips } = useStarredTripStore();
-    const starredTrip = starredTrips.find(trip => trip.origin === origin.station && trip.destination === destination.station);
+    const starredTrip = starredTrips.find(trip => trip.origin.station === origin.station && trip.destination.station === destination.station);
     const [tripName, setTripName] = useState(starredTrip?.name ?? '');
 
     const originStation = allStations.find(s => s.station === origin.station);
@@ -37,8 +37,8 @@ export function StarredTripDialog({
         } else {
             addStarredTrip({
                 id: uuidv4(),
-                origin: origin.station,
-                destination: destination.station,
+                origin: origin,
+                destination: destination,
                 name: tripName || defaultName,
             });
         }

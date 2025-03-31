@@ -54,7 +54,7 @@ export default function TripPage() {
 
   const originStation = allStations.find(s => s.station === origin.station);
   const destinationStation = allStations.find(s => s.station === destination.station);
-  const isStarred = starredTrips.find(trip => trip.origin === origin.station && trip.destination === destination.station);
+  const isStarred = starredTrips.find(trip => trip.origin.station === origin.station && trip.destination.station === destination.station);
 
   // Save trips to store whenever we get new data
   useEffect(() => {

@@ -33,8 +33,8 @@ export default function StarredTrips() {
           <StarredTripItem
             id={item.id}
             name={item.name}
-            origin={item.origin}
-            destination={item.destination}
+            origin={item.origin.station}
+            destination={item.destination.station}
             onDelete={removeStarredTrip}
             onEdit={editStarredTrip}
             isReordering={isReordering}
