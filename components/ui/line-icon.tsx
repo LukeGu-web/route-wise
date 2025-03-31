@@ -60,7 +60,7 @@ export function LineIcon({ mode, line, size = 'xs' }: LineIconProps) {
     const modeColorMap = {
       Metro: lineColorMap.Metro,
       Buses: lineColorMap.Buses,
-      LightRail: lineColorMap.LightRails,
+      "Light Rail": lineColorMap.LightRails,
       Ferries: lineColorMap.Ferries,
       Coach: lineColorMap.Coach,
     };
