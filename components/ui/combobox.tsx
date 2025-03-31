@@ -18,16 +18,14 @@ const stationTypeIcons = {
 } as const;
 
 interface ComboboxProps {
-  value: string;
-  onChangeText: (text: string) => void;
-  onSelect: (item: string) => void;
+  value: Station;
+  onSelect: (item: Station) => void;
   placeholder?: string;
   className?: string;
 }
 
 export function Combobox({
   value,
-  onChangeText,
   onSelect,
   placeholder,
   className,
@@ -73,23 +71,21 @@ export function Combobox({
     setFilteredSuggestions(filtered);
   };
 
-  const handleSelect = (item: string) => {
+  const handleSelect = (item: Station) => {
     Keyboard.dismiss();
     onSelect(item);
-    onChangeText(item);
     onDropdownToggle(false);
   };
 
   const resetSearch = () => {
     setSearchText('');
-    onChangeText('');
     setFilteredSuggestions(allStations);
   };
 
   return (
     <View className={cn("w-full", className)}>
       {isDropdownOpen ? (
-        <View className="flex-row items-center gap-2 p-2 border-2 border-blue-400 rounded-lg">
+        <View className="flex-row items-center gap-2 p-3 border border-input rounded-md">
           <Search size={20} color={iconColor} />
           <TextInput
             ref={textInputRef}
@@ -113,8 +109,8 @@ export function Combobox({
           onPress={() => onDropdownToggle(true)}
         >
           <Text className="flex-grow dark:text-white">
-            {value ?
-              (language?.code !== 'en' ? (allStations.find(s => s.station === value)?.label || value) : value)
+            {value.station ?
+              (language?.code !== 'en' ? (value.label || value.station) : value.station)
               : (placeholder || "Select an option")}
           </Text>
           <ChevronDown size={20} color={iconColor} />
@@ -124,7 +120,7 @@ export function Combobox({
       {isDropdownOpen && (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <Animated.View
-            className="mt-1 border border-input rounded-md bg-background"
+            className="absolute top-full left-0 right-0 z-50 mt-1 border border-input rounded-md bg-background shadow-lg"
             style={{ maxHeight: dropdownHeight }}
           >
             {filteredSuggestions.length === 0 ? (
@@ -143,7 +139,7 @@ export function Combobox({
                 renderItem={({ item }) => (
                   <Pressable
                     key={`${item.station}-${item.type}`}
-                    onPress={() => handleSelect(item.station)}
+                    onPress={() => handleSelect(item)}
                     className="flex-row items-center px-3 py-2 hover:bg-muted active:bg-muted"
                   >
                     <Image

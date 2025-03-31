@@ -13,6 +13,7 @@ export interface Station {
   station: string;
   type: string;
   label?: string;
+  tsn?: string;
 }
 
 // 'de', 'fr', 'it', 'pt', 'vi' use English station name

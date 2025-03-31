@@ -1,10 +1,6 @@
 import { create } from 'zustand';
 import { Journey } from '../api/trip';
-
-type Station = {
-  station: string;
-  tsn?: string;
-}
+import { Station } from '~/lib/hooks/useStations';
 
 interface TripState {
   origin: Station;
@@ -21,10 +17,12 @@ interface TripState {
 
 export const useTripStore = create<TripState>((set, get) => ({
   origin: {
-    station: ''
+    station: '',
+    type: ''
   },
   destination: {
-    station: ''
+    station: '',
+    type: ''
   },
   date: null,
   journeys: [],
@@ -60,10 +58,12 @@ export const useTripStore = create<TripState>((set, get) => ({
   },
   resetForm: () => set({
     origin: {
-      station: ''
+      station: '',
+      type: ''
     },
     destination: {
-      station: ''
+      station: '',
+      type: ''
     },
     date: null,
     journeys: []

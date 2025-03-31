@@ -65,8 +65,7 @@ export function RouteSearchForm() {
         <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.from')}</Text>
         <Combobox
           value={origin}
-          onChangeText={setOrigin}
-          onSelect={(item: string) => setOrigin(item)}
+          onSelect={setOrigin}
           placeholder={t('routeSearch.from')}
         />
       </View>
@@ -75,8 +74,7 @@ export function RouteSearchForm() {
         <Text className="text-sm font-medium mb-1 text-foreground">{t('trip.to')}</Text>
         <Combobox
           value={destination}
-          onChangeText={setDestination}
-          onSelect={(item: string) => setDestination(item)}
+          onSelect={setDestination}
           placeholder={t('routeSearch.to')}
         />
       </View>
@@ -101,7 +99,7 @@ export function RouteSearchForm() {
             ? 'bg-blue-900 hover:bg-blue-800 active:bg-blue-800'
             : 'bg-blue-500 hover:bg-blue-400 active:bg-blue-400'
         )}
-        disabled={!origin || !destination}
+        disabled={!origin.station || !destination.station}
         onPress={handleSearch}
       >
         <Search
