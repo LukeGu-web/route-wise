@@ -58,11 +58,11 @@ export function PreferencesCard({ bottomSheetModalRef }: PreferencesCardProps) {
         {/* Service Message Option */}
         <View className="flex-row items-center justify-between py-4 border-b border-border">
           <View className="flex-row items-center">
-            <MessageSquareText className="text-foreground mr-3" size={22} strokeWidth={1.25} />
+            <MessageSquareText className="text-foreground mr-3" size={22} strokeWidth={1.5} />
             <Text className="text-base font-medium">{t('settings.serviceMessages')}</Text>
             <Tooltip delayDuration={150}>
               <TooltipTrigger asChild>
-                <CircleHelp className="text-muted-foreground ml-2" size={16} strokeWidth={1.25} />
+                <CircleHelp className="text-muted-foreground ml-2" size={16} strokeWidth={1.5} />
               </TooltipTrigger>
               <TooltipContent className="bg-zinc-800 text-foreground">
                 <Text className="text-sm">{t('settings.serviceMessagesTooltip')}</Text>
@@ -80,7 +80,7 @@ export function PreferencesCard({ bottomSheetModalRef }: PreferencesCardProps) {
           onPress={() => bottomSheetModalRef.current?.present()}
         >
           <View className="flex-row items-center">
-            <Languages className="text-foreground mr-3" size={22} strokeWidth={1.25} />
+            <Languages className="text-foreground mr-3" size={22} strokeWidth={1.5} />
             <Text className="text-base font-medium">{t('settings.language')}</Text>
           </View>
           <Text className="text-base font-medium">{languageNameMap[(language?.code ?? 'en') as LanguageCode]}</Text>
