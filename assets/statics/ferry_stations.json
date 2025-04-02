@@ -1,162 +1,202 @@
 [
   {
     "station": "Circular Quay 2",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20003"
   },
   {
     "station": "Circular Quay 3",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20004"
   },
   {
     "station": "Circular Quay 4",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20005"
   },
   {
     "station": "Circular Quay 5",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20006"
   },
   {
     "station": "Manly",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20951"
   },
   {
     "station": "Garden Island",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20007"
   },
   {
     "station": "Cockatoo Island",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20009"
   },
   {
     "station": "Darling Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20271"
   },
   {
     "station": "Double Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20281"
   },
   {
     "station": "Rose Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20291"
   },
   {
     "station": "Watsons Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20301"
   },
   {
     "station": "Pyrmont Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "200910"
   },
   {
     "station": "Birchgrove",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20412"
   },
   {
     "station": "Balmain",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20413"
   },
   {
     "station": "Balmain East",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20414"
   },
   {
     "station": "Abbotsford",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20461"
   },
   {
     "station": "Chiswick",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20462"
   },
   {
     "station": "Drummoyne",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20471"
   },
   {
     "station": "Huntleys Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "211158"
   },
   {
     "station": "Barangaroo 1",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "2000441"
   },
   {
     "station": "Barangaroo 2",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "2000442"
   },
   {
     "station": "McMahons Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20601"
   },
   {
     "station": "North Sydney",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20603"
   },
   {
     "station": "Milsons Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20611"
   },
   {
     "station": "Kirribilli",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20614"
   },
   {
     "station": "Greenwich",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "2065145"
   },
   {
     "station": "Mosman Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20881"
   },
   {
     "station": "South Mosman",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20882"
   },
   {
     "station": "Taronga Zoo",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20883"
   },
   {
     "station": "Neutral Bay",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20891"
   },
   {
     "station": "Kurraba Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20892"
   },
   {
     "station": "Cremorne Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20901"
   },
   {
     "station": "Old Cremorne",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "20902"
   },
   {
     "station": "Woolwich",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21101"
   },
   {
     "station": "Kissing Point",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21122"
   },
   {
     "station": "Meadowbank",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21141"
   },
   {
     "station": "Rydalmere",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21151"
   },
   {
     "station": "Olympic Park",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21271"
   },
   {
     "station": "Cabarita",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21371"
   },
   {
     "station": "Parramatta",
-    "type": "Ferry"
+    "type": "Ferry",
+    "tsn": "21501"
   }
 ]
