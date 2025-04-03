@@ -1210,35 +1210,43 @@
   },
   {
     "station": "Tallawong",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2155384"
   },
   {
     "station": "Rouse Hill",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2155383"
   },
   {
     "station": "Kellyville",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2155382"
   },
   {
     "station": "Bella Vista",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2153478"
   },
   {
     "station": "Norwest",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2153477"
   },
   {
     "station": "Hills Showground",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2154392"
   },
   {
     "station": "Castle Hill",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2154391"
   },
   {
     "station": "Cherrybrook",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "2126158"
   },
   {
     "station": "Rydal",
@@ -1298,22 +1306,27 @@
   },
   {
     "station": "Crows Nest",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "206516"
   },
   {
     "station": "Victoria Cross",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "206044"
   },
   {
     "station": "Barangaroo",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "200046"
   },
   {
     "station": "Gadigal",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "201737"
   },
   {
     "station": "Waterloo",
-    "type": "Metro"
+    "type": "Metro",
+    "tsn": "201721"
   }
 ]
