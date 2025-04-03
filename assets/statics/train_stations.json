@@ -1286,15 +1286,18 @@
   },
   {
     "station": "North Ryde",
-    "type": "Train"
+    "type": "Metro",
+    "tsn": "211320"
   },
   {
     "station": "Macquarie Park",
-    "type": "Train"
+    "type": "Metro",
+    "tsn": "211340"
   },
   {
     "station": "Macquarie University",
-    "type": "Train"
+    "type": "Metro",
+    "tsn": "211310"
   },
   {
     "station": "Edmondson Park",
